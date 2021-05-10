@@ -1,0 +1,27 @@
+<ion-header [translucent]="true" class="">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10">
+          <a class="logo" routerLink="/home">
+            <img src="../../../../assets/icon/beauty-now-logo_522_x_118.png">
+          </a>
+        </ion-col>
+        <ion-col size="2" class="ion-align-self-center ion-text-center cursor-pointer" routerLink="shopping-cart">
+          <ion-grid class="ion-no-padding" *ngIf="authService.isAuthenticated()">
+            <ion-row>
+              <ion-col size="12">
+                <ion-icon name="cart-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <ion-badge color="dark">{{ getShoppingCartLineItemCount() }}</ion-badge>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>

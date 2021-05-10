@@ -1,0 +1,9 @@
+<ion-content>
+  <a *ngFor="let service of services" routerLink="{{ service.id }}">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ service.name }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </a>
+</ion-content>

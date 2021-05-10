@@ -1,0 +1,15 @@
+@import '../../../../../theme/view-container.scss';
+
+:host {
+  @extend .view-container;
+}
+
+ion-label {
+  max-width: 100% !important;
+}
+
+ion-input {
+  text-align: right;
+  border: 1px solid black;
+  border-radius: 10px;
+}

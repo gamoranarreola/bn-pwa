@@ -1,0 +1,10 @@
+<ion-content>
+  <h2 class="ion-text-center">{{ service?.name }}</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" class="ion-text-center">${{ service?.public_price | currency:'es-MX':'MXN' }}</ion-col>
+      <ion-col size="6" class="ion-text-center">{{ serviceDurationDisplay }}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-appointment-request [service]="service" [qualifiedBeautiers]="qualifiedBeautiers"></app-appointment-request>
+</ion-content>

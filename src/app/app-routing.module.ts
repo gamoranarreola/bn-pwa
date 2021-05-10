@@ -7,6 +7,31 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    data: {
+      breadcrumb: 'Inicio'
+    }
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'weddings',
+    loadChildren: () => import('./feature/weddings/weddings.module').then(m => m.WeddingsModule),
+    data: {
+      breadcrumb: 'Bodas'
+    }
+  },
+  {
+    path: 'service-categories',
+    loadChildren: () => import('./feature/service/service.module').then(m => m.ServiceModule),
+    data: {
+      breadcrumb: 'Servicios'
+    }
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

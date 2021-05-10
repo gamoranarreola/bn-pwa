@@ -1,0 +1,69 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Agenda tu Servicio</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="requestForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-datetime
+                formControlName="appointmentDate"
+                placeholder="Selecciona una fecha"
+                display-format="DDD D MMM"
+                min="{{ getMinDate() }}"></ion-datetime>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-datetime
+                formControlName="appointmentTime"
+                placeholder="Selecciona una hora"
+                display-format="h:mm A"
+                picker-format="h:mm A"
+                minute-values="0,15,30,45"></ion-datetime>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <ion-button
+                (click)="checkAvailability()"
+                [disabled]="!requestForm.controls.appointmentDate.value || !requestForm.controls.appointmentTime.value">Checar Disponibilidad</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid *ngIf="beautiersAvailable">
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <span>&iexcl;Tenemos beautiers disponibles!</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8" class="ion-align-self-center ion-text-right">
+              <span>&iquest;Cu&aacute;ntos servicios?</span>
+            </ion-col>
+            <ion-col size="4">
+              <ion-input
+                type="number"
+                value="1"
+                formControlName="quantity"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="beautiersAvailable">
+            <ion-col class="ion-text-center">
+              <ion-button (click)="saveToShoppingCart()">Agregar al carrito</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid *ngIf="!beautiersAvailable && availabilityChecked">
+          <ion-row>
+            <ion-col size="12">
+              <span>Lo sentimos pero no hay beautiers disponibles para la fecha y hora deseada.</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

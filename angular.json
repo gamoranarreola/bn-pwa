@@ -58,6 +58,29 @@
                 }
               ]
             },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
             "ci": {
               "progress": false
             }
@@ -66,10 +89,16 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "app:build",
+            "ssl": true,
+            "sslCert": "./ssl/dev.beautynow.com.crt",
+            "sslKey": "./ssl/dev.beautynow.com.key"
           },
           "configurations": {
             "production": {
+              "browserTarget": "app:build:production"
+            },
+            "local": {
               "browserTarget": "app:build:production"
             },
             "ci": {

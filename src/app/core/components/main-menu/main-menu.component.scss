@@ -1,0 +1,28 @@
+@import '../../../../theme/colors.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 39px;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 86px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+ion-grid {
+  background-color: $eclipse !important;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $white;
+}
