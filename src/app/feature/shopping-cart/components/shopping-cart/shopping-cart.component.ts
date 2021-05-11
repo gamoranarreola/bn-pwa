@@ -89,7 +89,7 @@ export class ShoppingCartComponent implements OnInit {
 
     this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => {
 
-      this.shoppingCart = data.shoppingCart!;
+      this.shoppingCart = data.shoppingCart;
 
       if (!this.shoppingCart) {
 
