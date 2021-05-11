@@ -29,8 +29,8 @@
                   inputmode="numeric"
                   min="0"
                   step="1"
-                  ionChange="changeQuantity($event, i)"
-                  ionBlur="checkLineItem($event, i)"
+                  (ionChange)="changeQuantity($event, i)"
+                  (ionBlur)="checkLineItem($event, i)"
                   ></ion-input>
               </ion-col>
               <ion-col size="5">
@@ -80,12 +80,12 @@
                 class="w-full"
                 rows="5"
                 auto-grow="true"
-                placeholder="Introduce aqu&iacute; el n&uacute;mero de interior o apartamento si aplica as&iacute; como cualquier indicaci&oacute;n especial para tu orden..."></ion-textarea>
+                placeholder="Introduce aqu&iacute; el n&uacute;mero de interior o apartamento si aplica as&iacute; como cualquier indicaci&oacute;n especial para tu orden."></ion-textarea>
             </ion-col>
           </ion-row>
           <ion-row *ngIf="serviceAddress">
             <ion-col size="12">
-              <ion-button expand="block">Pagar</ion-button>
+              <ion-button expand="block" routerLink="payment">Pagar</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>

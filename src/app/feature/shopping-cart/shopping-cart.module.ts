@@ -7,11 +7,18 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
-  declarations: [ShoppingCartComponent],
-  exports: [ShoppingCartComponent],
+  declarations: [
+    ShoppingCartComponent,
+    PaymentComponent
+  ],
+  exports: [
+    ShoppingCartComponent,
+    PaymentComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,

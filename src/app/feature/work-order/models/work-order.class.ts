@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { LineItem } from './line-item.class';
 
 export class WorkOrder {

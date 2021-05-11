@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { BaseStore } from "src/app/core/state/models/base-state";
-import { ShoppingCart } from "src/app/feature/shopping-cart/models/shopping-cart.class";
-import { ShoppingCartEndpoint } from "../endpoints/shopping-cart-endpoint.service";
-import { ShoppingCartStoreState } from "../models/shopping-cart-store-state";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { BaseStore } from 'src/app/core/state/models/base-state';
+import { ShoppingCart } from 'src/app/feature/shopping-cart/models/shopping-cart.class';
+import { ShoppingCartEndpoint } from '../endpoints/shopping-cart-endpoint.service';
+import { ShoppingCartStoreState } from '../models/shopping-cart-store-state';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class ShoppingCartStore extends BaseStore<ShoppingCartStoreState> {
     super(new ShoppingCartStoreState());
 
     this.shoppingCart$ = this.state$.pipe(
-      map(state => state.shoppingCart!)
+      map(state => state.shoppingCart)
     );
   }
 
@@ -30,7 +30,7 @@ export class ShoppingCartStore extends BaseStore<ShoppingCartStoreState> {
 
     this.setState({
       ...this.state,
-      shoppingCart: shoppingCart
+      shoppingCart
     });
   }
 

@@ -22,7 +22,7 @@ export const environment = {
       errorMessage: 'El correo electr&oacute;nico no es v&aacute;lido',
     },
     name: {
-      pattern: "^[a-zA-Z\\-\\s\\']*$",
+      pattern: '^[a-zA-Z\\-\\s\\\']*$',
       errorMessage: 'S&oacute;lo letras, gui&oacute;n, y espacios',
     },
     phone: {
@@ -34,7 +34,7 @@ export const environment = {
       errorMessage: 'Las contrase&ntilde;as deben ser iguales',
     },
     textInput: {
-      pattern: "^[a-zA-Z0-9\\.,\\;\\?\\!'\\s]*$",
+      pattern: '^[a-zA-Z0-9\\.,\\;\\?\\!\'\\s]*$',
       errorMessage:
         'S&oacute;lo letras, n&uacute;meros, y signos de ortograf&iacute;a',
     },
@@ -67,4 +67,7 @@ export const environment = {
       sendEmail: 'api/send-email/',
     },
   },
+  conekta: {
+    publicKey: 'key_GzeFFsxwd6bgEnrqxZdRDsg'
+  }
 };

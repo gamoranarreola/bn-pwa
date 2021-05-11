@@ -64,7 +64,16 @@ export class ShoppingCartComponent implements OnInit {
    */
   changeQuantity(event: CustomEvent, index: number) {
 
-    this.shoppingCart.workOrder.line_items[index].quantity = event.detail.value;
+    if (event.detail.value === '0') {
+      if (this.shoppingCart.workOrder.line_items.length === 1) {
+        this.shoppingCart.workOrder = undefined;
+      } else {
+        this.shoppingCart.workOrder.line_items.splice(index, 1);
+      }
+    } else {
+      this.shoppingCart.workOrder.line_items[index].quantity = event.detail.value;
+    }
+
     this.shoppingCartStore.updateShoppingCart(this.shoppingCart);
   }
 

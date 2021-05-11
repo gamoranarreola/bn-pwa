@@ -1,4 +1,4 @@
-import { WorkOrder } from "../../work-order/models/work-order.class";
+import { WorkOrder } from '../../work-order/models/work-order.class';
 
 export class ShoppingCart {
 

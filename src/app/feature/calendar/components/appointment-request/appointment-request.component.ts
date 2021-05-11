@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoadingController, ToastController } from '@ionic/angular';
 import * as moment from 'moment';
@@ -11,10 +13,8 @@ import { Beautier } from 'src/app/feature/beautier/models/beautier.class';
 import { Service } from 'src/app/feature/service/models/service.class';
 import { Calendar } from '../../models/calendar.class';
 import { UserService } from 'src/app/core/services/user.service';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { LineItem } from 'src/app/feature/work-order/models/line-item.class';
 import { WorkOrder } from 'src/app/feature/work-order/models/work-order.class';
-import { Router } from '@angular/router';
 import { ShoppingCart } from 'src/app/feature/shopping-cart/models/shopping-cart.class';
 import { ShoppingCartStoreState } from 'src/app/core/state/shopping-cart/models/shopping-cart-store-state';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
@@ -33,13 +33,6 @@ export class AppointmentRequestComponent implements OnInit {
   today: moment.Moment;
   startDate: moment.Moment;
   endDate: moment.Moment;
-  serviceAddress: any;
-
-  placesOptions: {
-    componentRestrictions: {
-      country: string;
-    }
-  };
 
   requestForm: FormGroup;
   inputValidators: any;
@@ -59,15 +52,7 @@ export class AppointmentRequestComponent implements OnInit {
     private loadingController: LoadingController,
     private shoppingCartStore: ShoppingCartStore
   ) {
-
     this.inputValidators = env.inputValidators;
-    this.serviceAddress = null;
-
-    this.placesOptions = {
-      componentRestrictions: {
-        country: 'MX'
-      }
-    };
   }
 
   /**
@@ -129,7 +114,7 @@ export class AppointmentRequestComponent implements OnInit {
       status: 'initial_request'
     });
 
-    if (!this.shoppingCart) {
+    if (!this.shoppingCart || !this.shoppingCart.workOrder) {
 
       this.shoppingCart = new ShoppingCart({
         workOrder: new WorkOrder({
@@ -140,21 +125,31 @@ export class AppointmentRequestComponent implements OnInit {
         })
       });
     } else {
-      this.shoppingCart.workOrder.line_items.push(lineItem);
+
+      let matchingLineItemIndex: number;
+
+      this.shoppingCart.workOrder.line_items.forEach((li: LineItem, index: number) => {
+
+        if (
+          li.service.id === lineItem.service.id &&
+          li.service_date === lineItem.service_date &&
+          li.service_time === lineItem.service_time
+        ) {
+          matchingLineItemIndex = index;
+        }
+      });
+
+      if (matchingLineItemIndex >= 0) {
+        this.shoppingCart.workOrder.line_items[matchingLineItemIndex].quantity += lineItem.quantity;
+      } else {
+        this.shoppingCart.workOrder.line_items.push(lineItem);
+      }
     }
 
     this.shoppingCartStore.updateShoppingCart(this.shoppingCart);
     this.notifyServiceAddedToCart();
     this.resetForm();
     this.router.navigate(['service-categories']);
-  }
-
-  /**
-   *
-   * @param address
-   */
-  handleAddressChange(address: Address): void {
-    this.serviceAddress = address;
   }
 
   /**
@@ -169,7 +164,10 @@ export class AppointmentRequestComponent implements OnInit {
     this.createForm();
 
     this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => {
-      this.shoppingCart = data.shoppingCart!;
+
+      if (data && data.shoppingCart) {
+        this.shoppingCart = data.shoppingCart;
+      }
     });
   }
 
@@ -203,7 +201,6 @@ export class AppointmentRequestComponent implements OnInit {
    */
   private resetForm(): void {
     this.requestForm.reset();
-    this.serviceAddress = null;
     this.beautiersAvailable = false;
     this.availabilityChecked = false;
   }
@@ -276,6 +273,7 @@ export class AppointmentRequestComponent implements OnInit {
   private notifyExpediteRequest(): void {
 
     this.toastController.create({
+      // eslint-disable-next-line max-len
       message: 'El margen regular para agendar servicio es de un m&iacute;mino de 4 horas. Si necesitas un servicio dentro de un margen menor, puedes llamarnos al (664) 999-9999 y haremos lo posible por conseguirte un beautier.',
       position: 'bottom',
       buttons: [
@@ -307,7 +305,7 @@ export class AppointmentRequestComponent implements OnInit {
       ]
     }).then(toast => {
       toast.present();
-    })
+    });
   }
 
   /**
