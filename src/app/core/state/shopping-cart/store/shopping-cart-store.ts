@@ -34,6 +34,20 @@ export class ShoppingCartStore extends BaseStore<ShoppingCartStoreState> {
     });
   }
 
+  getShoppingCartTotal(): number {
+
+    let total = 0;
+
+    if (this.state.shoppingCart) {
+
+      for (const lineItem of this.state.shoppingCart.workOrder.line_items) {
+        total += (lineItem.price * lineItem.quantity);
+      }
+    }
+
+    return total;
+  }
+
   clearShoppingCart(): void {
 
     this.setState({

@@ -15,10 +15,6 @@ import { PaymentComponent } from './components/payment/payment.component';
     ShoppingCartComponent,
     PaymentComponent
   ],
-  exports: [
-    ShoppingCartComponent,
-    PaymentComponent
-  ],
   imports: [
     CommonModule,
     IonicModule,

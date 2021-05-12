@@ -22,8 +22,9 @@ export const environment = {
       errorMessage: 'El correo electr&oacute;nico no es v&aacute;lido',
     },
     name: {
-      pattern: '^[a-zA-Z\\-\\s\\\']*$',
-      errorMessage: 'S&oacute;lo letras, gui&oacute;n, y espacios',
+      // eslint-disable-next-line @typescript-eslint/quotes
+      pattern: "^[a-zA-Z\\-\\s\\']*$",
+      errorMessage: 'S&oacute;lo letras, gui&oacute;n, ap&oacute;strofe, y espacios.'
     },
     phone: {
       pattern: '^[0-9\\-\\(\\)\\s]*$',
@@ -38,6 +39,14 @@ export const environment = {
       errorMessage:
         'S&oacute;lo letras, n&uacute;meros, y signos de ortograf&iacute;a',
     },
+    creditCard: {
+      pattern: '^[0-9\\-\\s]{15,19}$',
+      message: 'El n&uacute;mero de su tarjeta al parecer no es v&aacute;lido'
+    },
+    cvc: {
+      pattern: '^[0-9]{3,4}$',
+      message: 'El CVC al parecer no es v&aacute;lido'
+    }
   },
   routes: {
     auth: {

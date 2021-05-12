@@ -1,3 +1,140 @@
-<p>
-  payment works!
-</p>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>DETALLES DE PAGO</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="4">
+            <img src="../../../../../assets/images/shopping-cart/visa.jpeg" />
+          </ion-col>
+          <ion-col size="4">
+            <img src="../../../../../assets/images/shopping-cart/mc.png" />
+          </ion-col>
+          <ion-col size="4">
+            <img src="../../../../../assets/images/shopping-cart/amex.png" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <form [formGroup]="ccForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-input
+                placeholder="N&uacute;mero de la Tarjeta"
+                inputmode="numeric"
+                formControlName="number"
+                data-conekta="card[number]">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <span>Fecha de Vencimiento</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <ion-datetime
+                placeholder="Mes"
+                formControlName="exp_month"
+                display-format="MM"
+                data-conekta="card[exp_month]">
+              </ion-datetime>
+            </ion-col>
+            <ion-col size="4">
+              <ion-datetime
+                placeholder="A&ntilde;o"
+                formControlName="exp_year"
+                display-format="YYYY"
+                min="{{ getMinYear() }}"
+                max="{{ getMaxYear() }}"
+                data-conekta="card[exp_year]">
+              </ion-datetime>
+            </ion-col>
+            <ion-col size="4">
+              <ion-input
+                placeholder="CVC"
+                inputmode="numeric"
+                formControlName="cvc"
+                data-conekta="card[cvc]">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-input
+                placeholder="Nombre del Tarjetahabiente"
+                formControlName="name"
+                data-conekta="card[name]">
+              </ion-input>
+              <span
+                class="error ion-padding"
+                *ngIf="!ccForm.controls.name.untouched && ccForm.controls.name.hasError('pattern')"
+                [innerHTML]="inputValidators.name.errorMessage">
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-input
+                placeholder="Domicilio (calle y no., interior, etc.)"
+                formControlName="street1">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-input
+                placeholder="Domicilio (colonia, fracc., etc.)"
+                formControlName="street2">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <ion-input
+                placeholder="Ciudad"
+                formControlName="city">
+              </ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-select
+                placeholder="Estado"
+                interface="action-sheet"
+                formControlName="state">
+                <ion-select-option
+                  *ngFor="let item of listService.getStates(ccForm?.get('country').value)"
+                  value="{{ item.name }}">{{ item.name }}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <ion-input
+                placeholder="C&oacute;digo Postal"
+                formControlName="zip">
+              </ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-select
+                placeholder="Pa&iacute;s"
+                interface="action-sheet"
+                formControlName="country">
+                <ion-select-option
+                  *ngFor="let item of listService.getCountries()"
+                  value="{{ item.code }}">{{ item.name }}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+      <ion-button
+        expand="block"
+        (click)="submitPayment()"
+        [disabled]="!(ccForm.touched && ccForm.valid)">Emitir Pago</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
