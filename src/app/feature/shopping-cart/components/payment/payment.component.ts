@@ -68,30 +68,13 @@ export class PaymentComponent implements OnInit {
             country: this.ccForm.controls.country.value
           }
         }
-      }, (token: string) => {
-
-        (async () => {
-
-          const toast: any = await this.toastController.create({
-            // eslint-disable-next-line max-len
-            message: `<p>&iexcl;Gracias! Hemos hecho un cargo de ${this.shoppingCartStore.getShoppingCartTotal()} a tu tarjeta ${brand.toUpperCase()} que termina en ${this.ccForm.controls.number.value.slice(-4)}`,
-            position: 'bottom',
-            buttons: [
-              {
-                text: 'Ok',
-                handler: () => {
-                  toast.dismiss();
-                }
-              }
-            ]
-          });
-
-          toast.onDidDismiss = () => {
-            console.log('YEAH');
-          };
-
-          await toast.present();
-        })();
+      }, (token: {
+          id: string;
+          livemode: boolean;
+          object: string;
+          used: boolean;
+        }) => {
+        console.log(token);
       }, (error: any) => {
         console.log(error);
       });
