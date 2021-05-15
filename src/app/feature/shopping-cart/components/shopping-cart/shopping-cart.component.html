@@ -84,7 +84,7 @@
                 placeholder="Introduce aqu&iacute; el n&uacute;mero de interior o apartamento si aplica as&iacute; como cualquier indicaci&oacute;n especial para tu orden."></ion-textarea>
             </ion-col>
           </ion-row>
-          <ion-row *ngIf="serviceAddress">
+          <ion-row *ngIf="shoppingCart?.workOrder.place_id">
             <ion-col size="12">
               <ion-button expand="block" routerLink="payment">Pagar</ion-button>
             </ion-col>

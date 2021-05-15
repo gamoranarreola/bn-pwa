@@ -110,8 +110,7 @@ export class AppointmentRequestComponent implements OnInit {
       service_date: moment(this.requestForm.controls.appointmentDate.value).format('YYYY-MM-DD'),
       service_time: moment(this.requestForm.controls.appointmentTime.value).format('h:mm A'),
       quantity: this.requestForm.controls.quantity.value,
-      price: this.service.public_price,
-      status: 'initial_request'
+      price: this.service.public_price
     });
 
     if (!this.shoppingCart || !this.shoppingCart.workOrder) {
@@ -121,6 +120,7 @@ export class AppointmentRequestComponent implements OnInit {
           request_date: today.format('YYYY-MM-DD'),
           request_time: today.format('h:mm A'),
           notes: this.requestForm.controls.notes.value || 'N/A',
+          status: 'initial_request',
           line_items: [lineItem]
         })
       });
@@ -236,7 +236,7 @@ export class AppointmentRequestComponent implements OnInit {
       this.beautiersAvailable = false;
       this.availabilityChecked = false;
 
-      this.apiDataService.readData(env.routes.calendars.getCalendarForBeautiers, false, 'post', {
+      this.apiDataService.getData(env.routes.calendars.getCalendarForBeautiers, false, 'post', {
         calendarIds: this.qualifiedBeautiers.map((beautier: Beautier) => beautier.calendar_id),
         timeMin: this.startDate.format(),
         timeMax: this.endDate.format(),

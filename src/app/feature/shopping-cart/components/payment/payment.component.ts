@@ -8,6 +8,8 @@ import { environment as env } from '../../../../../environments/environment';
 import { ListService } from 'src/app/core/services/list.service';
 import { ToastController } from '@ionic/angular';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
+import { ConektaToken } from '../../models/conekta-token';
+import { ApiDataService } from 'src/app/core/services/api-data.service';
 
 
 declare const Conekta: any;
@@ -26,6 +28,7 @@ export class PaymentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastController: ToastController,
     private shoppingCartStore: ShoppingCartStore,
+    private apiDataService: ApiDataService,
     public listService: ListService
   ) {
     this.inputValidators = env.inputValidators;
@@ -68,13 +71,20 @@ export class PaymentComponent implements OnInit {
             country: this.ccForm.controls.country.value
           }
         }
-      }, (token: {
-          id: string;
-          livemode: boolean;
-          object: string;
-          used: boolean;
-        }) => {
-        console.log(token);
+      }, (token: ConektaToken) => {
+
+        this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
+          customer: {
+            name: this.ccForm.controls.name.value,
+            payment_sources: [{
+              type: 'card',
+              token_id: token.id
+            }]
+          },
+          work_order: this.shoppingCartStore.get().workOrder
+        }).subscribe(res => {
+          console.log(res);
+        });
       }, (error: any) => {
         console.log(error);
       });
@@ -107,7 +117,8 @@ export class PaymentComponent implements OnInit {
       city: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       zip: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required)
+      country: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required)
     });
   }
 

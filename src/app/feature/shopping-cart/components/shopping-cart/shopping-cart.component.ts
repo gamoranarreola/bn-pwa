@@ -55,6 +55,7 @@ export class ShoppingCartComponent implements OnInit {
    */
   handleAddressChange(address: Address): void {
     this.serviceAddress = address;
+    this.shoppingCart.workOrder.place_id = address.place_id;
   }
 
   /**

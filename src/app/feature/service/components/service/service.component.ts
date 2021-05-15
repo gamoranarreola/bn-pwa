@@ -40,14 +40,14 @@ export class ServiceComponent implements OnInit {
 
     this.activatedRoute.paramMap.subscribe(params => {
 
-      this.serviceById$ = this.apiDataService.readData(`${env.routes.services.getServices}/${params.get('serviceId')}`, false, 'get');
+      this.serviceById$ = this.apiDataService.getData(`${env.routes.services.getServices}/${params.get('serviceId')}`, false, 'get');
 
       this.serviceById$.subscribe((response: any) => {
 
         this.service = new Service(response.data)
         this.serviceDurationDisplay = this.getServiceDurationDisplay();
 
-        this.qualifiedBeautiers$ = this.apiDataService.readData(`${env.routes.beautiers.getBeautiersForSpecialty}`, false, 'post', {
+        this.qualifiedBeautiers$ = this.apiDataService.getData(`${env.routes.beautiers.getBeautiersForSpecialty}`, false, 'post', {
           specialty_ids: this.service.specialties.map((specialty: ServiceSpecialty) => specialty.id)
         });
 

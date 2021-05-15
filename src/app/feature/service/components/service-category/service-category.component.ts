@@ -22,7 +22,7 @@ export class ServiceCategoryComponent implements OnInit {
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe((params: any) => {
-      this.apiDataService.readData(`${env.routes.services.getServicesForCategory}/${params.get('serviceCategoryId')}`, false, 'get').subscribe(response => {
+      this.apiDataService.getData(`${env.routes.services.getServicesForCategory}/${params.get('serviceCategoryId')}`, false, 'get').subscribe(response => {
         this.services = response.data.map(service => new Service(service));
       });
     });

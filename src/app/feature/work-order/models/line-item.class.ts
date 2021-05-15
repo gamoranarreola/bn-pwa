@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Service } from '../../service/models/service.class';
 import { WorkOrder } from './work-order.class';
 
@@ -9,7 +10,6 @@ export class LineItem {
     service_time: string;
     quantity: number;
     price: number;
-    status: string;
     beautier_profile_id: number;
     work_order: WorkOrder;
 

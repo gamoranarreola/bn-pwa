@@ -10,6 +10,7 @@ export class WorkOrder {
     place_id: string;
     notes: string;
     line_items: LineItem[];
+    status: string;
 
     constructor(options: Partial<WorkOrder>) {
         Object.assign(this, options);

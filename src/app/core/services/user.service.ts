@@ -24,6 +24,6 @@ export class UserService {
    *
    */
   public me(): Observable<any> {
-    return this.apiDataService.readData(`${env.routes.auth.me}`, true, 'get');
+    return this.apiDataService.getData(`${env.routes.auth.me}`, true, 'get');
   }
 }
