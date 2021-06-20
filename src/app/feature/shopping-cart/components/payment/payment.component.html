@@ -138,6 +138,18 @@
               </ion-input>
             </ion-col>
           </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-intl-tel-input
+                inputPlaceholder="Tel&eacute;fono"
+                [onlyCountries]="['mx', 'us']"
+                [modalTitle]="'Selecciona tu Pa&iacute;s'"
+                [modalSearchPlaceholder]="'Ingresa el nombre de tu pa&iacute;s'"
+                [modalCloseText]="'Cerrar'"
+                formControlName="phone"
+              ></ion-intl-tel-input>
+            </ion-col>
+          </ion-row>
         </ion-grid>
       </form>
       <ion-button

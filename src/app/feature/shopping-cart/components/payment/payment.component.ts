@@ -10,6 +10,7 @@ import { ToastController } from '@ionic/angular';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
 import { ConektaToken } from '../../models/conekta-token';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
+import { IonIntlTelInputValidators } from 'ion-intl-tel-input';
 
 
 declare const Conekta: any;
@@ -118,7 +119,11 @@ export class PaymentComponent implements OnInit {
       state: new FormControl('', Validators.required),
       zip: new FormControl('', Validators.required),
       country: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required)
+      email: new FormControl('', Validators.required),
+      phone: new FormControl('', [
+        Validators.required,
+        IonIntlTelInputValidators.phone
+      ])
     });
   }
 

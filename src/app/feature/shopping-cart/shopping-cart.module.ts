@@ -8,6 +8,7 @@ import { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './components/payment/payment.component';
+import { IonIntlTelInputModule } from 'ion-intl-tel-input';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     ShoppingCartRoutingModule,
     GooglePlaceModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonIntlTelInputModule
   ]
 })
 export class ShoppingCartModule { }
