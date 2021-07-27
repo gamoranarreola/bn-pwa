@@ -1,5 +1,373 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      INICIO
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
 <ion-content [fullscreen]="true">
-  <p class="font-playfair-display-400">&iexcl;Estamos a s&oacute;lo un click!</p>
+
+  <ion-slides pager="true" scroll-y="false"  [options]="slideOpts">
+    <ion-slide> <ion-img src="./assets/images/web/inicio-1.png"></ion-img></ion-slide>
+    <ion-slide> <ion-img src="./assets/images/web/inicio-2.png"></ion-img></ion-slide>
+    </ion-slides>
+    
+  <!-- <p class="font-playfair-display-400">&iexcl;Estamos a s&oacute;lo un click!</p>
   <p class="font-montserrat-500 uppercase">Nosotros vamos a donde t&uacute; est&eacute;s, a la hora que nos necesites</p>
   <p class="font-open-sans-300">Beauty Now es una compa&ntilde;&iacute;a 100% tijuanense que te ofrece los servicios de maquillaje y peinado a domicilio, hasta con 4 horas de antelaci&oacute;n.</p>
+ -->
+<div class="title">
+  <h1>SERVICIOS</h1>
+  <h5>Siempre Se Trata de Cuidarte</h5>
+</div>
+  <!-- botones imagen -->
+  <ion-slides pager="true">
+     <!-- 1 -->
+    <ion-slide>
+      <ion-card>
+       
+       <ion-card-header>
+        <ion-slide> <ion-img src="./assets/images/web/inicio-3.jpeg"></ion-img></ion-slide>
+         <ion-card-subtitle></ion-card-subtitle>
+         <ion-card-title>MAQUILLAJE</ion-card-title>
+       </ion-card-header>
+     </ion-card>
+    </ion-slide>
+    <!-- 2 -->
+    <ion-slide>
+      <ion-card>
+       
+       <ion-card-header>
+        <ion-slide> <ion-img src="./assets/images/web/inicio-4.jpeg"></ion-img></ion-slide>
+         <ion-card-subtitle></ion-card-subtitle>
+         <ion-card-title>PEINADO</ion-card-title>
+       </ion-card-header>
+     </ion-card>
+    </ion-slide>
+    <!-- 3 -->
+    <ion-slide>
+      <ion-card>
+       
+       <ion-card-header>
+        <ion-slide> <ion-img src="./assets/images/web/inicio-5.jpeg"></ion-img></ion-slide>
+         <ion-card-subtitle></ion-card-subtitle>
+         <ion-card-title>MAQUILLAJE Y PEINADO</ion-card-title>
+       </ion-card-header>
+     </ion-card>
+    </ion-slide>
+    <!-- 4 -->
+  
+    <ion-slide>
+      <ion-card>
+       
+       <ion-card-header>
+        <ion-slide> <ion-img src="./assets/images/web/inicio-6.jpeg"></ion-img></ion-slide>
+         <ion-card-subtitle></ion-card-subtitle>
+         <ion-card-title>XV Años</ion-card-title>
+       </ion-card-header>
+     </ion-card>
+    </ion-slide>
+     <!-- 5 -->
+     <ion-slide>
+      <ion-card>
+       
+       <ion-card-header>
+        <ion-slide> <ion-img src="./assets/images/web/inicio-7.jpeg"></ion-img></ion-slide>
+         <ion-card-subtitle></ion-card-subtitle>
+         <ion-card-title>NOVIAS</ion-card-title>
+       </ion-card-header>
+     </ion-card>
+    </ion-slide>  
+  </ion-slides>
+
+
+
+  <ion-slides pager="true">  
+   <ion-slide>
+  <ion-card style="background-color: #e4c683; color:#fff;">
+    <img src="/assets/images/web/inicio-8.jpeg"/>
+    <ion-card-header>
+      <ion-card-title>Estamos a sólo un click!  </ion-card-title>
+      <ion-card-subtitle style="color:#fff;">Nosotros vamos a donde tu estes, a la hora que nos necesites</ion-card-subtitle>
+
+    </ion-card-header>
+    <ion-card-content>            
+      <p>BEAUTY NOW es una compañía 100% tijuanense que te ofrece los servicios de maquillaje y peinado a domicilio, hasta con 4 horas de anticipación.</p>      
+      <ion-button expand="full" style="color: #000; background-color: transparent; border: 1px solid #000; position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: auto;
+      margin: 0;
+      font-family: Montserrat,sans-serif;
+      font-size: 14px;
+      line-height: 2em;
+      letter-spacing: 3px;
+      font-weight: 500;
+      text-transform: uppercase;
+      outline: 0;
+      border-radius: 0;
+      "  color="translucent" href="#">Servicios</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-slide>  
+<!-- slide 2-->
+<ion-slide>
+  <ion-card style="background-color: #e4c683; color:#fff;">
+    <img src="/assets/images/web/inicio-9.jpeg"/>
+    <ion-card-header>   
+      <ion-card-title style="color:#fff;">Lo Mereces!  	  </ion-card-title>
+      <ion-card-subtitle style="color:#fff;">Lo Sabemos! La Belleza es cosa seria</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>    
+      <p>Puedes estar tranquila! Nuestro único interés es que sólo te preocupes por verte increíble y pasártela bien en tu evento especial</p>
+      <ion-button style="color: #000; background-color: transparent; border: 1px solid #000;"  color="translucent" href="#">Nosotros</ion-button>     
+     
+    </ion-card-content>
+  </ion-card>
+</ion-slide>
+</ion-slides>
+  <!-- section 3-->    
+  
+  <div class="title">
+    <h2>NUESTROS PROSESOS</h2>    
+    <p>ESTAMOS A  TU SERVICIO</p>
+</div>
+    <ion-row>
+      <ion-col>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/jN0ucz95cdY?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </ion-col>
+    </ion-row>
+  <!-- carro reloj y tarjeta -->
+<ion-slides pager="true">
+  <ion-slide>
+     
+     <ion-card>
+      
+      <ion-card-header>
+        <ion-img src="./assets/images/web/inicio-car.png"></ion-img>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>HASTA DONDE ESTES</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Vamos hasta donde estes, selecciona tu servicio, horario y fecha de tu cita
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+
+  <ion-slide>
+     
+    <ion-card>
+     
+     <ion-card-header>
+       <ion-img src="./assets/images/web/inicio-clock.png"></ion-img>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>FACIL</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      Sin largas esperas y tediosos traslados, Agenda hasta con 4hrs de Anticipación
+     </ion-card-content>
+   </ion-card>
+ </ion-slide>
+
+     
+  <ion-slide>
+     
+    <ion-card>
+     
+     <ion-card-header>
+       <ion-img src="./assets/images/web/inicio-wamen.png"></ion-img>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>BEAUTIERS</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      Nuestras Beautiers son profesionales de la belleza con amplia experiencia
+     </ion-card-content>
+   </ion-card>
+ </ion-slide>
+
+ <ion-slide>
+  <ion-card>
+   
+   <ion-card-header>
+     <ion-img src="./assets/images/web/inicio-card.png"></ion-img>
+     <ion-card-subtitle></ion-card-subtitle>
+     <ion-card-title>Pago en Línea</ion-card-title>
+   </ion-card-header>
+ 
+   <ion-card-content>
+    Fácil y Seguro de usar. Altos estándares de seguridad   </ion-card-content>
+ </ion-card>
+</ion-slide>
+
+  </ion-slides>
+
+
+  <!-- beautyers -->
+  <div class="title">
+    <h2>Nuestras Beautiers</h2>    
+    <p>Siempre a tus Ordenes</p>
+    </div>
+
+<!-- 1 -->
+<ion-slides pager="true">
+  
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beautyer-1.jpeg"></ion-img></ion-slide>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillista y Alto Peinado</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>YZDETH LLAMAS  </ion-card-content>
+
+     <ion-button color="primary"> ver perfil</ion-button>
+   </ion-card>
+  </ion-slide>
+<!-- 2 -->
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beautyer-2.png"></ion-img></ion-slide>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillista y Peinado Básico</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      VIANA HERNANDEZ   </ion-card-content>
+      <ion-button > ver perfil</ion-button>
+   </ion-card>
+  </ion-slide>
+<!-- 3 -->
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beautyer-3.png"></ion-img></ion-slide>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillista y Peinado Básico</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      STEPHANI ESPARZA   </ion-card-content>
+      <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+    </ion-card>
+  </ion-slide>
+<!-- 4 -->
+<ion-slide>
+  <ion-card>
+   
+   <ion-card-header>
+    <ion-slide> <ion-img src="./assets/images/web/beautyer-4.png"></ion-img></ion-slide>
+     <ion-card-subtitle></ion-card-subtitle>
+     <ion-card-title>Maquillista y Peinado Básico</ion-card-title>
+   </ion-card-header>
+ 
+   <ion-card-content>
+    KAREN FLORES   </ion-card-content>
+    <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+  </ion-card>
+</ion-slide>
+  <!-- 5 -->
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beautyer-5.png"></ion-img></ion-slide>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillaje y Peinado Básico</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      CINTHYA RODRIGUEZ  </ion-card-content>
+      <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+    </ion-card>
+  </ion-slide>
+  <!-- 6 -->
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beutyers-6.png"></ion-img></ion-slide>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>PMaquillista y Peinado Básico</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      Danny V. Michel  </ion-card-content>
+      <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+    </ion-card>
+  </ion-slide>
+  <!-- 7 -->
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beutyers-8.png"></ion-img></ion-slide>
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillista y Peinado Básico</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      Michel Ingelmo </ion-card-content>
+      <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+    </ion-card>
+  </ion-slide>
+  <!-- 8 -->
+
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beutyers-9.png"></ion-img></ion-slide>
+      
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillista y Peinado Básico</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      IVONNE AYALA </ion-card-content>
+      <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+    </ion-card>
+  </ion-slide>
+  <!-- 9 -->
+  <ion-slide>
+    <ion-card>
+     
+     <ion-card-header>
+      <ion-slide> <ion-img src="./assets/images/web/beautier-10.png"></ion-img></ion-slide>
+      
+       <ion-card-subtitle></ion-card-subtitle>
+       <ion-card-title>Maquillista y Alto Peinado</ion-card-title>
+     </ion-card-header>
+   
+     <ion-card-content>
+      KARLA MARTÍNEZ   </ion-card-content>
+      <ion-button class="vc_b vc_btn3 vc"> ver perfil</ion-button>
+    </ion-card>
+  </ion-slide>  
+
+  </ion-slides>
+    <!-- end beautyers -->
+  
+
+    <div >
+      <div style="background-color: #e4c683; text-align: center;  padding: 20px; padding-top: 70px; padding-bottom: 70px;" >
+        <span>TESTIMONIO DE UNA BEAUTIER</span>
+        <p>""uando me entere de BEAUTY NOW, supe que quería ser parte de el, me encanta mi trabajo, es mi pasión, y que mejor que sea con este proyecto tan innovador…""</p>
+        <h5>Michel Ingelmo</h5>
+        
+      </div>
+    </div>
+    
+    <div>
+      <ion-img src="./assets/images/web/logo.jpeg"></ion-img>
+    </div>
+
 </ion-content>

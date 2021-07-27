@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Datos del de la Boda</ion-title>
+    <ion-subtitle></ion-subtitle>
+    <ion-buttons slot="end">
+      <ion-icon (click)="closeModal()" name="close-circle"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <form > 
+    <ion-list >
+  
+  
+      <!-- nombre -->
+      <ion-item> 
+      <ion-label position="stacked">Tu nombre Completo</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- correo -->
+    <ion-item> 
+      <ion-label position="stacked">Tu correo electronico</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+    <!-- quien eres -->
+    <ion-item> 
+      <ion-label position="stacked">Quien eres tu?</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- fecha y hora -->
+    <ion-item> 
+      <ion-label position="stacked">Fecha y hora de la Boda</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- nombre de la novia -->
+    <ion-item> 
+      <ion-label position="stacked">Nombre completo de la novia</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- locacion -->
+    <ion-item> 
+      <ion-label position="stacked">Locacion</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- cuantas personas requieren srvicio -->
+    <ion-item> 
+      <ion-label position="stacked">Aproximadamente cuantas personas nesesitaran de nuestros servicios?</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+  
+  
+  
+    </ion-list>
+    <ion-button expand="full"  color="primary">
+       Enviar
+    </ion-button>
+  </form>
+</ion-content>

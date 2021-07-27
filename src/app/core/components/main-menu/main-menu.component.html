@@ -1,12 +1,23 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="6" class="ion-text-center">
+      <ion-col size="4" >          
+          <a style="cursor: pointer;">
+            <ion-icon
+            (click)="toggleMenu()"
+             slot="icon-only" name="menu-outline"></ion-icon>
+            </a>       
+      </ion-col>
+      <ion-col size="4" class="ion-text-center">        
         <a routerLink="/weddings">Bodas</a>
       </ion-col>
-      <ion-col size="6" class="ion-text-center">
+      <ion-col size="4" class="ion-text-center">
         <a routerLink="/service-categories">Servicios</a>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+  
 </ion-content>
+

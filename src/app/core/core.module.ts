@@ -12,16 +12,19 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import {SideMenuComponent} from './components/side-menu/side-menu.component'
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    SideMenuComponent
   ],
   exports: [
     HeaderComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    SideMenuComponent
   ],
   imports: [
     CommonModule,

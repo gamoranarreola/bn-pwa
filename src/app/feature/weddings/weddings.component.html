@@ -1,1 +1,27 @@
-<ion-content></ion-content>
+<ion-content [fullscreen]="true">
+
+    <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large">BODAS</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-card>
+        <img src="/assets/images/web/boda1.jpeg"/>
+        <ion-card-header>
+          <ion-card-subtitle>VAMOS A TU BODA</ion-card-subtitle>
+          <ion-card-title></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Por que savemos que el dia de tu boda es una fecha de las mas importantes de tu vida, tenemos a los mejores artistas en belleza para ti y tu corte.
+            Es nuestra mision que ese dia este lleno de recuerdos bellos e inolvidables para ti y los tuyos.
+           te invitamos a llenar este cuestionario y nos comunicaremos con tigo. 
+           <ion-button expand="full" (click)="openModal()" color="primary">
+            Envianos tus datos
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+      
+ 
+
+</ion-content>

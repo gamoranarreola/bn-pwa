@@ -2,4 +2,7 @@
 
 :host {
   @extend .view-container;
+.title {
+  background-color: #e4c683; text-align: center; padding:5px; margin-top: 5px;
+} 
 }
