@@ -13,13 +13,14 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import {SideMenuComponent} from './components/side-menu/side-menu.component'
-
+import {FooterMenuComponent} from './components/footer-menu/footer-menu.component'
 
 @NgModule({
   declarations: [
     HeaderComponent,
     MainMenuComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    FooterMenuComponent
   ],
   exports: [
     HeaderComponent,
