@@ -19,3 +19,13 @@
 ion-icon {
   font-size: xx-large;
 }
+
+
+@media (pointer:none), (pointer:coarse) {
+  ion-toolbar {
+    display: none;
+  }
+  :host {
+    height:0px;
+  }
+}

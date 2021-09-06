@@ -1,0 +1,289 @@
+<div  class="" style="overflow: scroll;">
+  <div> 
+    <!-- NAV_BAR -->
+    <div class="nav">
+      <input type="checkbox" id="nav-check">
+      <div class="nav-header">
+        <div class="nav-title">
+         <a href="https://localhost:8100/inicio"> <img style="height: 50px;" src="../assets/images/web/logo.png">  </a>
+        </div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          
+        </label>
+      </div>
+
+      
+     
+      
+      <div class="nav-links">
+        <a href="" target="_blank">BODAS </a>
+        <a href="" target="_blank">SERVICIOS</a>
+        <a href="" target="_blank">UNETE AL EQUIPO</a>
+        <a href="" target="_blank">AGENDA TU CITA</a>
+        
+      </div>
+    </div>
+    </div>
+       <!-- SLIDE -->
+       <div class="wrapper"   >
+        <div class="slider" id="slider">      
+            <ul class="slides">       
+                <li class="slide" id="slide1">
+                    <a> 
+                        
+                        <img src="../assets/images/web/inicio-1.png"  alt="photo 1">   
+                        <div style="margin-top: -88px; margin-left: 520px;">
+                          <button style="background-color: #e4c683; color: #fff;
+                       
+                        border: 1px solid transparent;  width: 300px; height: 50px;"> BOOCK NAW</button>   
+                        </div>
+                        
+                    </a>
+                </li>
+                <li class="slide" id="slide2">
+                    <a >
+                        
+                        <img src="../assets/images/web/inicio-2.png" alt="photo 2">  
+                        <div style="margin-top: -88px; margin-left: 520px;">
+                          <button style="background-color: #e4c683; color: #fff;
+                       
+                        border: 1px solid transparent;  width: 300px; height: 50px;"> BOOCK NAW</button>   
+                        </div>    
+                    </a>
+                </li>    
+            </ul>
+            
+        </div>
+    </div>
+    
+    
+    
+   <!-- Texto -->
+<div style="margin-left: 612px;">
+  <h1>SERVICIOS</h1>
+  <p>Siempre Se Trata de Cuidarte</p></div> 
+
+     <!-- CATEGORIAS   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <div style=" display: inline-table ; margin-left: 30px; " *ngFor="let categoria of categorias"  >
+        <div style="position: relative; ">
+        <a id="close-image"><a > <img [src]="categoria.img"> <h4 class="categoria-nombre">{{categoria.name}}</h4> </a></a>
+          </div>
+   
+        <!-- SERVICIOS XXXXXXXXXXXXXX -->
+        <div  *ngFor="let servicio of categoria.servicios " class="contenedor-ngfor">
+          <div class="categoria-ng">
+              
+              <div class="contenedor-1">
+          <h5 class="servicio-name">{{servicio.name}}</h5>
+                
+                <p class="servicio-desc">{{servicio.desc}}</p>
+                  <div style="flex-shrink: 0;text-align: right;">
+                    <span class="precio">$ {{servicio.price}}</span> 
+                    <span class="time"> {{servicio.time}}</span>
+                  </div>
+                  
+            </div>
+             
+          </div>
+        </div>
+      </div>
+   
+
+     <!-- RECUADROS -->
+
+    <div style="margin-top: 50px;">
+      <!-- 1 -->
+        <div style="width: 1430px; height: 624px;      ">
+      <img style="margin-left: 720px; position: sticky;     width: 717px; height: 640px;
+      left: 240px; " src="../assets/images/web/background.jpeg">  
+       <!-- RECUADRO #1 -->
+       <div style="background-color: #e4c683; position: relative; padding: 53px 55px 145px; border: 5px solid #fff ; left: 770px; margin-top: -500px; margin-right: 35px; width: 625px;">
+          <p>Estamos a sólo un click!</p>
+          <h4>NOSOTROS VAMOS A DONDE TU ESTES, A LA HORA QUE NOS NECESITES</h4>
+          <h6>BEAUTY NOW es una compañía 100% tijuanense que te ofrece los servicios de maquillaje y peinado a domicilio, hasta con 4 horas de anticipación.</h6>
+        
+          <span class="recuadro-1-1">
+            <a itemprop="url" href="#" target="_self" class="recuadro-1-2">SERVICIOS</a>
+          </span>
+        </div>  
+    </div>
+      <div>
+      <img  style="margin-top: -624px; " src="../assets/images/web/inicio-8.jpeg">
+      </div>
+      <!-- 2 -->
+      <div style="width: 1430px; height: 624px; ">
+      <img class="recuadro-1-3" src="../assets/images/web/background-2.jpeg">
+      </div>
+      <!-- RECUADRO #2 -->
+      <div class="recuadro-2-1">
+        <p>Estamos a sólo un click!</p>
+        <h4>NOSOTROS VAMOS A DONDE TU ESTES, A LA HORA QUE NOS NECESITES</h4>
+        <h6>BEAUTY NOW es una compañía 100% tijuanense que te ofrece los servicios de maquillaje y peinado a domicilio, hasta con 4 horas de anticipación.</h6>
+      
+        <span class="recuadro-2-2">
+          <a itemprop="url" href="#" target="_self" class="recuadro-2-3">SERVICIOS</a>
+        </span>
+      </div>  
+      <div>
+        <img class="recuadro-2-4" src="../assets/images/web/inicio-9.jpeg">
+      </div>
+    </div>
+                <!-- TEXTO -->
+    <div style="margin-top: 30px; margin-left: 609px;">
+      <h2>NUESTRO PROCESO</h2>
+      <p>Estamos a tus Ordenes.</p>
+    </div>
+
+    <!-- ICONOS    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <div style="background-color: black; display: flex; " >
+      <!-- VIDEO -->
+     <div > <iframe  style="margin-top: 8px;margin-left: 20px; margin-right: 90px;"  width="600" height="315" src="https://www.youtube.com/embed/jN0ucz95cdY?start=2" title="YouTube video player" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+     </iframe></div>   
+
+     <div style="display: inline-block; margin-left: 30px; margin-top: 50px;" *ngFor="let icono of iconos"  >
+      <img style="" [src]="icono.img">
+      <div style="   width: 200px; ">
+        <h4 style=" color: #fff; " >{{icono.titulo}}</h4>
+        <p style=" color: #fff; ">{{icono.descrip}}</p></div>
+      
+  </div>
+  </div>
+  
+
+<!-- ICONOS #2  ------------------------->
+<div  style=" margin-left:px; margin-top: 100px; ">    
+
+  <!-- CARRO-->
+  <!-- #1 -->
+<div  style="display: inline-block; margin-left: 150px;" *ngFor="let icono2 of iconos2">
+<img style="  "  [src]="icono2.img">
+<div style="width: 200px;">
+  <h4 >{{icono2.titulo}}</h4>
+  <p >{{icono2.descrip}}</p></div>
+
+</div>
+</div>
+
+<div style="margin-top: 100px;">
+  <div style="margin-left: 585px; margin-bottom: 120px;" >
+    <h2> NUESTRAS BEAUTIERS</h2>
+      <p>Siempre a tus Ordenes </p>
+  </div>
+</div>
+
+<!-- BEAWTIERS   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<!--  -->
+<div style="display: inline-block;    margin-left: 100px; margin-bottom: 20px;"   *ngFor="let BEAWTIER of BEAWTIERS">
+           
+  <!-- #1 -->
+<div  >
+<img  [src]="BEAWTIER.img">
+<div style=" ">
+<p >{{BEAWTIER.esp }}</p>
+<h4 >{{BEAWTIER.nombre}}</h4>
+<div  style="     text-align: center;     display: block;
+margin-bottom: 21.73913043px;
+max-width: 100%;     margin-top: 25px;">
+ <a    class="botton" data-vc-gradient-1="#f9ca24" data-vc-gradient-2="#be2edd"  href="https://beautynow.mx/develop/yzdeth-llamas/" title="YZDETH LLAMAS">Ver Perfil...</a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- RECUADRO LOGO NEGRO -->
+
+<div style=" margin-top: 100px;  ">
+
+  <div style="    background-color: #e4c683; width: 1000px; height: 300px;">
+    
+    <h1 style="margin-left: 150px;">TESTIMONIO DE UNA BEAUTIER</h1>
+    <p style="margin-left: 150px;">""Cuando me entere de BEAUTY NOW, supe que quería ser parte de el, me encanta mi trabajo, es mi pasión, y que mejor que sea con este proyecto tan innovador…""</p>
+    <h5 style="margin-left: 150px;">Michel Ingelmo</h5>
+   
+   <img style="margin-left: 1010px; margin-top: -131px;width: 427px; height: 300px;"  src="../assets/images/web/logo.jpeg"> </div>
+ </div>
+
+<!-- BODAS  #2 -->
+<div  >
+ 
+
+
+    <!-- CONTENIDO -->
+<div style="margin-left: 30px;">
+<div style="    margin-left: 50px; margin-right: 30px;">
+  <h1>VAMOS A TU BODA</h1>
+
+  <p>Por que sabemos que el día de tu boda es una fecha de las mas importantes de tu vida, tenemos a los mejores artistas en belleza para ti y tu corte.
+
+    Es nuestra misión que ese dia este lleno de recuerdos bellos e inolvidables para ti y los tuyos.
+    
+    Te invitamos a llenar este cuestionario y nos comunicaremos contigo.</p>
+</div>
+
+<div >
+  <!-- formato -->
+  <div style="margin-left: 50px;">
+    <p>Tu nombre Completo (requerido)</p>
+    <input class="input" >
+    <p>Tu correo electrónico (requerido)</p>
+    <input class="input">
+    <p>¿Quién eres tú? (requerido)</p>
+    <input class="input">
+    <p>Fecha y Hora de la Boda (requerido)</p>
+    <input class="input">
+    <p>Nombre Completo de la Novia (requerido)</p>
+    <input class="input">
+    <p>Locación (requerido)</p>
+    <input class="input">
+    <p>Aproximadamente cuantas personas necesitaran de nuestros servicios? (requerido)</p>
+    <input class="input">
+          <br>
+    <button  style="margin-left: 250px; background-color: #e4c683; width: 100px; height: 40px;"> ENVIAR</button>
+  </div>
+  <!-- img -->
+<div style="margin-top: -530px; margin-left: 800px;"> 
+  <img style=" margin-top: -350px;" src="../assets/images/web/bodas.jpeg">
+</div>
+</div>
+</div>
+
+</div>
+
+  <!-- FOOTER -->
+
+  <!-- #1 -->
+  <img style="margin-top: 140px; margin-left: 90px;" src="../assets/images/web/app.png"> 
+  <div style="margin-left: 50px; border-right-style: solid; width: 650px;" > 
+    
+    <div style="width: 260px; height: 200px; margin-left: 300px; margin-top: -245px;">
+      <img style="margin-left: 50px; background-color: black;" src="../assets/images/web/logo-3.png">
+      <p>Somos una empresa que te ofrece los servicios de maquillaje y peinado en la comodidad de tu hogar, oficina o donde lo necesites hasta con 4 horas de anticipación.</p>
+    </div>
+  </div>
+  <!--  #2 -->
+  <div style="margin-left: 800px; margin-top: -228px; width: 300px;">
+    <h4> HORARIOS DE ATENCIÓN TELÉFONICA</h4>
+    <p>Lun – Vie: 9AM a 5PM
+    <br>
+      Sábado : 9AM a 2PM
+    <br>  
+      Domingo : Citas Previas</p>
+    <h4> HORARIOS DE CITAS</h4>
+    <p>Lun – Dom: 6AM a 5PM</p>
+  </div> 
+  <div style="margin-left: 1160px;     margin-top: -208px;">
+    <h4> LINKS DE INTERES</h4>
+    <p>Política de Cancelación
+<br>
+      Preguntas Frecuentes</p>
+
+      <img style=" height: 50px;" src="../assets/images/web/insta.svg">
+      <img style=" height: 50px; margin-left: 10px;" src="../assets/images/web/face.svg">
+    
+  </div>
+</div>
+
+

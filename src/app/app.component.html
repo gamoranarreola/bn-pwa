@@ -2,7 +2,30 @@
 
   <app-header></app-header>
   <app-side-menu></app-side-menu>
-  <app-main-menu></app-main-menu>
+  <!-- <app-main-menu></app-main-menu> -->
   
   <ion-router-outlet id="main"></ion-router-outlet>
+
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="music" routerLink="/home">
+      <ion-label>Agenda Tu Cita</ion-label>
+      <ion-icon name="calendar"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="movies" routerLink="/weddings">
+      <ion-label>Bodas</ion-label>
+
+       <ion-icon class="wedding" ></ion-icon> 
+     
+    </ion-tab-button>
+    <ion-tab-button tab="games" routerLink="/shopping-cart">
+      <ion-label>Carrito</ion-label>
+      <ion-icon name="cart"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="games"  (click)="toggleMenu()">
+      <ion-label>Menu</ion-label>
+      <ion-icon name="menu-outline"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+
 </ion-app>

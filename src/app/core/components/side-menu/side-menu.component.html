@@ -7,11 +7,11 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item *ngIf="!isAuth" routerLink="/user"><ion-icon name="person-circle-outline"></ion-icon> Mi Perfil</ion-item>
-      <ion-item *ngIf="isAuth" routerLink="/login"><ion-icon name="log-in-outline"></ion-icon> Iniciar sesion</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
+      <ion-item *ngIf="!isAuth" routerLink="/user" (click)="close()"><ion-icon name="person-circle-outline"></ion-icon> Mi Perfil</ion-item>
+      <ion-item *ngIf="isAuth" routerLink="/login" (click)="close()"><ion-icon name="log-in-outline"></ion-icon> Iniciar sesion</ion-item>
+      <ion-item (click)="close()">Menu Item</ion-item>
+      <ion-item (click)="close()">Menu Item</ion-item>
+      <ion-item (click)="close()">Menu Item</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
