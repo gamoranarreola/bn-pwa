@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
-
+import { google } from '@google/maps';
 import { ShoppingCartStoreState } from 'src/app/core/state/shopping-cart/models/shopping-cart-store-state';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
 import { LineItem } from 'src/app/feature/work-order/models/line-item.class';
 import { ShoppingCart } from '../../models/shopping-cart.class';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -16,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
 
   shoppingCart!: ShoppingCart;
   serviceAddress!: any;
-
+  paymentForm: FormGroup;
   placesOptions = {
     types: [],
     bounds: null,
@@ -28,10 +29,16 @@ export class ShoppingCartComponent implements OnInit {
     }
   };
 
+  lat = 51.678418;
+  lng = 7.809007;
+  zoom = 0;
   constructor(
     private shoppingCartStore: ShoppingCartStore,
-    private toastController: ToastController
-  ) { }
+    private toastController: ToastController,
+    private formBuilder: FormBuilder,
+  ) {
+    this.setCurrentLocation();
+   }
 
   /**
    *
@@ -54,6 +61,8 @@ export class ShoppingCartComponent implements OnInit {
    * @param address
    */
   handleAddressChange(address: Address): void {
+    console.log('address:',address.geometry.location.lat);
+    
     this.serviceAddress = address;
     this.shoppingCart.workOrder.place_id = address.place_id;
   }
@@ -83,9 +92,9 @@ export class ShoppingCartComponent implements OnInit {
    * @param event
    * @param index
    */
-  checkLineItem(event: CustomEvent, index: number) {
-
-    if (event.detail.value === undefined) {
+  checkLineItem(event: Event, index: number) {
+    const value = (event as CustomEvent).detail.value;
+    if (value === undefined) {
 
       this.shoppingCart.workOrder.line_items.splice(index, 1);
 
@@ -93,12 +102,13 @@ export class ShoppingCartComponent implements OnInit {
         this.shoppingCartStore.clearShoppingCart();
       }
     }
+  
   }
 
   ngOnInit(): void {
-
+ 
     this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => {
-
+      console.log('from shoppiing cart:',data);
       this.shoppingCart = data.shoppingCart;
 
       if (!this.shoppingCart) {
@@ -112,5 +122,54 @@ export class ShoppingCartComponent implements OnInit {
         });
       }
     });
+    this.createForm();
+  
   }
+
+
+  /**
+   *
+   */
+   private createForm(): void {
+      this.paymentForm = this.formBuilder.group({
+        appointmentDate: new FormControl('', [
+          Validators.compose([
+            Validators.required
+          ])
+        ]),
+        appointmentTime: new FormControl('', [
+          Validators.compose([
+            Validators.required
+          ])
+        ])
+      });
+  
+
+  }
+
+  
+
+    /**
+   *
+   */
+     getMinDate(): string {
+      return moment().format('YYYY-MM-DD');
+    }
+
+    /*******************************
+     * 
+     * google maps
+     */
+    setCurrentLocation(): void {
+      console.log('laoding pos');
+      if('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log(position);
+          this.zoom = 15;
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+
+        });
+      }
+    }
 }

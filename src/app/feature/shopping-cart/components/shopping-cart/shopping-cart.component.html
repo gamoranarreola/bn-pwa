@@ -23,6 +23,7 @@
             </ion-row>
             <ion-row class="ion-align-items-center">
               <ion-col size="2">
+                
                 <ion-input
                   class="ion-text-center"
                   value="{{ item.quantity }}"
@@ -72,10 +73,18 @@
           </ion-row>
           <ion-row>
             <ion-col size="12">
-              <span>{{ serviceAddress?.formatted_address }}</span>
+              <span>{{ serviceAddress?.formatted_address}}</span>
             </ion-col>
           </ion-row>
           <ion-row>
+            <ion-col size="12">
+              <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            
             <ion-col size="12">
               <ion-textarea
                 class="w-full"
@@ -84,6 +93,7 @@
                 placeholder="Introduce aqu&iacute; el n&uacute;mero de interior o apartamento si aplica as&iacute; como cualquier indicaci&oacute;n especial para tu orden."></ion-textarea>
             </ion-col>
           </ion-row>
+        
           <ion-row *ngIf="shoppingCart?.workOrder.place_id">
             <ion-col size="12">
               <ion-button expand="block" routerLink="payment">Pagar</ion-button>

@@ -32,6 +32,8 @@ export class ShoppingCartStore extends BaseStore<ShoppingCartStoreState> {
       ...this.state,
       shoppingCart
     });
+    console.log('state added cart.', shoppingCart);
+    console.log(this.state.shoppingCart);
   }
 
   getShoppingCartTotal(): number {

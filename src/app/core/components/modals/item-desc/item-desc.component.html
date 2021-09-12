@@ -4,7 +4,7 @@
         <p   (click)="cerrarModal()" class="close"> <ion-icon name="close"></ion-icon> </p>
       
             <ion-chip class="timer" >
-              <ion-label>{{time}}</ion-label>
+              <ion-label>{{service.duration}}</ion-label>
               <ion-icon  style="color: #fff;" name="timer"></ion-icon>
             </ion-chip>
         
@@ -22,12 +22,12 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h2><ion-icon name="pricetags"></ion-icon> {{name}}</h2>
+        <h2><ion-icon name="pricetags"></ion-icon> {{service.name}} </h2>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        Costo Mx ${{price}} 
+        Costo Mx ${{service.public_price}} 
       </ion-col>   
     </ion-row>
     <ion-row>
@@ -48,17 +48,17 @@
     <ion-row>
       <ion-col>
         <h2>Descripcion</h2>
-        <p> {{desc}} </p>
+        <p> {{service.description}} </p>
       </ion-col>
     </ion-row>
     </ion-grid>
     
 
-    <section class="full-width" style="margin-top: 47px;">
+    <!-- <section class="full-width" style="margin-top: 47px;">
       
       <ion-button expand="full" color="light"> <ion-icon name="pricetag"></ion-icon> Subtotal: $0.00</ion-button>
-    </section>
+    </section> -->
     <section class="full-width">      
-      <ion-button expand="full" color="danger"> <ion-icon name="cart"></ion-icon> Agregar al Carrito </ion-button>
+      <ion-button expand="full" color="danger" (click)="saveToShoppingCart()"> <ion-icon name="cart"></ion-icon> Agregar al Carrito </ion-button>
     </section>
 </ion-content>

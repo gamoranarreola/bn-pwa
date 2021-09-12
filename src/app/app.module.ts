@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -21,7 +22,14 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     HttpClientModule,
     SocialLoginModule,
-    CoreModule
+    CoreModule,
+    
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: env.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ItemDescComponent} from '../core/components/modals/item-desc/item-desc.component';
 import { ModalController } from '@ionic/angular';
 import { IonRouterOutlet } from '@ionic/angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -13,12 +14,22 @@ export class HomePage {
     speed: 400
   };
 
+
+
   services = [
-    {name:'Maquillaje', items:[
-      {name:'Maquillaje Social Noche o Dia', 
-      price:950, 
-      time: '60 min ',
-      desc: 'Tan Natural o dramatico como lo desees, haremos que te veas espectacular.'}
+    {name:'Maquillaje', 
+    items:[
+      {
+      id: 123,
+      service_id:'12BC',
+      category: {id: 1, name:'Maquillaje'},
+      name:'Maquillaje Social Noche o Dia',       
+      public_price:1500, 
+      duration: '60 min ',
+      includes_eyelashes: '',
+      specialties: {id: 1, name:'maquillaje test'},
+      availability: true,
+      description: 'Tan Natural o dramatico como lo desees, haremos que te veas espectacular.'}
     ], img: './assets/images/web/inicio-1.png'},
     {name: 'Peinado', items: [
       {name:'Peinado Elaborado', price:430,desc:'Desde un alaciado hasta unas ondas relajadas, tu cabello sera perfecto. ( Este servicio no incluye aplicación de extensiones o secado de cabello)'},
@@ -44,7 +55,7 @@ export class HomePage {
   async presentModal(data) {
     const modal = await this.modalController.create({
       component: ItemDescComponent,
-      componentProps: data,      
+      componentProps: {service: data},      
       cssClass: 'my-custom-class',
       swipeToClose: true,
       mode: 'ios',

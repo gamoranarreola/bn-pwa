@@ -14,7 +14,6 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import {SideMenuComponent} from './components/side-menu/side-menu.component'
 import {FooterMenuComponent} from './components/footer-menu/footer-menu.component'
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -25,7 +24,8 @@ import {FooterMenuComponent} from './components/footer-menu/footer-menu.componen
   exports: [
     HeaderComponent,
     MainMenuComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    FooterMenuComponent
   ],
   imports: [
     CommonModule,
