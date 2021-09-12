@@ -6,9 +6,10 @@ import {MenuController} from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private menuCtrl: MenuController) {}
 
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
+    constructor(private menuCtrl: MenuController) {}
+  
+    toggleMenu() {
+      this.menuCtrl.toggle();
+    }
 }

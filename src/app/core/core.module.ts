@@ -14,13 +14,17 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import {SideMenuComponent} from './components/side-menu/side-menu.component'
 import {FooterMenuComponent} from './components/footer-menu/footer-menu.component'
+import {AppointmentRequestComponent} from '../feature/calendar/components/appointment-request/appointment-request.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     HeaderComponent,
     MainMenuComponent,
     SideMenuComponent,
-    FooterMenuComponent
-  ],
+    FooterMenuComponent,
+    AppointmentRequestComponent],
+
   exports: [
     HeaderComponent,
     MainMenuComponent,
@@ -30,7 +34,9 @@ import {FooterMenuComponent} from './components/footer-menu/footer-menu.componen
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiDataService,

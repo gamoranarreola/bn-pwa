@@ -7,9 +7,15 @@
         font-family: Montserrat,sans-serif;
     }
 }
- 
+
+
+ion-datetime {
+     border: solid 1px #eb445a;
+ }
+
 
 .actionsPerson {
+    color:#eb445a;
     cursor: pointer;
     text-align: center;
     transition: all ease 0.2s;

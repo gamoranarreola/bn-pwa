@@ -18,6 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   shoppingCart!: ShoppingCart;
   serviceAddress!: any;
   paymentForm: FormGroup;
+  
   placesOptions = {
     types: [],
     bounds: null,
@@ -34,12 +35,15 @@ export class ShoppingCartComponent implements OnInit {
   zoom = 0;
   constructor(
     private shoppingCartStore: ShoppingCartStore,
-    private toastController: ToastController,
     private formBuilder: FormBuilder,
-  ) {
-    this.setCurrentLocation();
-   }
-
+    private toastController: ToastController
+  ) {     
+     if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    // true for mobile device
+   // alert("mobile device");
+   window.location.href = "web";
+  }
+}
   /**
    *
    */

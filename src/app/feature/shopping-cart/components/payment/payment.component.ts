@@ -32,6 +32,11 @@ export class PaymentComponent implements OnInit {
     private apiDataService: ApiDataService,
     public listService: ListService
   ) {
+    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      // true for mobile device
+     // alert("mobile device");
+     window.location.href = "web";
+    }
     this.inputValidators = env.inputValidators;
   }
 

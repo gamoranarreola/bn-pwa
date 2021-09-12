@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-import {ItemDescComponent} from '../core/components/modals/item-desc/item-desc.component';
 import { HomePageRoutingModule } from './home-routing.module';
+import {ItemDescComponent} from '../core/components/modals/item-desc/item-desc.component';
+
+
 
 
 @NgModule({
@@ -12,7 +14,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [HomePage, ItemDescComponent],
   entryComponents: [ItemDescComponent]
