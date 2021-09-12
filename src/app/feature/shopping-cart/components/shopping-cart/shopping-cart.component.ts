@@ -38,12 +38,9 @@ export class ShoppingCartComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastController: ToastController
   ) {     
-     if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-    // true for mobile device
-   // alert("mobile device");
-   window.location.href = "web";
-  }
-}
+     if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){window.location.href = "web";}
+   
+    }
   /**
    *
    */
@@ -65,8 +62,9 @@ export class ShoppingCartComponent implements OnInit {
    * @param address
    */
   handleAddressChange(address: Address): void {
-    console.log('address:',address.geometry.location.lat);
     
+    this.lat = address.geometry.location.lat();
+    this.lng = address.geometry.location.lng();
     this.serviceAddress = address;
     this.shoppingCart.workOrder.place_id = address.place_id;
   }
@@ -110,16 +108,17 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
- 
-    this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => {
-      console.log('from shoppiing cart:',data);
+
+    this.setCurrentLocation();
+
+    this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => { 
       this.shoppingCart = data.shoppingCart;
 
       if (!this.shoppingCart) {
 
         this.toastController.create({
           message: 'A&uacute;n no has agregado servicios a tu carrito...',
-          position: 'bottom',
+          position: 'top',
           duration: 5000
         }).then(toast => {
           toast.present();
@@ -165,7 +164,7 @@ export class ShoppingCartComponent implements OnInit {
      * google maps
      */
     setCurrentLocation(): void {
-      console.log('laoding pos');
+      
       if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
           console.log(position);

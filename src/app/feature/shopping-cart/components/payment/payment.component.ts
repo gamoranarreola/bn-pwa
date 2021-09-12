@@ -68,19 +68,25 @@ export class PaymentComponent implements OnInit {
           exp_year: moment(this.ccForm.controls.exp_year.value).format('YYYY'),
           exp_month: moment(this.ccForm.controls.exp_month.value).format('MM'),
           cvc: this.ccForm.controls.cvc.value,
-          address: {
-            street1: this.ccForm.controls.street1.value,
-            street2: this.ccForm.controls.street2.value,
-            city: this.ccForm.controls.street2.value,
-            state: this.ccForm.controls.street2.value,
-            zip: this.ccForm.controls.zip.value,
-            country: this.ccForm.controls.country.value
-          }
+          /**
+          * modifico: Joel Dorado
+          * Desc: removi los campos para pedir menos datos al cliente, 
+          * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
+          * */
+          // address: {
+          //   street1: this.ccForm.controls.street1.value,
+          //   street2: this.ccForm.controls.street2.value,
+          //   city: this.ccForm.controls.street2.value,
+          //   state: this.ccForm.controls.street2.value,
+          //   zip: this.ccForm.controls.zip.value,
+          //   country: this.ccForm.controls.country.value
+          // }
         }
       }, (token: ConektaToken) => {
 
-        console.log('conketa token: ',token);
-        return;
+        //Debuggin: Joel dorado
+        // console.log('conketa token: ',token);
+        // return;
         this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
           customer: {
             name: this.ccForm.controls.name.value,
@@ -120,17 +126,23 @@ export class PaymentComponent implements OnInit {
       ]),
       exp_month: new FormControl('', Validators.required),
       exp_year: new FormControl('', Validators.required),
-      street1: new FormControl('', Validators.required),
-      street2: new FormControl(''),
-      city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      zip: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      phone: new FormControl('', [
-        Validators.required,
-        IonIntlTelInputValidators.phone
-      ])
+      
+      /**
+       * modifico: Joel Dorado
+       * Desc: removi los campos para pedir menos datos al cliente, 
+       * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
+       * */
+      // street1: new FormControl('', Validators.required),
+      // street2: new FormControl(''),
+      // city: new FormControl('', Validators.required),
+      // state: new FormControl('', Validators.required),
+      // zip: new FormControl('', Validators.required),
+      // country: new FormControl('', Validators.required),
+      // email: new FormControl('', Validators.required),
+      // phone: new FormControl('', [
+      //   Validators.required,
+      //   IonIntlTelInputValidators.phone
+      // ])
     });
   }
 
