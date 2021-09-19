@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import {ItemDescComponent} from '../core/components/modals/item-desc/item-desc.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 
 
@@ -17,7 +18,11 @@ import {ItemDescComponent} from '../core/components/modals/item-desc/item-desc.c
     HomePageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [HomePage, ItemDescComponent],
+  declarations: [
+    HomePage,
+    ItemDescComponent,
+    PrivacyComponent
+  ],
   entryComponents: [ItemDescComponent]
 })
 export class HomePageModule {}

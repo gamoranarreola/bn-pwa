@@ -1,0 +1,5 @@
+@import '../../../../theme/view-container.scss';
+
+:host {
+  @extend .view-container;
+}
