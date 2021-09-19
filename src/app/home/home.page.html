@@ -1,30 +1,27 @@
 <ion-content class=" movil" [fullscreen]="true">
   <!-- maquillaje -->
-    <div class='panel' *ngFor="let categoria of categorias"   > <!-- agregar ng for para los servicios *ngFor="let servicio of services; index as i;"-->          
-      <div class="categori"  (click)="categoria.panel=!categoria.panel">
-        <h3 class="panelTitle">{{categoria.name}} </h3> <!-- {{servicio.name}} -->
-        <ion-img [src]="categoria.img"></ion-img> <!-- {{servicio.img}} -->
-                
+    <div class='panel' *ngFor="let category of serviceCategories"   > <!-- agregar ng for para los servicios *ngFor="let servicio of services; index as i;"-->
+      <div class="categori"  (click)="category.panel=!category.panel">
+        <h3 class="panelTitle">{{category.name}} </h3> <!-- {{servicio.name}} -->
+        <ion-img src="../../../assets/images/services/categories/{{ category.id }}.png"></ion-img> <!-- {{servicio.img}} -->
+
       </div>
-      <div [ngStyle]="{display: !categoria.panel ? 'none': 'block'}">        
-        <div  *ngFor="let servicio of categoria.items" >
+      <div [ngStyle]="{display: !category.panel ? 'none': 'block'}">
+        <div  *ngFor="let service of category.services" >
           <ion-list>
-            <ion-item button (click)="presentModal(servicio)"> <!-- *ngFor="let item of servicio.items" agregar ng for por itewm-->
+            <ion-item button (click)="presentModal(service)"> <!-- *ngFor="let item of servicio.items" agregar ng for por itewm-->
               <ion-avatar slot="start">
-                <img [src]="servicio.img">
+                <img src="../../../assets/images/services/categories/{{ category.id }}.png">
               </ion-avatar>
               <ion-label>
-                <h2>{{servicio.name}}</h2>
-                <h1> $ {{servicio.public_price}}</h1>
-                <!-- <p>{{servicio.description}}</p> -->
-                
+                <h2>{{service.name}}</h2>
+                <h1> $ {{service.public_price}}</h1>
               </ion-label>
-            </ion-item>         
+            </ion-item>
           </ion-list>
         </div>
       </div>
       </div>
   </ion-content>
-  
-  
-  
+
+
