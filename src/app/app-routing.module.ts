@@ -9,10 +9,6 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
     data: {
       breadcrumb: 'Inicio'
@@ -34,14 +30,6 @@ const routes: Routes = [
     loadChildren: () => import('./feature/service/service.module').then(m => m.ServiceModule),
     data: {
       breadcrumb: 'Servicios'
-    }
-  },
-  {
-    path: 'shopping-cart',
-    loadChildren: () => import ('./feature/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule),
-    //canActivate: [AuthGuard],
-    data: {
-      breadcrumb: 'Carrito'
     }
   },
   {
