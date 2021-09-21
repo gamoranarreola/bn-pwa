@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   shoppingCart!: ShoppingCart;
   serviceAddress!: any;
   paymentForm: FormGroup;
-  
+
   placesOptions = {
     types: [],
     bounds: null,
@@ -37,9 +37,8 @@ export class ShoppingCartComponent implements OnInit {
     private shoppingCartStore: ShoppingCartStore,
     private formBuilder: FormBuilder,
     private toastController: ToastController
-  ) {     
-     if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){window.location.href = "web";}
-   
+  ) {
+      if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){window.location.href = 'web';}
     }
   /**
    *
@@ -62,7 +61,7 @@ export class ShoppingCartComponent implements OnInit {
    * @param address
    */
   handleAddressChange(address: Address): void {
-    
+
     this.lat = address.geometry.location.lat();
     this.lng = address.geometry.location.lng();
     this.serviceAddress = address;
@@ -74,7 +73,7 @@ export class ShoppingCartComponent implements OnInit {
    * @param event
    * @param index
    */
-  changeQuantity(event: CustomEvent, index: number) {
+  changeQuantity(event: any, index: number) {
 
     if (event.detail.value === '0') {
       if (this.shoppingCart.workOrder.line_items.length === 1) {
@@ -104,14 +103,14 @@ export class ShoppingCartComponent implements OnInit {
         this.shoppingCartStore.clearShoppingCart();
       }
     }
-  
+
   }
 
   ngOnInit(): void {
 
     this.setCurrentLocation();
 
-    this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => { 
+    this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => {
       this.shoppingCart = data.shoppingCart;
 
       if (!this.shoppingCart) {
@@ -126,7 +125,7 @@ export class ShoppingCartComponent implements OnInit {
       }
     });
     this.createForm();
-  
+
   }
 
 
@@ -146,25 +145,25 @@ export class ShoppingCartComponent implements OnInit {
           ])
         ])
       });
-  
+
 
   }
 
-  
+
 
     /**
-   *
-   */
+     *
+     */
      getMinDate(): string {
       return moment().format('YYYY-MM-DD');
     }
 
     /*******************************
-     * 
+     *
      * google maps
      */
     setCurrentLocation(): void {
-      
+
       if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
           console.log(position);

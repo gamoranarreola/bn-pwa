@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [AppointmentRequestComponent],
-  exports: [AppointmentRequestComponent],
+  declarations: [ AppointmentRequestComponent ],
+  exports: [ AppointmentRequestComponent ],
   imports: [
     CommonModule,
     IonicModule,

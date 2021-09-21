@@ -12,9 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import {SideMenuComponent} from './components/side-menu/side-menu.component'
-import {FooterMenuComponent} from './components/footer-menu/footer-menu.component'
-import {AppointmentRequestComponent} from '../feature/calendar/components/appointment-request/appointment-request.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { FooterMenuComponent } from './components/footer-menu/footer-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -22,8 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     MainMenuComponent,
     SideMenuComponent,
-    FooterMenuComponent,
-    AppointmentRequestComponent],
+    FooterMenuComponent],
 
   exports: [
     HeaderComponent,
