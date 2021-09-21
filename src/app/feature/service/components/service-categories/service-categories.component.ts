@@ -13,13 +13,7 @@ export class ServiceCategoriesComponent implements OnInit {
 
   serviceCategories: ServiceCategory[] = [];
 
-  constructor(private apiDataService: ApiDataService) {
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      // true for mobile device
-     // alert("mobile device");
-     window.location.href = 'web';
-    }
-   }
+  constructor(private apiDataService: ApiDataService) { }
 
   ngOnInit() {
 

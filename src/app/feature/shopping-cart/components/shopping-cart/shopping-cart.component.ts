@@ -37,9 +37,7 @@ export class ShoppingCartComponent implements OnInit {
     private shoppingCartStore: ShoppingCartStore,
     private formBuilder: FormBuilder,
     private toastController: ToastController
-  ) {
-      if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){window.location.href = 'web';}
-    }
+  ) { }
   /**
    *
    */

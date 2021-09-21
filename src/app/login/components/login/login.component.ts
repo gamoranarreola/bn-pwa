@@ -28,13 +28,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private socialAuthService: SocialAuthService,
   ) {
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      // true for mobile device
-     // alert("mobile device");
-     window.location.href = "web";
-    }
     this.inputValidators = env.inputValidators;
-    
   }
 
   /**

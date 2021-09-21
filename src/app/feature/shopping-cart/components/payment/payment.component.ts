@@ -32,11 +32,6 @@ export class PaymentComponent implements OnInit {
     private apiDataService: ApiDataService,
     public listService: ListService
   ) {
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      // true for mobile device
-     // alert("mobile device");
-     window.location.href = "web";
-    }
     this.inputValidators = env.inputValidators;
   }
 
@@ -70,7 +65,7 @@ export class PaymentComponent implements OnInit {
           cvc: this.ccForm.controls.cvc.value,
           /**
           * modifico: Joel Dorado
-          * Desc: removi los campos para pedir menos datos al cliente, 
+          * Desc: removi los campos para pedir menos datos al cliente,
           * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
           * */
           // address: {
@@ -126,10 +121,10 @@ export class PaymentComponent implements OnInit {
       ]),
       exp_month: new FormControl('', Validators.required),
       exp_year: new FormControl('', Validators.required),
-      
+
       /**
        * modifico: Joel Dorado
-       * Desc: removi los campos para pedir menos datos al cliente, 
+       * Desc: removi los campos para pedir menos datos al cliente,
        * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
        * */
       // street1: new FormControl('', Validators.required),

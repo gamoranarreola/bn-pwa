@@ -7,13 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() {   
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      // true for mobile device
-     // alert("mobile device");
-     window.location.href = "web";
-    }
-   }
+  constructor() { }
 
   ngOnInit() {}
 

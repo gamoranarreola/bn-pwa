@@ -8,13 +8,7 @@ import {FormComponent} from './form/form.component';
 })
 export class WeddingsComponent implements OnInit {
 
-  constructor(public modalController: ModalController) {
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      // true for mobile device
-     // alert("mobile device");
-     window.location.href = "web";
-    }
-   }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {}
 

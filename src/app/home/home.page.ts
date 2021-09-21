@@ -29,15 +29,7 @@ export class HomePage implements OnInit {
     public modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
     private apiDataService: ApiDataService
-  ) {
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      // true for mobile device
-     // alert("mobile device");
-     window.location.href = 'web';
-    }
-    //console.log('size:', window.screen.availWidth);
-    //if ( window.screen.availWidth > 400 ) {    }
-  }
+  ) { }
 
   async presentModal(data) {
     const modal = await this.modalController.create({
