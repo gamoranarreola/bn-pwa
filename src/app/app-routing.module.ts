@@ -4,6 +4,11 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+  {
     path: 'web',
     loadChildren: () => import('./web/web.module').then( m => m.WebModule),
   },
@@ -41,7 +46,7 @@ const routes: Routes = [
     }
   },
   {
-    path: '',
+    path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
   },
