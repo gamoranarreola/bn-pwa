@@ -79,9 +79,6 @@ export class PaymentComponent implements OnInit {
         }
       }, (token: ConektaToken) => {
 
-        //Debuggin: Joel dorado
-        // console.log('conketa token: ',token);
-        // return;
         this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
           customer: {
             name: this.ccForm.controls.name.value,

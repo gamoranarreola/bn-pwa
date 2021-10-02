@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
-import { google } from '@google/maps';
 import { ShoppingCartStoreState } from 'src/app/core/state/shopping-cart/models/shopping-cart-store-state';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
 import { LineItem } from 'src/app/feature/work-order/models/line-item.class';
@@ -104,6 +103,22 @@ export class ShoppingCartComponent implements OnInit {
 
   }
 
+   getMinDate(): string {
+    return moment().format('YYYY-MM-DD');
+  }
+
+  setCurrentLocation(): void {
+
+    if('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.zoom = 15;
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+
+      });
+    }
+  }
+
   ngOnInit(): void {
 
     this.setCurrentLocation();
@@ -126,10 +141,6 @@ export class ShoppingCartComponent implements OnInit {
 
   }
 
-
-  /**
-   *
-   */
    private createForm(): void {
       this.paymentForm = this.formBuilder.group({
         appointmentDate: new FormControl('', [
@@ -143,33 +154,6 @@ export class ShoppingCartComponent implements OnInit {
           ])
         ])
       });
-
-
   }
 
-
-
-    /**
-     *
-     */
-     getMinDate(): string {
-      return moment().format('YYYY-MM-DD');
-    }
-
-    /*******************************
-     *
-     * google maps
-     */
-    setCurrentLocation(): void {
-
-      if('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position);
-          this.zoom = 15;
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-
-        });
-      }
-    }
 }

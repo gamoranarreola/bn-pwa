@@ -30,15 +30,14 @@ carritoValidation = true;
     private shoppingCartStore: ShoppingCartStore,
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private formBuilder: FormBuilder) { 
+    private formBuilder: FormBuilder) {
 
       this.inputValidators = env.inputValidators;
   }
   ngOnInit() {
-    this.createForm();    
+    this.createForm();
 
     this.requestForm.valueChanges.subscribe(value => {
-      console.log('name has changed:', value);
 
       if (value.appointmentDate !== '' && value.appointmentTime !== '') {
         this.carritoValidation = false;
@@ -46,22 +45,22 @@ carritoValidation = true;
         this.carritoValidation = true;
       }
 
-     
+
  });
 
   }
   cerrarModal() {
-    
+
     this.mtrl.dismiss();
   }
 
-  addPerson() {    
+  addPerson() {
     this.nomPersonas++;
     this.requestForm.patchValue({quantity: this.nomPersonas});
   }
   removePerson() {
     let result = this.nomPersonas -1;
-  
+
     if(result < 1) { return;}
     this.nomPersonas = result;
     this.requestForm.patchValue({quantity: this.nomPersonas});
@@ -69,7 +68,7 @@ carritoValidation = true;
 
   saveToShoppingCart() {
     const today = moment();
-  
+
     const lineItem = new LineItem({
       service: this.service,
       service_date: moment(this.requestForm.controls.appointmentDate.value).format('YYYY-MM-DD'),
@@ -79,7 +78,7 @@ carritoValidation = true;
     });
 
     if (!this.shoppingCart || !this.shoppingCart.workOrder) {
-   
+
       this.shoppingCart = new ShoppingCart({
         workOrder: new WorkOrder({
           request_date: today.format('YYYY-MM-DD'),
@@ -94,7 +93,7 @@ carritoValidation = true;
 
       // this.shoppingCart.workOrder.line_items.push(lineItem);
       let matchingLineItemIndex: number;
-  
+
       this.shoppingCart.workOrder.line_items.forEach((li: LineItem, index: number) => {
 
         if (
@@ -113,7 +112,7 @@ carritoValidation = true;
       }
 
     }
-    console.log('adding choping cart: ',this.shoppingCart);
+
     this.shoppingCartStore.updateShoppingCart(this.shoppingCart);
     this.notifyServiceAddedToCart();
 
@@ -135,7 +134,7 @@ carritoValidation = true;
       toast.onDidDismiss = () => {
         this.mtrl.dismiss();
       };
-  
+
       toast.then((_toast: any) => {
         _toast.present();
       });
@@ -177,16 +176,16 @@ carritoValidation = true;
       const hours = moment.duration(moment(env.availability.to, 'HH:mm').diff(moment(env.availability.from, 'HH:mm'))).asHours();
       const slots = [];
       const slot = moment(env.availability.from, 'HH:mm');
-  
+
       for (let i = 0; i <= (hours * 4); i++) {
-  
+
         if (i !== 0) {
           slot.add(15, 'minutes');
         }
-  
+
         slots.push(slot.format('h:mm A'));
       }
-  
+
       return slots;
     }
 
