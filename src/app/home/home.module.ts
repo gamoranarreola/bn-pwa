@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import {ItemDescComponent} from '../core/components/modals/item-desc/item-desc.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { DataDeleteComponent } from './components/data-delete/data-delete.component';
 
 
 
@@ -21,7 +22,8 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
   declarations: [
     HomePage,
     ItemDescComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    DataDeleteComponent
   ],
   entryComponents: [ItemDescComponent]
 })
