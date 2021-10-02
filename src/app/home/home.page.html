@@ -1,10 +1,9 @@
 <ion-content class="movil" [fullscreen]="true">
   <!-- maquillaje -->
-    <div class='panel' *ngFor="let category of serviceCategories"   > <!-- agregar ng for para los servicios *ngFor="let servicio of services; index as i;"-->
-      <div class="categori"  (click)="category.panel=!category.panel">
-        <h3 class="panelTitle">{{category.name}} </h3> <!-- {{servicio.name}} -->
+    <div class="panel" *ngFor="let category of serviceCategories"> <!-- agregar ng for para los servicios *ngFor="let servicio of services; index as i;"-->
+      <div class="category" (click)="category.panel=!category.panel">
+        <h3 class="panelTitle">{{category.name}}</h3> <!-- {{servicio.name}} -->
         <ion-img src="../../../assets/images/services/categories/{{ category.id }}.png"></ion-img> <!-- {{servicio.img}} -->
-
       </div>
       <div [ngStyle]="{display: !category.panel ? 'none': 'block'}">
         <div  *ngFor="let service of category.services" >
