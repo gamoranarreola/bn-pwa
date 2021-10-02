@@ -3,7 +3,7 @@ import { environment as defaultEnvironment } from '../environments/environment.d
 
 export const environment = {
   production: true,
-  apiHost: 'https://beauty-now-api.herokuapp.com',
+  apiHost: 'https://bn-api-dot-beauty-now-313716.wl.r.appspot.com/',
   oauth2: {
     facebook: {
       client_id: 'EaHd1AmG4dFfy5g0qbbzsoqZaONsLayD6bY61aZv',
