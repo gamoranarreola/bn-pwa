@@ -16,18 +16,19 @@
   }
   .panelTitle {
     font-family: Playfair Display;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 400;
     font-style: italic;
     letter-spacing: 0.03em;
     text-transform: initial;
-    text-align: center;
+    // text-align: center;
     color: #fff;
     position: absolute;
-    transform: translate(7%, 27%);
+    // transform: translate(7%, 27%);
     text-shadow: 5px 2px 4px #574c4c;
   }
   h2 {
     font-family: Playfair Display;
   }
 }
+

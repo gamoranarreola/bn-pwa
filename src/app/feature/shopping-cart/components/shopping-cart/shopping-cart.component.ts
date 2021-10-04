@@ -7,6 +7,7 @@ import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shoppi
 import { LineItem } from 'src/app/feature/work-order/models/line-item.class';
 import { ShoppingCart } from '../../models/shopping-cart.class';
 import * as moment from 'moment';
+import { environment as env } from '../../../../../environments/environment';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -17,7 +18,11 @@ export class ShoppingCartComponent implements OnInit {
   shoppingCart!: ShoppingCart;
   serviceAddress!: any;
   paymentForm: FormGroup;
-
+  addressForm: FormGroup;
+  addressGoogleMapPanel = false;
+  addressPanel = false;
+  pagar = false;
+  inputValidators: any;
   placesOptions = {
     types: [],
     bounds: null,
@@ -36,7 +41,10 @@ export class ShoppingCartComponent implements OnInit {
     private shoppingCartStore: ShoppingCartStore,
     private formBuilder: FormBuilder,
     private toastController: ToastController
-  ) { }
+  ) { 
+
+    this.inputValidators = env.inputValidators;
+  }
   /**
    *
    */
@@ -63,6 +71,12 @@ export class ShoppingCartComponent implements OnInit {
     this.lng = address.geometry.location.lng();
     this.serviceAddress = address;
     this.shoppingCart.workOrder.place_id = address.place_id;
+    if (!this.shoppingCart.workOrder.place_id && !this.addressForm.valid) {
+      this.pagar = false;
+    } else {
+      this.pagar = true;
+    }
+ 
   }
 
   /**
@@ -131,13 +145,28 @@ export class ShoppingCartComponent implements OnInit {
         this.toastController.create({
           message: 'A&uacute;n no has agregado servicios a tu carrito...',
           position: 'top',
-          duration: 5000
+          duration: 5000,
+          color: 'primary',
         }).then(toast => {
           toast.present();
         });
       }
     });
     this.createForm();
+
+this.createAddressForm();
+    
+    this.addressForm.valueChanges.subscribe(value => {
+     
+      if (this.addressForm.valid) {
+        this.shoppingCart.workOrder.address = this.addressForm.value;
+        this.pagar = true;
+      } else if (!this.shoppingCart.workOrder.place_id){
+        this.pagar = false;
+      }
+
+
+ });
 
   }
 
@@ -154,6 +183,47 @@ export class ShoppingCartComponent implements OnInit {
           ])
         ])
       });
+  }
+
+ private  createAddressForm (): void {
+    this.addressForm = this.formBuilder.group({
+      calle: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+      colonia: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+      noInt: new FormControl('', [ ]),
+      noExt: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+      pais: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+      estado: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+      ciudad: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+      cp: new FormControl('', [
+        Validators.compose([
+          Validators.required
+        ])
+      ]),
+    });  
   }
 
 }

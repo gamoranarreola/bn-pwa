@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { LineItem } from './line-item.class';
-
 export class WorkOrder {
 
     id: number;
@@ -11,6 +10,17 @@ export class WorkOrder {
     notes: string;
     line_items: LineItem[];
     status: string;
+    address: {
+        colonia: string,
+        calle: string,
+        noInterior: number,
+        noExterior: number,
+        cp: number,
+        pais: string,
+        estado: string,
+        ciudad: string,
+
+    };
 
     constructor(options: Partial<WorkOrder>) {
         Object.assign(this, options);

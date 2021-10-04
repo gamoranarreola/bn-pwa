@@ -130,7 +130,7 @@ export class PaymentComponent implements OnInit {
       // state: new FormControl('', Validators.required),
       // zip: new FormControl('', Validators.required),
       // country: new FormControl('', Validators.required),
-      // email: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
       // phone: new FormControl('', [
       //   Validators.required,
       //   IonIntlTelInputValidators.phone

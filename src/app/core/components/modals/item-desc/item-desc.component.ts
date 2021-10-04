@@ -128,7 +128,8 @@ carritoValidation = true;
       const toast: any = this.toastController.create({
         message: `<p>&iexcl;Gracias! Tu servicio ha sido agregado a tu carrito.</p>`,
         position: 'top',
-        duration: 3000
+        duration: 3000,
+        color: 'primary',
       });
       this.mtrl.dismiss();
       toast.onDidDismiss = () => {

@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     loadChildren: () => import ('./feature/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule),
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     data: {
       breadcrumb: 'Carrito'
     }

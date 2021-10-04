@@ -1,5 +1,5 @@
 <ion-app>
-
+  {{ getShoppingCartLineItemCount() }}
   <app-header></app-header>
   <app-side-menu></app-side-menu>
   <!-- <app-main-menu></app-main-menu> -->
@@ -18,6 +18,7 @@
     <ion-tab-button tab="games" routerLink="/shopping-cart">
       <ion-label>Carrito</ion-label>
       <ion-icon name="cart"></ion-icon>
+      <ion-badge *ngIf="noItems > 0" color="primary" style="position: absolute;right: 14px; top: 3px;left: 54px;">{{noItems}}</ion-badge>
     </ion-tab-button>
     <ion-tab-button tab="games"  (click)="toggleMenu()">
       <ion-label>Menu</ion-label>

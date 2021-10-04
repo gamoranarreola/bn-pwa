@@ -21,10 +21,10 @@ import { IonIntlTelInputModule } from 'ion-intl-tel-input';
     IonicModule,
     ShoppingCartRoutingModule,
     GooglePlaceModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB4WlYWvD5eaLGWxNTkQl4SJBsmaX6IBIk',
-      libraries:['places']
-    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyB4WlYWvD5eaLGWxNTkQl4SJBsmaX6IBIk',
+    //   libraries:['places']
+    // }),
     FormsModule,
     ReactiveFormsModule,
     IonIntlTelInputModule

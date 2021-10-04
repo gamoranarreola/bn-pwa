@@ -40,7 +40,7 @@
 
           <ion-col size="1"  class="actionsPerson" > <ion-icon   (click)="removePerson()" item-start name="remove-circle-outline" class="icon"></ion-icon></ion-col>
 
-          <ion-col size="1" style="text-align: center; font-size: 20px; color:#eb445a;">{{nomPersonas}}</ion-col>
+          <ion-col size="1" style="text-align: center; font-size: 20px; color:#e4c683;">{{nomPersonas}}</ion-col>
           <ion-col size="1" class="actionsPerson"  >
             <ion-icon (click)="addPerson()" class="icon" name="add-circle-outline" item-end></ion-icon></ion-col>
         </ion-row>
@@ -62,6 +62,7 @@
           <ion-datetime
             formControlName="appointmentDate"
             placeholder="Fecha"
+            monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
             display-format="DDD D MMM"
             min="{{ getMinDate() }}">
           </ion-datetime>
@@ -91,6 +92,6 @@
     </section> -->
     <section class="full-width">      
 
-      <ion-button expand="full" [disabled]='carritoValidation' color="danger" (click)="saveToShoppingCart()"> <ion-icon name="cart"></ion-icon> Agregar al Carrito </ion-button>
+      <ion-button expand="full" [disabled]='carritoValidation' color="primary" (click)="saveToShoppingCart()"> <ion-icon name="cart"></ion-icon> Agregar al Carrito </ion-button>
     </section>
 </ion-content>
