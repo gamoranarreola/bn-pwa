@@ -75,8 +75,5 @@ export const environment = {
       payment: 'api/payment/',
       sendEmail: 'api/send-email/',
     },
-  },
-  conekta: {
-    publicKey: 'key_GzeFFsxwd6bgEnrqxZdRDsg'
   }
 };

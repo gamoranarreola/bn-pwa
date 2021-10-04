@@ -10,7 +10,6 @@ import { ToastController } from '@ionic/angular';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
 import { ConektaToken } from '../../models/conekta-token';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
-import { IonIntlTelInputValidators } from 'ion-intl-tel-input';
 
 
 declare const Conekta: any;
@@ -27,10 +26,10 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private toastController: ToastController,
     private shoppingCartStore: ShoppingCartStore,
     private apiDataService: ApiDataService,
-    public listService: ListService
+    public listService: ListService,
+    private toastController: ToastController
   ) {
     this.inputValidators = env.inputValidators;
   }
@@ -62,20 +61,7 @@ export class PaymentComponent implements OnInit {
           name: this.ccForm.controls.name.value,
           exp_year: moment(this.ccForm.controls.exp_year.value).format('YYYY'),
           exp_month: moment(this.ccForm.controls.exp_month.value).format('MM'),
-          cvc: this.ccForm.controls.cvc.value,
-          /**
-          * modifico: Joel Dorado
-          * Desc: removi los campos para pedir menos datos al cliente,
-          * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
-          * */
-          // address: {
-          //   street1: this.ccForm.controls.street1.value,
-          //   street2: this.ccForm.controls.street2.value,
-          //   city: this.ccForm.controls.street2.value,
-          //   state: this.ccForm.controls.street2.value,
-          //   zip: this.ccForm.controls.zip.value,
-          //   country: this.ccForm.controls.country.value
-          // }
+          cvc: this.ccForm.controls.cvc.value
         }
       }, (token: ConektaToken) => {
 
@@ -87,12 +73,27 @@ export class PaymentComponent implements OnInit {
               token_id: token.id
             }]
           },
-          work_order: this.shoppingCartStore.get().workOrder
+          work_order: this.shoppingCartStore.get().workOrder,
+          amount: this.shoppingCartStore.getShoppingCartTotal()
         }).subscribe(res => {
-          console.log(res);
+
+          this.toastController.create({
+            message: '&iexcl;Gracias por su pago!',
+            position: 'top',
+            duration: 5000
+          }).then(toast => {
+            toast.present();
+          });
         });
       }, (error: any) => {
-        console.log(error);
+
+        this.toastController.create({
+          message: `No hemos podido procesar su pago (error: ${error.message})`,
+          position: 'top',
+          duration: 5000
+        }).then(toast => {
+          toast.present();
+        });
       });
     }
   }
@@ -117,24 +118,7 @@ export class PaymentComponent implements OnInit {
         Validators.pattern(this.inputValidators.cvc.pattern)
       ]),
       exp_month: new FormControl('', Validators.required),
-      exp_year: new FormControl('', Validators.required),
-
-      /**
-       * modifico: Joel Dorado
-       * Desc: removi los campos para pedir menos datos al cliente,
-       * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
-       * */
-      // street1: new FormControl('', Validators.required),
-      // street2: new FormControl(''),
-      // city: new FormControl('', Validators.required),
-      // state: new FormControl('', Validators.required),
-      // zip: new FormControl('', Validators.required),
-      // country: new FormControl('', Validators.required),
-      // email: new FormControl('', Validators.required),
-      // phone: new FormControl('', [
-      //   Validators.required,
-      //   IonIntlTelInputValidators.phone
-      // ])
+      exp_year: new FormControl('', Validators.required)
     });
   }
 

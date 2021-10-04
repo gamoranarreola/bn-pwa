@@ -32,6 +32,7 @@ export class ShoppingCartComponent implements OnInit {
   lat = 51.678418;
   lng = 7.809007;
   zoom = 0;
+
   constructor(
     private shoppingCartStore: ShoppingCartStore,
     private formBuilder: FormBuilder,
