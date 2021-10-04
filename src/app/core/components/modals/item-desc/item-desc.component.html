@@ -1,62 +1,75 @@
-<ion-header >
-    <ion-toolbar >
-      <div class="imgbkg">
-        <p   (click)="cerrarModal()" class="close"> <ion-icon name="close"></ion-icon> </p>
-      
-            <ion-chip class="timer" >
-              <ion-label>{{service.duration}}</ion-label>
-              <ion-icon  style="color: #fff;" name="timer"></ion-icon>
-            </ion-chip>
-        
-      </div>
-      <!-- <ion-img  style="position: relative; z-index: 0;"src="./assets/images/web/inicio-1.png"></ion-img> -->
-
-
-    <!--   <a  slot="end" (click)="cerrarModal()" style="cursor: pointer;"> 
-
+<ion-header>
+  <ion-toolbar>
+    <div class="imgbkg">
+      <p (click)="closeModal()" class="close">
         <ion-icon name="close"></ion-icon>
-      </a> -->
-    </ion-toolbar>
+      </p>
+
+      <ion-chip class="timer">
+        <ion-label>{{ service.duration }}</ion-label>
+        <ion-icon style="color: #fff" name="timer"></ion-icon>
+      </ion-chip>
+    </div>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h2><ion-icon name="pricetags"></ion-icon> {{service.name}} </h2>
+        <h2><ion-icon name="pricetags"></ion-icon>{{ service.name }}</h2>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        Costo Mx ${{service.public_price}} 
-      </ion-col>   
+      <ion-col>Costo MXN ${{ service.public_price }}</ion-col>
     </ion-row>
     <ion-row>
-      
-
-
-       <ion-col style=" font-size: 25px; ">
+      <ion-col style="font-size: 25px">
         <ion-row>
-          <ion-col size="9"> Cuantas Personas? </ion-col>
+          <ion-col size="9">&iquest;Cu&aacute;ntas Personas?</ion-col>
 
-          <ion-col size="1"  class="actionsPerson" > <ion-icon   (click)="removePerson()" item-start name="remove-circle-outline" class="icon"></ion-icon></ion-col>
+          <ion-col size="1" class="actionsPerson">
+            <ion-icon
+              (click)="removePerson()"
+              item-start
+              name="remove-circle-outline"
+              class="icon"
+            ></ion-icon
+          ></ion-col>
 
+<<<<<<< HEAD
           <ion-col size="1" style="text-align: center; font-size: 20px; color:#e4c683;">{{nomPersonas}}</ion-col>
           <ion-col size="1" class="actionsPerson"  >
             <ion-icon (click)="addPerson()" class="icon" name="add-circle-outline" item-end></ion-icon></ion-col>
+=======
+          <ion-col
+            size="1"
+            style="text-align: center; font-size: 20px; color: #eb445a"
+            >{{ nomPersonas }}</ion-col
+          >
+          <ion-col size="1" class="actionsPerson">
+            <ion-icon
+              (click)="addPerson()"
+              class="icon"
+              name="add-circle-outline"
+              item-end
+            ></ion-icon
+          ></ion-col>
+>>>>>>> a74c1a2d152fd223dd488a95849854713cea31d4
         </ion-row>
-     
-       </ion-col>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h2>Descripcion</h2>
-        <p> {{service.description}} </p>
+        <h2>Descripci&oacute;n</h2>
+        <p>{{ service.description }}</p>
       </ion-col>
     </ion-row>
-    </ion-grid>
-    <ion-grid>  
-      <form [formGroup]="requestForm">    
-        <ion-row><ion-col size="12">Selecciona la fecha y hora de tu cita</ion-col> </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <form [formGroup]="requestForm">
+      <ion-row
+        ><ion-col size="12">Selecciona la fecha y hora de tu cita</ion-col>
+      </ion-row>
       <ion-row>
         <ion-col size="6">
           <ion-datetime
@@ -64,7 +77,8 @@
             placeholder="Fecha"
             monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
             display-format="DDD D MMM"
-            min="{{ getMinDate() }}">
+            min="{{ getMinDate() }}"
+          >
           </ion-datetime>
         </ion-col>
         <ion-col size="6">
@@ -73,15 +87,19 @@
             placeholder="Hora"
             display-format="h:mm A"
             picker-format="h:mm A"
-            minute-values="0,15,30,45">
+            minute-values="0,15,30,45"
+          >
           </ion-datetime>
         </ion-col>
       </ion-row>
-   
 
       <ion-item>
-        <ion-textarea formControlName="notes" placeholder="Tienes algun comentario?"></ion-textarea>
+        <ion-textarea
+          formControlName="notes"
+          placeholder="&iquest;Tienes alg&uacute;n comentario?"
+        ></ion-textarea>
       </ion-item>
+<<<<<<< HEAD
       </form>
       </ion-grid>
     <!-- <app-appointment-request></app-appointment-request> -->
@@ -95,3 +113,17 @@
       <ion-button expand="full" [disabled]='carritoValidation' color="primary" (click)="saveToShoppingCart()"> <ion-icon name="cart"></ion-icon> Agregar al Carrito </ion-button>
     </section>
 </ion-content>
+=======
+    </form>
+  </ion-grid>
+  <section class="full-width">
+    <ion-button
+      expand="full"
+      [disabled]="carritoValidation"
+      color="danger"
+      (click)="saveToShoppingCart()"
+    >
+      <ion-icon name="cart"></ion-icon>Agregar al Carrito</ion-button>
+  </section>
+</ion-content>
+>>>>>>> a74c1a2d152fd223dd488a95849854713cea31d4

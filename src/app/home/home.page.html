@@ -7,7 +7,7 @@
         <ion-img src="../../../assets/images/services/categories/{{ category.id }}.png"></ion-img> <!-- {{servicio.img}} -->
       </div>
       <div [ngStyle]="{display: !category.panel ? 'none': 'block'}">
-        <div  *ngFor="let service of category.services" >
+        <div *ngFor="let service of category.services" >
           <ion-list>
             <ion-item button (click)="presentModal(service)"> <!-- *ngFor="let item of servicio.items" agregar ng for por itewm-->
               <ion-avatar slot="start">
@@ -15,7 +15,7 @@
               </ion-avatar>
               <ion-label>
                 <h2>{{service.name}}</h2>
-                <h1> $ {{service.public_price}}</h1>
+                <h1>${{service.public_price}}</h1>
               </ion-label>
             </ion-item>
           </ion-list>

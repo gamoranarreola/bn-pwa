@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -42,17 +43,17 @@ export class ServiceComponent implements OnInit {
 
       this.serviceById$ = this.apiDataService.getData(`${env.routes.services.getServices}/${params.get('serviceId')}`, false, 'get');
 
-      this.serviceById$.subscribe((response: any) => {
+      this.serviceById$.subscribe((res1: any) => {
 
-        this.service = new Service(response.data)
+        this.service = new Service(res1.data);
         this.serviceDurationDisplay = this.getServiceDurationDisplay();
 
         this.qualifiedBeautiers$ = this.apiDataService.getData(`${env.routes.beautiers.getBeautiersForSpecialty}`, false, 'post', {
           specialty_ids: this.service.specialties.map((specialty: ServiceSpecialty) => specialty.id)
         });
 
-        this.qualifiedBeautiers$.subscribe((response: any) => {
-          this.qualifiedBeautiers = response.data.map(beautier => new Beautier(beautier));
+        this.qualifiedBeautiers$.subscribe((res2: any) => {
+          this.qualifiedBeautiers = res2.data.map((beautier: Beautier) => new Beautier(beautier));
         });
       });
     });
