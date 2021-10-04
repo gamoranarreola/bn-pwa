@@ -18,7 +18,7 @@ export class ServiceCategoriesComponent implements OnInit {
   ngOnInit() {
 
     this.apiDataService.getData(env.routes.services.getServiceCategories, false, 'get').subscribe(response => {
-      this.serviceCategories = response.data.map(serviceCategory => new ServiceCategory(serviceCategory));
+      this.serviceCategories = response.data.map((serviceCategory: ServiceCategory) => new ServiceCategory(serviceCategory));
     });
   }
 

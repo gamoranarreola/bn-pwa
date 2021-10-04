@@ -22,8 +22,9 @@ export class ServiceCategoryComponent implements OnInit {
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe((params: any) => {
+      // eslint-disable-next-line max-len
       this.apiDataService.getData(`${env.routes.services.getServicesForCategory}/${params.get('serviceCategoryId')}`, false, 'get').subscribe(response => {
-        this.services = response.data.map(service => new Service(service));
+        this.services = response.data.map((service: Service) => new Service(service));
       });
     });
   }
