@@ -11,5 +11,8 @@ export const environment = {
       client_secret: 'T6r1bIzi5oFZjdlSwkJIJAysr5ohhe0Ums6HkWXHrQfY5hYWULstLlwBS0vCemBasEiUOGlnxaAlc8ULPE69KZubs2fle4px6iu0lc6Evt0UqPrse7P5l9USQHOwi8a3',
     },
   },
+  conekta: {
+    publicKey: 'key_EwcpzidcqrtieiqEiyrsMnw'
+  },
   ...defaultEnvironment,
 };
