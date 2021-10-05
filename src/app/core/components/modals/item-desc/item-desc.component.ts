@@ -162,23 +162,15 @@ export class ItemDescComponent implements OnInit {
   getMinDate(): string {
     return moment().format('YYYY-MM-DD');
   }
-
+  
+  notifyServiceAddedToCart() {
       const toast: any = this.toastController.create({
         message: `<p>&iexcl;Gracias! Tu servicio ha sido agregado a tu carrito.</p>`,
         position: 'top',
         duration: 3000,
         color: 'primary',
       });
-      this.mtrl.dismiss();
-      toast.onDidDismiss = () => {
-        this.mtrl.dismiss();
-      };
 
-    const toast: any = this.toastController.create({
-      message: `<p>&iexcl;Gracias! Tu servicio ha sido agregado a tu carrito.</p>`,
-      position: 'top',
-      duration: 3000
-    });
     this.modalController.dismiss();
     toast.onDidDismiss = () => {
       this.modalController.dismiss();
@@ -192,7 +184,7 @@ export class ItemDescComponent implements OnInit {
   /**
    *
    */
-  private createForm(): void {
+   private createForm(): void {
 
     this.requestForm = this.formBuilder.group({
       appointmentDate: new FormControl('', [
