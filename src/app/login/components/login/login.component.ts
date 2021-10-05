@@ -20,8 +20,10 @@ import { throwError } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  registerForm: FormGroup;
   inputValidators: any;
-
+  panelLoginFlag = false;
+  panelRegisterFlag = false;
   private socialUser: SocialUser;
 
   constructor(
@@ -52,6 +54,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
+   /**
+   *
+   */
+    onRegisterSubmit(): void {
+
+      this.authService.login(this.loginForm.value).subscribe(data => {
+  
+        if (data && data.status === 200) {
+  
+          const decoded = jwt_decode(data.body.access);
+  
+          localStorage.setItem('__bn_api_access', data.body.access);
+          localStorage.setItem('__bn_api_refresh', data.body.refresh);
+          localStorage.setItem('__bn_api_current_user', JSON.stringify({user_id: decoded['user_id']}));
+          this.router.navigate(['home']);
+        }
+      });
+    }
+  
   /**
    *
    */
@@ -80,6 +101,39 @@ export class LoginComponent implements OnInit {
       ])
     });
 
+
+    this.registerForm = this.formBuilder.group({
+      email: new FormControl('', [
+        Validators.compose([
+          Validators.required,
+          Validators.email,
+          Validators.maxLength(128)
+        ])
+      ]),
+      name: new FormControl('', [
+        Validators.compose([
+          Validators.required,      
+        ])
+      ]),
+      apellidos: new FormControl('', [
+        Validators.compose([
+          Validators.required,      
+        ])
+      ]),
+      password: new FormControl('', [
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(6)
+        ])
+      ]),
+      confirmpassword: new FormControl('', [
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(6)
+        ])
+      ])
+    });
+
     this.socialAuthService.authState.pipe(
       switchMap((user: SocialUser) => {
         if (user && user.authToken) {
@@ -100,4 +154,5 @@ export class LoginComponent implements OnInit {
 
   }
 
+  
 }
