@@ -6,9 +6,9 @@ export const environment = {
   apiHost: 'https://bn-api-dot-beauty-now-313716.wl.r.appspot.com/',
   oauth2: {
     facebook: {
-      client_id: 'EaHd1AmG4dFfy5g0qbbzsoqZaONsLayD6bY61aZv',
+      client_id: 'WgSSZWqaHOFQa7eLThCdLvCbQPYNXaRrOhwcsQNx',
       // eslint-disable-next-line max-len
-      client_secret: 'T6r1bIzi5oFZjdlSwkJIJAysr5ohhe0Ums6HkWXHrQfY5hYWULstLlwBS0vCemBasEiUOGlnxaAlc8ULPE69KZubs2fle4px6iu0lc6Evt0UqPrse7P5l9USQHOwi8a3',
+      client_secret: 'GZd7qlAFmolSn3fxQxQtUSTyKSIZRH1Bnq4vjMtgbF1DlnQAyaMSjr7U6QI8sICNrCy1A8KxTerzUhHpFymssA6S9xe1mODpeU87keFMVEufm4KsL7ViahvSUF58EzYE',
     },
   },
   conekta: {
