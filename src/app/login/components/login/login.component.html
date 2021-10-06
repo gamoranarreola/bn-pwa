@@ -3,9 +3,9 @@
     <ion-row>
       <ion-col size="12">
         <ion-button (click)="panelLoginFlag = !panelLoginFlag" color="primary" expand="full" fill="outline">
-          <ion-icon slot="start"  name="log-in-outline"></ion-icon> Continuar con Beautynow </ion-button>
-
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" [ngStyle]="{display: !panelLoginFlag ? 'none': 'block'}">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon>Continuar con Beauty Now
+        </ion-button>
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" [ngStyle]="{display: !panelLoginFlag ? 'none': 'block'}">
           <ion-grid>
             <ion-row>
               <ion-col size="12">
@@ -18,21 +18,22 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-          <ion-button color="primary" type="submit" fill="outline">
-            <ion-icon name="storefront-outline"></ion-icon>   Iniciar sesión </ion-button>
-            <ion-button color="primary"  fill="outline" (click)="panelRegisterFlag =!panelRegisterFlag">
-              <ion-icon name="person-add-outline"></ion-icon>  Crear Cuenta </ion-button>
+          <ion-button [disabled]="loginForm.invalid" color="primary" type="submit" fill="outline">
+            <ion-icon name="storefront-outline"></ion-icon>Iniciar sesi&oacute;n</ion-button>
+            <ion-button color="primary" fill="outline" (click)="panelRegisterFlag =!panelRegisterFlag">
+              <ion-icon name="person-add-outline"></ion-icon>Crear Cuenta
+           </ion-button>
         </form>
         <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" [ngStyle]="{display: !panelRegisterFlag ? 'none': 'block'}">
-          <ion-grid> 
+          <ion-grid>
             <ion-row>
             <ion-col size="12">
-              <ion-input placeholder="Nombre" formControlName="name"></ion-input>
+              <ion-input placeholder="Nombre" formControlName="first_name"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12">
-              <ion-input placeholder="Apellidos" formControlName="apellidos"></ion-input>
+              <ion-input placeholder="Apellidos" formControlName="last_name"></ion-input>
             </ion-col>
           </ion-row>
             <ion-row>
@@ -47,23 +48,21 @@
             </ion-row>
             <ion-row>
               <ion-col size="12">
-                <ion-input placeholder="Confirmar Contrase&ntilde;a" type="password" formControlName="confirmpassword"></ion-input>
+                <ion-input placeholder="Confirmar Contrase&ntilde;a" type="password" formControlName="password_confirm"></ion-input>
               </ion-col>
             </ion-row>
-            
+
           </ion-grid>
-          <ion-button color="primary" type="submit" fill="outline">
-            Crear</ion-button>
-          
+          <ion-button [disabled]="registerForm.invalid" color="primary" type="submit" fill="outline">Crear</ion-button>
         </form>
 
       </ion-col>
     </ion-row>
-  
+
     <ion-row>
       <ion-col size="12">
         <ion-button (click)="facebookLogin()" color="secondary" expand="full" fill="outline">
-          <ion-icon slot="start"  name="logo-facebook"></ion-icon> Continuar con Facebook</ion-button>
+          <ion-icon slot="start" name="logo-facebook"></ion-icon>Continuar con Facebook</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
