@@ -72,6 +72,15 @@ export class LoginComponent implements OnInit {
           toast.present();
         });
       }
+    }, res => {
+
+      this.toastController.create({
+        message: res.error.detail,
+        position: 'top',
+        duration: 5000
+      }).then(toast => {
+        toast.present();
+      });
     });
   }
 
@@ -101,6 +110,15 @@ export class LoginComponent implements OnInit {
           toast.present();
         });
       }
+    }, res => {
+
+      this.toastController.create({
+        message: res.error.detail,
+        position: 'top',
+        duration: 5000
+      }).then(toast => {
+        toast.present();
+      });
     });
   }
 
