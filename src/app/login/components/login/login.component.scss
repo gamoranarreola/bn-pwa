@@ -2,4 +2,7 @@
 
 :host {
   @extend .view-container;
+  .danger {
+    color: rgb(255, 73, 97);
+  }
 }

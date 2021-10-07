@@ -9,12 +9,41 @@
           <ion-grid>
             <ion-row>
               <ion-col size="12">
-                <ion-input placeholder="Correo electr&oacute;nico" formControlName="email"></ion-input>
+                <ion-input placeholder="Correo electr&oacute;nico" formControlName="email"
+                [color]="(loginForm.controls.email.hasError('required') || loginForm.controls.email.hasError('email')
+                || loginForm.controls.email.hasError('maxLength') )&& loginForm.controls.email.touched  ? 'danger': ''"></ion-input>
+       
+                    <section *ngIf="loginForm.controls.email.touched">
+                      <span *ngIf="loginForm.controls.email.hasError('required')" class='danger ion-padding'
+                      [innerHTML]="inputValidators.required.errorMessage"></span>
+                      
+
+                      <span *ngIf="loginForm.controls.email.hasError('email') " class='danger ion-padding'
+                      [innerHTML]="inputValidators.email.errorMessage"></span>
+
+                      <span *ngIf="loginForm.controls.email.hasError('maxLength')" class='danger ion-padding'
+                      [innerHTML]="inputValidators.max128.errorMessage"></span>
+
+                    </section>
+                      
+
+
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col size="12">
-                <ion-input placeholder="Contrase&ntilde;a" type="password" formControlName="password"></ion-input>
+                <ion-input placeholder="Contrase&ntilde;a" type="password" formControlName="password"  
+                [color]="(loginForm.controls.password.hasError('required') || loginForm.controls.password.hasError('minLength') )
+                && loginForm.controls.password.touched  ? 'danger': ''"></ion-input>
+
+                <section *ngIf="loginForm.controls.password.touched">
+                  <span *ngIf="loginForm.controls.password.hasError('required')" class='danger'
+                  [innerHTML]="inputValidators.required.errorMessage"></span>
+
+                  <span *ngIf="loginForm.controls.password.hasError('minLength')" class='danger'
+                  [innerHTML]="inputValidators.min6.errorMessage"></span>
+                </section>
+
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -28,27 +57,87 @@
           <ion-grid>
             <ion-row>
             <ion-col size="12">
-              <ion-input placeholder="Nombre" formControlName="first_name"></ion-input>
+            
+              <ion-input placeholder="Nombre" formControlName="first_name"
+              [color]="(registerForm.controls.first_name.hasError('required') || 
+              registerForm.controls.first_name.hasError('pattern') )&& registerForm.controls.first_name.touched ? 'danger': ''"></ion-input>
+
+              <section *ngIf="registerForm.controls.first_name.touched">
+                <span *ngIf="registerForm.controls.first_name.hasError('required')" class='danger'
+                [innerHTML]="inputValidators.required.errorMessage"></span>
+                <span *ngIf="registerForm.controls.first_name.hasError('pattern')" class='danger'
+                [innerHTML]="inputValidators.name.errorMessage"></span>              
+              </section>
+              
+
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12">
-              <ion-input placeholder="Apellidos" formControlName="last_name"></ion-input>
+              <ion-input placeholder="Apellidos" formControlName="last_name"
+              [color]="(registerForm.controls.last_name.hasError('required') || registerForm.controls.last_name.hasError('pattern')) 
+              && registerForm.controls.last_name.touched ? 'danger': ''"></ion-input>
+
+            <section *ngIf="registerForm.controls.last_name.touched">
+              <span *ngIf="registerForm.controls.last_name.hasError('required')" class='danger'
+              [innerHTML]="inputValidators.required.errorMessage"></span>
+              <span *ngIf="registerForm.controls.last_name.hasError('pattern')" class='danger'
+              [innerHTML]="inputValidators.name.errorMessage"></span>
+             </section>
             </ion-col>
           </ion-row>
             <ion-row>
               <ion-col size="12">
-                <ion-input placeholder="Correo electr&oacute;nico" formControlName="email"></ion-input>
+                <ion-input placeholder="Correo electr&oacute;nico" formControlName="email"
+                [color]="(registerForm.controls.email.hasError('required') || registerForm.controls.email.hasError('email')
+                || registerForm.controls.email.hasError('maxLength') )&& registerForm.controls.email.touched  ? 'danger': ''"></ion-input>
+                <section *ngIf="registerForm.controls.email.touched">
+                  <span *ngIf="registerForm.controls.email.hasError('required')" class='danger ion-padding'
+                  [innerHTML]="inputValidators.required.errorMessage"></span>
+                  
+
+                  <span *ngIf="registerForm.controls.email.hasError('email') " class='danger ion-padding'
+                  [innerHTML]="inputValidators.email.errorMessage"></span>
+
+                  <span *ngIf="registerForm.controls.email.hasError('maxLength')" class='danger ion-padding'
+                  [innerHTML]="inputValidators.max128.errorMessage"></span>
+
+                </section>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col size="12">
-                <ion-input placeholder="Contrase&ntilde;a" type="password" formControlName="password"></ion-input>
+                <ion-input placeholder="Contrase&ntilde;a" type="password" formControlName="password"
+                [color]="(registerForm.controls.password.hasError('required') || registerForm.controls.password.hasError('minLength') )
+                && registerForm.controls.password.touched  ? 'danger': ''"></ion-input>
+                <section *ngIf="registerForm.controls.password.touched">
+                  <span *ngIf="registerForm.controls.password.hasError('required')" class='danger'
+                  [innerHTML]="inputValidators.required.errorMessage"></span>
+
+                  <span *ngIf="registerForm.controls.password.hasError('minLength')" class='danger'
+                  [innerHTML]="inputValidators.min6.errorMessage"></span>
+                </section>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col size="12">
-                <ion-input placeholder="Confirmar Contrase&ntilde;a" type="password" formControlName="password_confirm"></ion-input>
+                <ion-input placeholder="Confirmar Contrase&ntilde;a" type="password" formControlName="password_confirm"
+                [color]="(registerForm.controls.password_confirm.hasError('required') 
+                || registerForm.controls.password_confirm.hasError('minLength')) 
+                && registerForm.controls.password_confirm.touched  ? 'danger': ''"></ion-input>
+              
+                <section *ngIf="registerForm.controls.password_confirm.touched">
+                  <span *ngIf="registerForm.controls.password_confirm.hasError('required')" class='danger'
+                  [innerHTML]="inputValidators.required.errorMessage"></span>
+
+                  <span *ngIf="registerForm.controls.password_confirm.hasError('minLength')" class='danger'
+                  [innerHTML]="inputValidators.min6.errorMessage"></span>
+                 
+                  <span *ngIf="registerForm.hasError('matchPasswordError')" class='danger'
+                  [innerHTML]="inputValidators.passwordMismatch.errorMessage"></span>
+                </section>
+                
+             
               </ion-col>
             </ion-row>
 
