@@ -1,4 +1,3 @@
-
 <ion-content>
   <ion-list>
     <ion-list-header>
@@ -22,17 +21,8 @@
             </ion-row>
             <ion-row class="ion-align-items-center">
               <ion-col size="2">
-                
-                <ion-input
-                  class="ion-text-center"
-                  value="{{ item.quantity }}"
-                  type="number"
-                  inputmode="numeric"
-                  min="0"
-                  step="1"
-                  (ionChange)="changeQuantity($event, i)"
-                  (ionBlur)="checkLineItem($event, i)"
-                  ></ion-input>
+                <ion-input class="ion-text-center" value="{{ item.quantity }}" type="number" inputmode="numeric" min="0"
+                  step="1" (ionChange)="changeQuantity($event, i)" (ionBlur)="checkLineItem($event, i)"></ion-input>
               </ion-col>
               <ion-col size="5">
                 <span>{{ item.price | currency:'es-MX':'MXN' }}</span>
@@ -61,29 +51,15 @@
       </ion-item>
       <ion-item>
         <ion-grid>
-
-          <!-- <ion-row>
-            <ion-col size="12">
-              <input
-              placeholder="Direccion del Serivico"
-                style="width: 100%;"
-                ngx-google-places-autocomplete
-                [options]="placesOptions"
-                (onAddressChange)="handleAddressChange($event)" />
-            </ion-col>
-          </ion-row> -->
-        
-
-
-
           <div class="direction-content">
-            
-              <ion-button expand="full" (click)="addressGoogleMapPanel=!addressGoogleMapPanel">Direccion con Google Maps </ion-button>             
-             <section [ngStyle]="{display: !addressGoogleMapPanel ? 'none': 'block'}">
-              <ion-row >
+            <ion-button
+              expand="full"
+              (click)="addressGoogleMapPanel =! addressGoogleMapPanel; addressPanel = false;">Direcci&oacute;n con Google Maps</ion-button>
+            <section id="google-address" [ngStyle]="{display: !addressGoogleMapPanel ? 'none': 'block', 'height': '200px'}">
+              <ion-row>
                 <ion-col size="12">
                   <input
-                  placeholder="Direccion del Serivico"
+                    placeholder="Direcci&oacute;n del Servicio"
                     style="width: 100%;"
                     ngx-google-places-autocomplete
                     [options]="placesOptions"
@@ -95,134 +71,88 @@
                   <span>{{ serviceAddress?.formatted_address}}</span>
                 </ion-col>
               </ion-row>
-              <ion-row>            
+              <ion-row>
                 <ion-col size="12">
                   <ion-textarea
+                    [ngStyle]="{height: !addressGoogleMapPanel ? '0' : '100px'}"
                     class="w-full"
                     rows="5"
-                    auto-grow="true"
-                    placeholder="Introduce aqu&iacute; el n&uacute;mero de interior o apartamento si aplica as&iacute; como cualquier indicaci&oacute;n especial para tu orden."></ion-textarea>
+                    placeholder="Escribe aqu&iacute; el n&uacute;mero de interior si aplica o cualquier indicaci&oacute;n especial para tu orden.">
+                  </ion-textarea>
                 </ion-col>
-              </ion-row>   
-            </section>
-            
-            <!-- //// -->
-            <div>
-              <ion-button expand="full" (click)="addressPanel=!addressPanel">Direccion Manual </ion-button>
-            
-              <ion-row>
-                 <form [formGroup]="addressForm">
-                <ion-col size="12" [ngStyle]="{display: !addressPanel ? 'none': 'block'}">
-                 
-                  <ion-row  class="ion-align-items-start">
-                    <ion-col size="12" >                 
-                        <ion-item >
-                          <ion-label >Colonia</ion-label>
-                          <ion-input  formControlName="colonia"></ion-input>
-                          <!-- <span
-                          class="error ion-padding"
-                          *ngIf="!addressForm.controls.colonia.untouched"
-                          [innerHTML]="inputValidators.required.errorMessage"></span> -->
-                        </ion-item>          
-                      
-                    </ion-col>
-                    <ion-col size="12" >
-                      
-                      <ion-item>
-                        <ion-label>Calle </ion-label>
-                        <ion-input  formControlName="calle"></ion-input>
-                        <!-- <span
-                        class="error ion-padding"
-                        *ngIf="!addressForm.controls.calle.untouched"
-                        [innerHTML]="inputValidators.required.errorMessage"></span> -->
-                      </ion-item>
-                    </ion-col>    
-                  </ion-row>
-            
-                  <ion-row>
-                    <ion-col size="6">
-                      <ion-item >
-                        <ion-label >No. Interior</ion-label>
-                        <ion-input type="number" formControlName="noInt"></ion-input>
-                      </ion-item>   
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item >
-                        <ion-label >No. Exterior</ion-label>
-                        <ion-input  type="number" formControlName="noExt"></ion-input>
-                        <!-- <span
-                        class="error ion-padding"
-                        *ngIf="!addressForm.controls.noExt.untouched"
-                        [innerHTML]="inputValidators.required.errorMessage"></span> -->
-                      </ion-item>   
-                    </ion-col>
-                  </ion-row>
-            
-                  <ion-row>
-                    <ion-col size="6">
-                      <ion-item >
-                        <ion-label>C.P.</ion-label>
-                        <ion-input type="number"  formControlName="cp"></ion-input>
-                        <!-- <span
-                        class="error ion-padding"
-                        *ngIf="!addressForm.controls.noExt.untouched"
-                        [innerHTML]="inputValidators.cp.errorMessage"></span> -->
-                      </ion-item>   
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item >
-                        <ion-label >Pais</ion-label>
-                        <ion-input  formControlName="pais"></ion-input>
-                        <!-- <span
-                        class="error ion-padding"
-                        *ngIf="!addressForm.controls.noExt.untouched"
-                        [innerHTML]="inputValidators.pais.errorMessage"></span> -->
-                      </ion-item>   
-                    </ion-col>
-                  </ion-row>
-                  <ion-row>
-                    <ion-col size="6">
-                      <ion-item >
-                        <ion-label>Estado</ion-label>
-                        <ion-input  formControlName="estado"></ion-input>
-                        <!-- <span
-                        class="error ion-padding"
-                        *ngIf="!addressForm.controls.noExt.untouched"
-                        [innerHTML]="inputValidators.estado.errorMessage"></span> -->
-                      </ion-item>   
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item >
-                        <ion-label >Ciudad</ion-label>
-                        <ion-input  formControlName="ciudad"></ion-input>
-                        <!-- <span
-                        class="error ion-padding"
-                        *ngIf="!addressForm.controls.ciudad.untouched"
-                        [innerHTML]="inputValidators.estado.errorMessage"></span> -->
-                      </ion-item>   
-                    </ion-col>
-                  </ion-row>
-                </ion-col>
-              </form>
               </ion-row>
-            
-            
-            
+            </section>
+            <div>
+              <ion-button
+                expand="full"
+                (click)="addressPanel =! addressPanel; addressGoogleMapPanel = false;">Direcci&oacute;n Manual</ion-button>
+              <ion-row>
+                <form [formGroup]="addressForm">
+                  <ion-col size="12" [ngStyle]="{display: !addressPanel ? 'none': 'block'}">
+                    <ion-row class="ion-align-items-start">
+                      <ion-col size="12">
+                        <ion-item>
+                          <ion-label>Colonia</ion-label>
+                          <ion-input formControlName="colonia"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col size="12">
+                        <ion-item>
+                          <ion-label>Calle </ion-label>
+                          <ion-input formControlName="calle"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label>No. Int.</ion-label>
+                          <ion-input type="number" formControlName="noInt"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label>No. Ext.</ion-label>
+                          <ion-input type="number" formControlName="noExt"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label>C.P.</ion-label>
+                          <ion-input type="number" formControlName="cp"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label>Pa&iacute;s</ion-label>
+                          <ion-input formControlName="pais"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label>Estado</ion-label>
+                          <ion-input formControlName="estado"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label>Ciudad</ion-label>
+                          <ion-input formControlName="ciudad"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </form>
+              </ion-row>
             </div>
-            </div>
-          <!-- <ion-row>
+          </div>
+          <ion-row *ngIf="pagar">
             <ion-col size="12">
-              <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-              </agm-map>
-            </ion-col>
-          </ion-row> -->
-
-
-      
-          <ion-row  *ngIf="pagar"> <!--*ngIf="shoppingCart?.workOrder.place_id" [disabled]="!addressForm.valid"-->
-            <ion-col size="12">
-              <ion-button  expand="block" color="primary" color="primary" routerLink="payment"> Pagar  </ion-button>
+              <ion-button expand="block" color="primary" color="primary" routerLink="payment">Pagar</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
