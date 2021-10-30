@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '',
     component: ServiceCategoriesComponent
   },
+  /**
   {
     path: ':serviceCategoryId/services',
     component: ServiceCategoryComponent
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: ':serviceCategoryId/services/:serviceId',
     component: ServiceComponent
   }
+  **/
 ];
 
 @NgModule({

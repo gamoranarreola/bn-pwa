@@ -49,7 +49,7 @@ export class AuthService {
    */
   public logout(): void {
 
-    this.router.navigate(['/home']).then(() => {
+    this.router.navigate(['home']).then(() => {
       localStorage.removeItem('__bn_api_access');
       localStorage.removeItem('__bn_api_refresh');
       localStorage.removeItem('__bn_api_current_user');
