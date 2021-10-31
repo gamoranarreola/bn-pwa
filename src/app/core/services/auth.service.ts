@@ -82,7 +82,6 @@ export class AuthService {
    *
    */
   public isAuthenticated(): boolean {
-    const access = localStorage.getItem('__bn_api_access');
-    return (typeof access === 'string') ? true : false;
+    return (typeof localStorage.getItem('__bn_api_access') === 'string') ? true : false;
   }
 }

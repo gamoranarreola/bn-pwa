@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -10,7 +11,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastController: ToastController
   ) {
 
   }
@@ -24,6 +26,15 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.router.navigate(['login']);
+
+      this.toastController.create({
+        message: 'Por favor inicia sesi&oacute;n o crea una cuenta.',
+        position: 'top',
+        duration: 5000
+      }).then(toast => {
+        toast.present();
+      });
+
       return false;
     }
   }

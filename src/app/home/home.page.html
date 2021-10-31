@@ -1,20 +1,16 @@
 <ion-content [fullscreen]="true">
 
-  <!-- maquillaje -->
   <div class="panel" *ngFor="let category of serviceCategories">
-    <!-- agregar ng for para los servicios *ngFor="let servicio of services; index as i;"-->
-    <div class="category" (click)="category.panel=!category.panel">
-      <h3 class="panelTitle">{{category.name}}</h3> <!-- {{servicio.name}} -->
-      <ion-img src="../../../assets/images/services/categories/{{ category.id }}.png"></ion-img>
-      <!-- {{servicio.img}} -->
+    <div *ngIf="enabledCategories.includes(category.id)" class="category" (click)="category.panel=!category.panel">
+      <h3 class="panelTitle">{{category.name}}</h3>
+      <ion-img src="../../../assets/images/categories/{{ category.id }}-CAT.jpg"></ion-img>
     </div>
     <div [ngStyle]="{display: !category.panel ? 'none': 'block'}">
       <div *ngFor="let service of category.services">
         <ion-list>
-          <ion-item button (click)="presentModal(service)">
-            <!-- *ngFor="let item of servicio.items" agregar ng for por itewm-->
+          <ion-item *ngIf="enabledServices.includes(service.id)" button (click)="presentModal(service)">
             <ion-avatar slot="start">
-              <img src="../../../assets/images/services/categories/{{ category.id }}.png">
+              <img src="../../../assets/images/categories/services/{{ category.id }}-{{ service.id }}-{{ service.service_id }}.jpg">
             </ion-avatar>
             <ion-label>
               <h2>{{service.name}}</h2>

@@ -8,12 +8,23 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SideMenuComponent {
 
+  isAuthenticated: boolean;
+
   constructor(
     private menu: MenuController,
-    public authService: AuthService
+    private authService: AuthService
   ) { }
 
   close() {
     this.menu.close();
+  }
+
+  logout() {
+    this.menu.close();
+    this.authService.logout();
+  }
+
+  test() {
+    this.isAuthenticated = this.authService.isAuthenticated();
   }
 }

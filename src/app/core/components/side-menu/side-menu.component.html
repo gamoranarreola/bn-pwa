@@ -1,5 +1,5 @@
 
-<ion-menu side="end" type="push" contentId="main">
+<ion-menu side="end" type="push" contentId="main" (ionWillOpen)="test()">
   <ion-header>
     <ion-toolbar>
       <ion-title></ion-title>
@@ -7,8 +7,9 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item *ngIf="authService.isAuthenticated" routerLink="/user" (click)="close()"><ion-icon name="person-circle-outline"></ion-icon> Mi Perfil</ion-item>
-      <ion-item *ngIf="!authService.isAuthenticated" routerLink="/login" (click)="close()"><ion-icon name="log-in-outline"></ion-icon> Iniciar sesion</ion-item>
+      <ion-item *ngIf="isAuthenticated" routerLink="/user-profile" (click)="close()"><ion-icon name="person-circle-outline"></ion-icon>Mi Perfil</ion-item>
+      <ion-item *ngIf="!isAuthenticated" routerLink="/login" (click)="close()"><ion-icon name="log-in-outline"></ion-icon>Iniciar sesi&oacute;n</ion-item>
+      <ion-item *ngIf="isAuthenticated" (click)="logout()"><ion-icon name="log-in-outline"></ion-icon>Cerrar sesi&oacute;n</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
