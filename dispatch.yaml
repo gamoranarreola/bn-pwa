@@ -1,0 +1,4 @@
+dispatch:  
+    - url: "admin.beautynow.app/*"
+      service: admin
+
