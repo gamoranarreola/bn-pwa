@@ -42,6 +42,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'user-profile',
+    loadChildren: () => import ('./feature/user-profile/user-profile.module').then(m => m.UserProfileModule),
+    canActivate: [AuthGuard],
+    data: {
+      breadcrumb: 'Mi Perfil'
+    }
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

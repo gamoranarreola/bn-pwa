@@ -6,24 +6,23 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { environment as env } from '../../environments/environment';
 import { ApiDataService } from '../core/services/api-data.service';
 import { ServiceCategory } from '../feature/service/models/service-category.class';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
 
-  panel1 = false;
-  panel2 = false;
-  panel3 = false;
-  panel4 = false;
-  panel5 = false;
-
   serviceCategories: ServiceCategory[] = [];
+  enabledCategories = [3,4,5];
+  enabledServices = [6,10,11,13,15,18,19];
 
   constructor(
     public modalController: ModalController,

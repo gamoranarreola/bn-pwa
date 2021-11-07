@@ -10,6 +10,7 @@ import { ToastController } from '@ionic/angular';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
 import { ConektaToken } from '../../models/conekta-token';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
+import { Router } from '@angular/router';
 
 
 declare const Conekta: any;
@@ -29,7 +30,8 @@ export class PaymentComponent implements OnInit {
     private shoppingCartStore: ShoppingCartStore,
     private apiDataService: ApiDataService,
     public listService: ListService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private router: Router
   ) {
     this.inputValidators = env.inputValidators;
   }
@@ -83,6 +85,7 @@ export class PaymentComponent implements OnInit {
             duration: 5000
           }).then(toast => {
             toast.present();
+            this.router.navigate(['home']);
           });
         });
       }, (error: any) => {
@@ -136,7 +139,7 @@ export class PaymentComponent implements OnInit {
       //   Validators.required,
       //   IonIntlTelInputValidators.phone
       // ])
-      
+
     });
   }
 

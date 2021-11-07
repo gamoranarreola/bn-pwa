@@ -284,7 +284,7 @@ export class AppointmentRequestComponent implements OnInit {
       ]
     }).then(toast => {
       toast.present();
-    })
+    });
   }
 
   /**

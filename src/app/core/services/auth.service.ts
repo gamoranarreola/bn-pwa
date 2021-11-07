@@ -49,7 +49,7 @@ export class AuthService {
    */
   public logout(): void {
 
-    this.router.navigate(['/home']).then(() => {
+    this.router.navigate(['home']).then(() => {
       localStorage.removeItem('__bn_api_access');
       localStorage.removeItem('__bn_api_refresh');
       localStorage.removeItem('__bn_api_current_user');
@@ -82,7 +82,6 @@ export class AuthService {
    *
    */
   public isAuthenticated(): boolean {
-    const access = localStorage.getItem('__bn_api_access');
-    return (typeof access === 'string') ? true : false;
+    return (typeof localStorage.getItem('__bn_api_access') === 'string') ? true : false;
   }
 }
