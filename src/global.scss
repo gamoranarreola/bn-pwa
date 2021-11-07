@@ -24,7 +24,18 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
+@font-face {
+  font-family: JAAPOKKI;
+  src: url(assets/fonts/FontJaapokki/Regular/web/jaapokki-regular.woff);
+}
+@font-face {
+  font-family: AVENIRBLACK;
+  src: url(assets/fonts/Avenir/AvenirBlack.ttf);
+}
+@font-face {
+  font-family: AVENIRLIGHT;
+  src: url(assets/fonts/Avenir/AvenirLight.ttf);
+}
 app-item-desc {
   ion-icon {
     color: white;
@@ -39,6 +50,6 @@ h1, h2, h3, h4, h5, th {
   font-family:'AVENIRBLACK';
 }
 
-ion-item, ion-button, td, a{
+ion-item, ion-button, td, a, p,.datetime-text, button,ion-col, textarea{
   font-family:'AVENIRLIGHT';
 }
