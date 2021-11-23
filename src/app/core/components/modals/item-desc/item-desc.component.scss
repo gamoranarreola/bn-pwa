@@ -7,13 +7,16 @@ ion-datetime {
 }
 
 .actionsPerson {
-  color: #e4c683;
-  cursor: pointer;
-  text-align: center;
+  // color: #e4c683;
+  cursor: pointer;  
   transition: all ease 0.2s;
+
+    display: flex;    
+    align-items: center;
+    justify-content: space-evenly;
 }
 .actionsPerson:active {
-  color: #333;
+  // color: #333;
 }
 .img-title {
   position: absolute;

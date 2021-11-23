@@ -28,7 +28,7 @@ export class ApiDataService {
    * @param params
    */
   public getData(url: string, auth: boolean, method: string, params?: any): Observable<any> {
-
+  
     let request: Observable<any>;
 
     const headers = {};
@@ -42,7 +42,7 @@ export class ApiDataService {
     this.headers = new HttpHeaders(headers);
 
     if (method === 'get') {
-      request = this.httpClient.get<any[]>(`${env.apiHost}${url}`, {
+      request = this.httpClient.get<any[]>(`${env.apiHost}${url}?format=json`, {
         observe: 'response',
         headers: this.headers
       });
