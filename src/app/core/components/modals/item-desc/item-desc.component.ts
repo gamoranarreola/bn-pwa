@@ -19,13 +19,14 @@ import * as moment from 'moment';
 
 export class ItemDescComponent implements OnInit {
 
-  @Input() service: any;s
+  @Input() service: any;
 
   requestForm: FormGroup;
   inputValidators: any;
   nomPersonas = 1;
   carritoValidation = true;
-
+  backgroundImg;
+ 
   private shoppingCart!: ShoppingCart;
 
   constructor(
@@ -62,6 +63,7 @@ export class ItemDescComponent implements OnInit {
    *
    */
   addPerson() {
+    console.log(this.service);
     this.nomPersonas++;
     this.requestForm.patchValue({ quantity: this.nomPersonas });
   }

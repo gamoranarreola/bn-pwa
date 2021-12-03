@@ -19,10 +19,10 @@ export class HomePage implements OnInit {
     initialSlide: 1,
     speed: 400
   };
-
+ 
   serviceCategories: ServiceCategory[] = [];
   enabledCategories = [3,4,5];
-  enabledServices = [6,10,11,13,15,18,19];
+  enabledServices = [6,7,8,10,11,13,15,18,19];
 
   constructor(
     public modalController: ModalController,
@@ -30,7 +30,8 @@ export class HomePage implements OnInit {
     private apiDataService: ApiDataService
   ) { }
 
-  async presentModal(data) {
+  async presentModal(data, img) {
+    data.image = img;
     const modal = await this.modalController.create({
       component: ItemDescComponent,
       componentProps: {service: data},

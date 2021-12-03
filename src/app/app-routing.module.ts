@@ -50,6 +50,15 @@ const routes: Routes = [
     }
   },
   {
+    path: 'gallery',
+    loadChildren: () => import ('./feature/gallery/gallery.module').then(m => m.GalleryModule),
+   // canActivate: [AuthGuard],
+    data: {
+      breadcrumb: 'Galeria de fotos'
+    }
+  }
+  ,
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

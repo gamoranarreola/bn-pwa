@@ -1,10 +1,13 @@
 <ion-header>
     <ion-toolbar>
-      <div class="imgbkg">
+      <div class="imgbkg" 
+      style = "background-image: url('{{service.image }}') !important;"
+ >
         <p (click)="closeModal()" class="close">
           <ion-icon name="close"></ion-icon>
         </p>
-  
+  <!-- {{service.image}}
+  <img src="{{service.image}}"/> -->
         <ion-chip class="timer">
           <ion-label>{{ service.duration }}</ion-label>
           <ion-icon style="color: #fff" name="timer"></ion-icon>

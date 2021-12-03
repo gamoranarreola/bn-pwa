@@ -1,0 +1,23 @@
+.close-fake {
+    --background: transparent;
+    ion-icon {
+        font-size: 2rem;
+    }
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+    
+}
+
+ion-content {    
+    --background: #fff;
+  
+}
+
+ion-slides {
+    height: 70%;
+}
+
+ion-button {
+    margin-left: 50px;
+}

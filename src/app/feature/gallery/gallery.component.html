@@ -1,0 +1,12 @@
+<ion-header style="margin-top:80px;">
+  <ion-toolbar>
+    <ion-title> Beautynow Galeria </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">   
+    <ion-slide *ngFor="let img of images">
+      <img src="./../../../assets/images/web/FOTO{{img}}.jpeg" tappable (click)="openPreview(img)"/>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
