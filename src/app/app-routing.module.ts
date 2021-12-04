@@ -14,6 +14,12 @@ const routes: Routes = [
     data: {
       breadcrumb: 'Inicio'
     }
+  },  {
+    path: 'beautiers',
+    loadChildren: () => import('./feature/beautiers/beautiers.module').then( m => m.BeautiersPageModule),
+    data: {
+      breadcrumb: 'Inicio'
+    }
   },
   {
     path: 'login',
@@ -62,6 +68,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'beautiers',
+    loadChildren: () => import('./feature/beautiers/beautiers.module').then( m => m.BeautiersPageModule)
   },
 ];
 
