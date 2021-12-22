@@ -102,11 +102,13 @@
             "browserTarget": "app:build",
             "ssl": true,
             "sslCert": "./ssl/dev.beautynow.com.crt",
-            "sslKey": "./ssl/dev.beautynow.com.key"
+            "sslKey": "./ssl/dev.beautynow.com.key",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "browserTarget": "app:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "local": {
               "browserTarget": "app:build:production"
@@ -115,6 +117,7 @@
               "progress": false
             }
           }
+          
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

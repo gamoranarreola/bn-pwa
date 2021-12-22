@@ -1,4 +1,6 @@
 dispatch:  
     - url: "admin.beautynow.app/*"
       service: admin
+    - url: "api.beautynow.app/*"
+      service: bn-api
 

@@ -28,13 +28,13 @@ export class ApiDataService {
    * @param params
    */
   public getData(url: string, auth: boolean, method: string, params?: any): Observable<any> {
-  
+    
     let request: Observable<any>;
 
     const headers = {};
 
     headers['Content-Type'] = 'application/json';
-
+    
     if (auth) {
       headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('__bn_api_access')}`;
     }
@@ -42,6 +42,10 @@ export class ApiDataService {
     this.headers = new HttpHeaders(headers);
 
     if (method === 'get') {
+      
+      console.log(env.apiHost);
+      console.log(url);
+      console.log('44444444');
       request = this.httpClient.get<any[]>(`${env.apiHost}${url}?format=json`, {
         observe: 'response',
         headers: this.headers
@@ -54,7 +58,7 @@ export class ApiDataService {
         headers: this.headers
       });
     }
-
+    
     return request
       .pipe(
         map((res: HttpResponse<any>) => res.body)
@@ -75,7 +79,6 @@ export class ApiDataService {
     }
 
     this.headers = new HttpHeaders(headers);
-
     return this.httpClient.post<any[]>(`${env.apiHost}${url}`, params, {
       observe: 'response',
       headers: this.headers

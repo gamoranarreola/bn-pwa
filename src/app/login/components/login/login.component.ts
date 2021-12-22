@@ -111,7 +111,8 @@ export class LoginComponent implements OnInit {
         });
       }
     }, res => {
-
+      console.log('error');
+      console.log(res);
       this.toastController.create({
         message: res.error.detail,
         position: 'top',

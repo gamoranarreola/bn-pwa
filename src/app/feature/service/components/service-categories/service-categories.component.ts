@@ -16,10 +16,11 @@ export class ServiceCategoriesComponent implements OnInit {
   constructor(private apiDataService: ApiDataService) { }
 
   ngOnInit() {
-
-    this.apiDataService.getData(env.routes.services.getServiceCategories, false, 'get').subscribe(response => {
+   
+    this.apiDataService.getData(env.routes.services.getServiceCategories, false, 'get').subscribe((response) => {
       this.serviceCategories = response.data.map((serviceCategory: ServiceCategory) => new ServiceCategory(serviceCategory));
-    });
+    },(err) => {
+      console.error(err)});
   }
 
 }
