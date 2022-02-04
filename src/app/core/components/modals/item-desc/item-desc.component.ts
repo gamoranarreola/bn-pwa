@@ -67,7 +67,14 @@ export class ItemDescComponent implements OnInit {
     this.nomPersonas++;
     this.requestForm.patchValue({ quantity: this.nomPersonas });
   }
+  getBkImg(img) {    
+    console.log(img);
+    if (img === '3-4-ALT-PN.jpg' || img === '3-3-PN-ELB.jpg' ||  img === '4-12-PB-MQ-PN-XV.jpg' || '4-12-PB-MQ-PN-XV.jpg' || '5-16-MQ-PN-NV.jpg' || '5-14-PRB-MQ-NV.jpg') {
+      return 'noimg.png';
 
+    }
+return img;
+  }
   /**
    *
    * @returns

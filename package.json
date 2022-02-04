@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:local": "ionic serve --ssl --proxy-config ./src/proxy.conf.json",
-    "build": "ng build --prod --proxy-config ./src/proxy.conf.json",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

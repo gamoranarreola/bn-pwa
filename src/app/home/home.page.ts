@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ItemDescComponent } from '../core/components/modals/item-desc/item-desc.component';
 import { ModalController } from '@ionic/angular';
 import { IonRouterOutlet } from '@ionic/angular';
@@ -14,13 +14,19 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  @ViewChild('selectList') selectList: ElementRef;
+  @ViewChildren("services") services: QueryList<ElementRef>
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
  
-  serviceCategories: ServiceCategory[] = [];
+  serviceCategories: ServiceCategory[] = [
+  {id: 3, name: "Maquillaje y Peinado - Social", panel: false, services: [] },
+  {id: 4, name: "XV Años", panel: false, services: [] },
+  {id: 5, name: "Novias y Acompañantes", panel: false, services: [] }
+  ];
+  servbtnPane = true;
   enabledCategories = [3,4,5];
   enabledServices = [6,7,8,10,11,13,15,18,19];
   showBtn = false;
@@ -46,12 +52,35 @@ export class HomePage implements OnInit {
     });
     return await modal.present();
   }
- 
+  servicesPanel(service) {
+    
+    if (service.category === 5) {
+      
+      if (service.id === 16 || service.id === 13 || service.id === 14) {return true; }
+    
+      return false;
+    } 
+    return true;
+  }
+
+  showServices() {
+    this.services.forEach((item) => {
+    
+      if (item.nativeElement.classList.contains('serv_5')) {
+        item.nativeElement.style.display='block';
+        this.servbtnPane = false;
+        return;
+      } 
+    } );
+  }
+
+  
   ngOnInit() {
 
     this.apiDataService.getData(env.routes.services.getServiceCategories, false, 'get').subscribe(response => {
-      console.log(response);
+    
       this.serviceCategories = response.data.map((serviceCategory: ServiceCategory) => new ServiceCategory(serviceCategory));
+      
     },(err) => {      
       console.error(err)});
   }

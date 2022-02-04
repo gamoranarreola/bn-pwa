@@ -3,7 +3,7 @@ import { environment as defaultEnvironment } from './environment.default';
 
 
 export const environment = {
-  apiHost: 'http://localhost:8000/',
+  apiHost: 'https://api.beautynow.app/',//'https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com/',//'http://localhost:8000/',
   oauth2: {
     facebook: {
       client_id: 'WgSSZWqaHOFQa7eLThCdLvCbQPYNXaRrOhwcsQNx',
@@ -12,7 +12,7 @@ export const environment = {
     },
   },
   conekta: {
-    publicKey: 'key_GzeFFsxwd6bgEnrqxZdRDsg'
+    publicKey: 'key_qrXw7xpD26Czohm81ErhrA'
   },
   ...defaultEnvironment
 };

@@ -70,10 +70,11 @@ export class PaymentComponent implements OnInit {
         this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
           customer: {
             name: this.ccForm.controls.name.value,
-            payment_sources: [{
+            email: this.ccForm.controls.email.value,
+            payment_sources: {
               type: 'card',
               token_id: token.id
-            }]
+            }
           },
           work_order: this.shoppingCartStore.get().workOrder,
           amount: this.shoppingCartStore.getShoppingCartTotal()
@@ -102,7 +103,7 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log('pk:'+env.conekta.publicKey);
     Conekta.setPublicKey(env.conekta.publicKey);
     Conekta.setLanguage('es');
 

@@ -111,12 +111,22 @@ export class LoginComponent implements OnInit {
         });
       }
     }, res => {
-      console.log('error');
-      console.log(res);
+      console.log(res.error);
+      let message = 'Lo sentimos, pero no pudimos procesar tu registro.';
+      if (res.error.email) {
+        res.error.email.forEach(element => {
+          message += '<br> Error: '+element+'<br>';
+        });
+      } 
+      if (res.error.password) {
+        res.error.password.forEach(element => {
+          message += '<br> Error: '+element+'<br>';
+        });
+      }
       this.toastController.create({
-        message: res.error.detail,
+        message: message,//res.error.detail,
         position: 'top',
-        duration: 5000
+        duration: 7000
       }).then(toast => {
         toast.present();
       });

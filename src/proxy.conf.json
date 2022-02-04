@@ -1,9 +1,6 @@
 {
-    "/api/*": {
+    "/api*": {
     "target": "https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com",
-    "pathRewrite": { "^/api": "" },
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
+    "secure": false
     }
 }

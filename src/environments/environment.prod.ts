@@ -3,7 +3,7 @@ import { environment as defaultEnvironment } from '../environments/environment.d
 
 export const environment = {
   production: true,
-  apiHost: 'https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com/', // 'https://api.beautynow.app/', //'https://bn-api-dot-beauty-now-313716.wl.r.appspot.com/', 'https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com/',// 
+  apiHost: 'https://api.beautynow.app/', // 'https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com/', // , //'https://bn-api-dot-beauty-now-313716.wl.r.appspot.com/', 'https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com/',// 
   oauth2: {
     facebook: {
       client_id: 'WgSSZWqaHOFQa7eLThCdLvCbQPYNXaRrOhwcsQNx',
@@ -12,7 +12,7 @@ export const environment = {
     },
   },
   conekta: {
-    publicKey: 'key_EwcpzidcqrtieiqEiyrsMnw'
+    publicKey: 'key_qrXw7xpD26Czohm81ErhrA'
   },
   ...defaultEnvironment,
 };
