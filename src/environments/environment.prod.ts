@@ -12,7 +12,7 @@ export const environment = {
     },
   },
   conekta: {
-    publicKey: 'key_qrXw7xpD26Czohm81ErhrA'
+    publicKey: 'key_GzeFFsxwd6bgEnrqxZdRDsg'
   },
   ...defaultEnvironment,
 };
