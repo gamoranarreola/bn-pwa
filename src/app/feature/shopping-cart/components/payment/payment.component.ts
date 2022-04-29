@@ -87,11 +87,11 @@ export class PaymentComponent implements OnInit {
               duration: 5000
             }).then(toast => {
               toast.present();
-              //this.router.navigate(['home']);
+              
             });
             return;
           }
-          if (res.status === 'payed') {
+          if (res.data.payment_status === 'paid') {
             this.toastController.create({
               message: '&iexcl;Gracias por su pago!',
               position: 'top',
@@ -99,6 +99,14 @@ export class PaymentComponent implements OnInit {
             }).then(toast => {
               toast.present();
               this.router.navigate(['home']);
+            });
+          } else {
+            this.toastController.create({
+              message: '&iexcl; Ocurrio un error con el pago.!',
+              position: 'top',
+              duration: 5000
+            }).then(toast => {
+              toast.present();            
             });
           }
           
@@ -120,9 +128,9 @@ export class PaymentComponent implements OnInit {
     console.log('pk:'+env.conekta.publicKey);
     Conekta.setPublicKey(env.conekta.publicKey);
     Conekta.setLanguage('es');
-
+    let userInfo = JSON.parse(localStorage.getItem('user_info'));
     this.ccForm = this.formBuilder.group({
-      name: new FormControl('', [
+      name: new FormControl(userInfo.data.first_name + ' ' + userInfo.data.last_name, [
         Validators.required,
         Validators.pattern(this.inputValidators.name.pattern)
       ]),
@@ -149,11 +157,11 @@ export class PaymentComponent implements OnInit {
       // state: new FormControl('', Validators.required),
       // zip: new FormControl('', Validators.required),
       // country: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      // phone: new FormControl('', [
-      //   Validators.required,
-      //   IonIntlTelInputValidators.phone
-      // ])
+      email: new FormControl(userInfo.data.email, Validators.required),
+      phone: new FormControl(userInfo.data.phone, [
+        Validators.required,
+        //IonIntlTelInputValidators.phone
+      ])
 
     });
   }

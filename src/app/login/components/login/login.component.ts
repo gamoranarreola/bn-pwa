@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
           JSON.stringify({ user_id: decoded['user_id'] })
         );
         this.getUserInfo();
-    //    this.router.navigate(['home']);
+ 
       } else {
 
         this.toastController.create({
@@ -88,8 +88,10 @@ export class LoginComponent implements OnInit {
   getUserInfo(): void {
     const user= JSON.parse(localStorage.getItem('__bn_api_current_user'));
     this.authService.me(user.user_id).subscribe((data) => {
+      localStorage.setItem('user_info', JSON.stringify(data));
       console.log('user data:::');
       console.log(data);
+          this.router.navigate(['home']);
     });
   }
   /**
