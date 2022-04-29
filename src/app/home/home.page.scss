@@ -28,7 +28,12 @@
     box-shadow: -1px 2px 4px -1px #333;
    padding:  10px;
   }
-
+  .loaderContainer {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  
 
 ion-list ion-itme button {
   background: #fff;

@@ -79,15 +79,29 @@ export class PaymentComponent implements OnInit {
           work_order: this.shoppingCartStore.get().workOrder,
           amount: this.shoppingCartStore.getShoppingCartTotal()
         }).subscribe(res => {
-
-          this.toastController.create({
-            message: '&iexcl;Gracias por su pago!',
-            position: 'top',
-            duration: 5000
-          }).then(toast => {
-            toast.present();
-            this.router.navigate(['home']);
-          });
+          console.log(res);
+          if ('error' in res ) {
+            this.toastController.create({
+              message: '&iexcl; Ocurrio un error con el pago.!',
+              position: 'top',
+              duration: 5000
+            }).then(toast => {
+              toast.present();
+              //this.router.navigate(['home']);
+            });
+            return;
+          }
+          if (res.status === 'payed') {
+            this.toastController.create({
+              message: '&iexcl;Gracias por su pago!',
+              position: 'top',
+              duration: 5000
+            }).then(toast => {
+              toast.present();
+              this.router.navigate(['home']);
+            });
+          }
+          
         });
       }, (error: any) => {
 

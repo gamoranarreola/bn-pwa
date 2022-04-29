@@ -1,4 +1,8 @@
 <ion-content [fullscreen]="true">
+<div *ngIf="loadinFlag" class="loaderContainer">  
+  <ion-spinner name="dots" style="margin-top: 50%;" color="tertiary"></ion-spinner>
+</div>
+<div  [ngStyle]="{display: loadinFlag ? 'none': 'block'}">
 
   <div class="panel" *ngFor="let category of serviceCategories">    
     <div *ngIf="enabledCategories.includes(category.id)" class="category" (click)="category.panel=!category.panel">            
@@ -23,6 +27,8 @@
             </ion-label>
           </ion-item>
         </ion-list>
+
+
       </div>
 
       <ion-button *ngIf="category.id == 5 && servbtnPane" expand="full" (click)="showServices()" >Mostrar todo</ion-button>
@@ -49,5 +55,6 @@
 <div style="height:50px;">  
   <!-- <button  expand="full" fill="outline" (click)="add_to_home($event)" *ngIf="showBtn" > Install</button> -->
   
+</div>
 </div>
 </ion-content>

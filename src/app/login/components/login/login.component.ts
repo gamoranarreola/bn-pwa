@@ -54,14 +54,15 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe((data) => {
       if (data && data.status === 200) {
         const decoded = jwt_decode(data.body.access);
-
+        
         localStorage.setItem('__bn_api_access', data.body.access);
         localStorage.setItem('__bn_api_refresh', data.body.refresh);
         localStorage.setItem(
           '__bn_api_current_user',
           JSON.stringify({ user_id: decoded['user_id'] })
         );
-        this.router.navigate(['home']);
+        this.getUserInfo();
+    //    this.router.navigate(['home']);
       } else {
 
         this.toastController.create({
@@ -84,6 +85,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  getUserInfo(): void {
+    const user= JSON.parse(localStorage.getItem('__bn_api_current_user'));
+    this.authService.me(user.user_id).subscribe((data) => {
+      console.log('user data:::');
+      console.log(data);
+    });
+  }
   /**
    *
    */

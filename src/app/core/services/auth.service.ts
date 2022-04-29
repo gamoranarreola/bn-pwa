@@ -1,21 +1,22 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment as env } from '../../../environments/environment';
-
+import { AuthHeaderService } from './auth-header.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  private headers: HttpHeaders;
   constructor(
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private authHeaderService: AuthHeaderService
   ) { }
 
   /**
@@ -84,4 +85,35 @@ export class AuthService {
   public isAuthenticated(): boolean {
     return (typeof localStorage.getItem('__bn_api_access') === 'string') ? true : false;
   }
+
+    /**
+   *
+   */
+     public me(id: string): Observable<any> {
+      const headers = {};
+
+      headers['Content-Type'] = 'application/json';
+    
+        headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('__bn_api_access')}`;
+      
+  
+      this.headers = new HttpHeaders(headers);
+      return  this.httpClient.get<any[]>(`${env.apiHost}${env.routes.auth.me}?id=${id}`, {
+        observe: 'response',
+        headers: this.headers
+      }).pipe(
+        map((res: HttpResponse<any>) => res.body)
+      );
+      
+      
+      // this.httpClient
+      // .get<any>(`${env.apiHost}${env.routes.auth.me}`, data, {
+      //   observe: 'response',
+      //   headers: this.headers
+      // })
+      // .pipe(
+      //   map((res: HttpResponse<any>) => res)
+      // );
+    
+    }
 }
