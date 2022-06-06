@@ -1,24 +1,24 @@
 <ion-content [fullscreen]="true">
-<div *ngIf="loadinFlag" class="loaderContainer">  
+<div *ngIf="loadinFlag" class="loaderContainer">
   <ion-spinner name="dots" style="margin-top: 50%;" color="tertiary"></ion-spinner>
 </div>
 <div  [ngStyle]="{display: loadinFlag ? 'none': 'block'}">
 
-  <div class="panel" *ngFor="let category of serviceCategories">    
-    <div *ngIf="enabledCategories.includes(category.id)" class="category" (click)="category.panel=!category.panel">            
-    <ion-img src="../../../assets/images/categories/{{ category.id }}-CAT.jpg"></ion-img> 
+  <div class="panel" *ngFor="let category of serviceCategories">
+    <div class="category" (click)="category.panel=!category.panel">
+    <ion-img src="../../../assets/images/categories/{{ category.id }}-CAT.jpg"></ion-img>
       <p class="panelTitle"> {{category.name}}  </p>
     </div>
     <div [ngStyle]="{display: !category.panel ? 'none': 'block'}" >
 
-      <small style="margin-left: 70px; color: red;">*precios aplican solo en Tijuana</small> 
+      <small style="margin-left: 70px; color: red;">*precios aplican solo en Tijuana</small>
 
       <div *ngFor="let service of category.services" [ngStyle]="{display: !servicesPanel(service) ? 'none': 'block'}" class="serv_{{category.id}}" #services>
 
         <ion-list  >
           <!-- *ngIf="enabledServices.includes(service.id)" -->
           <ion-item button (click)="presentModal(service, '../../../../assets/images/categories/services/' + category.id + '-' + service.id + '-' + service.service_id+'.jpg')">
-            <ion-avatar slot="start">              
+            <ion-avatar slot="start">
               <img src="../../../assets/images/categories/services/{{ category.id }}-{{ service.id }}-{{ service.service_id }}.jpg">
             </ion-avatar>
             <ion-label>
@@ -50,11 +50,11 @@
   </div>
 </a>
 
-<!-- <ion-button shape="full" fill="outline" (click)="add_to_home($event)">Install</ion-button>  
+<!-- <ion-button shape="full" fill="outline" (click)="add_to_home($event)">Install</ion-button>
   <ion-button shape="full" fill="outline" (click)="ionViewWillEnter()">check</ion-button> -->
-<div style="height:50px;">  
+<div style="height:50px;">
   <!-- <button  expand="full" fill="outline" (click)="add_to_home($event)" *ngIf="showBtn" > Install</button> -->
-  
+
 </div>
 </div>
 </ion-content>

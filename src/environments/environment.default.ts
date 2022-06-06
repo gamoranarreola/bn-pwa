@@ -1,5 +1,4 @@
 export const environment = {
-  production: true,
   mainCalendarId: 'andromeda@beautynow.mx',
   availability: {
     from: '06:00',

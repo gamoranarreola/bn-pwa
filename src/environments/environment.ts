@@ -3,7 +3,8 @@ import { environment as defaultEnvironment } from './environment.default';
 
 
 export const environment = {
-  apiHost: 'https://api.beautynow.app/',//'https://bn-api-test-dot-beauty-now-313716.wl.r.appspot.com/',//'http://localhost:8000/',
+  production: true,
+  apiHost: 'http://localhost:8000/',
   oauth2: {
     facebook: {
       client_id: 'WgSSZWqaHOFQa7eLThCdLvCbQPYNXaRrOhwcsQNx',
