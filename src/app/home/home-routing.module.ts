@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DataDeleteComponent } from './components/data-delete/data-delete.component';
+import { HomePageComponent } from './components/home-page/home.page.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
-import { HomePage } from './home.page';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    component: HomePageComponent,
   },
   {
     path: 'privacy',

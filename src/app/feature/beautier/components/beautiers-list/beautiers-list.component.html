@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Siempre a tus Ordenes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let beautier of beautiers">
+    <ion-list>
+      <ion-item button (click)="presentModal(beautier)">
+        <ion-avatar slot="start">
+          <img src="{{beautier.photo_url}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{beautier.title}}<br> <small>{{ beautier.auth_user.first_name }} {{ beautier.auth_user.last_name }}</small></h2>
+          <p>{{beautier.bio}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div style="height:50px;"></div>
+</ion-content>

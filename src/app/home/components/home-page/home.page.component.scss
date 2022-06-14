@@ -1,4 +1,4 @@
-@import "../../theme/view-container.scss";
+@import "../../../../theme/view-container.scss";
 
 :host {
   @extend .view-container;
@@ -21,7 +21,7 @@
     text-transform: initial;
     text-align: center;
     font-weight: bold;
-    color: #333;   
+    color: #333;
     background: #fff;
     margin: 0px;
     // text-shadow: 3px 0px 4px #607d8b;
@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
 
 ion-list ion-itme button {
   background: #fff;

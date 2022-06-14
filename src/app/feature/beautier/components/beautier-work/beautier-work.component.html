@@ -1,0 +1,5 @@
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let url of img_urls">
+    <img src="{{ url }}" tappable (click)="openPreview(url)" />
+  </ion-slide>
+</ion-slides>

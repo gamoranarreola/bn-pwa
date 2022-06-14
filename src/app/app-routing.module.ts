@@ -16,7 +16,7 @@ const routes: Routes = [
     }
   },  {
     path: 'beautiers',
-    loadChildren: () => import('./feature/beautiers/beautiers.module').then( m => m.BeautiersPageModule),
+    loadChildren: () => import('./feature/beautier/beautier.module').then( m => m.BeautierModule),
     data: {
       breadcrumb: 'Inicio'
     }
@@ -71,7 +71,7 @@ const routes: Routes = [
   },
   {
     path: 'beautiers',
-    loadChildren: () => import('./feature/beautiers/beautiers.module').then( m => m.BeautiersPageModule)
+    loadChildren: () => import('./feature/beautier/beautier.module').then( m => m.BeautierModule)
   },
 ];
 

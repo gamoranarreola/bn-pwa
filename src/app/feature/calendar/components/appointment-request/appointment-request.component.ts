@@ -9,7 +9,7 @@ import * as moment from 'moment';
 import { environment as env } from '../../../../../environments/environment';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Beautier } from 'src/app/feature/beautier/models/beautier.class';
+import { Beautier } from 'src/app/feature/beautier/models/beautier.interface';
 import { Service } from 'src/app/feature/service/models/service.class';
 import { Calendar } from '../../models/calendar.class';
 import { UserService } from 'src/app/core/services/user.service';

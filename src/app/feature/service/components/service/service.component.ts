@@ -9,7 +9,7 @@ import { environment as env } from '../../../../../environments/environment';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
 import { ServiceSpecialty } from '../../models/service-specialty';
 import { Service } from '../../models/service.class';
-import { Beautier } from 'src/app/feature/beautier/models/beautier.class';
+import { Beautier } from 'src/app/feature/beautier/models/beautier.interface';
 
 @Component({
   selector: 'app-service',
@@ -53,7 +53,7 @@ export class ServiceComponent implements OnInit {
         });
 
         this.qualifiedBeautiers$.subscribe((res2: any) => {
-          this.qualifiedBeautiers = res2.data.map((beautier: Beautier) => new Beautier(beautier));
+          this.qualifiedBeautiers = res2.data as Beautier[];
         });
       });
     });
