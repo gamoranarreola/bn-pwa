@@ -33,7 +33,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     speed: 400,
   };
 
-  loadinFlag = true;
+  loadingFlag = true;
   serviceCategories: ServiceCategory[] = [];
   servbtnPane = true;
   showBtn = false;
@@ -93,7 +93,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
               (serviceCategory: ServiceCategory) =>
                 new ServiceCategory(serviceCategory)
             );
-            this.loadinFlag = false;
+            this.loadingFlag = false;
           },
           (err) => {
             console.error(err);

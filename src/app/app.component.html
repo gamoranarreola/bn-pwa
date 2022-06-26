@@ -5,22 +5,22 @@
   <!-- <app-main-menu></app-main-menu> -->
   <ion-router-outlet id="main"></ion-router-outlet>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="music" routerLink="/home">
+    <ion-tab-button tab="home" routerLink="/home">
       <ion-label>Agenda Tu Cita</ion-label>
       <ion-icon name="calendar"></ion-icon>
     </ion-tab-button>
-    <ion-tab-button tab="movies" routerLink="/weddings">
+    <ion-tab-button tab="weddings" routerLink="/weddings">
       <ion-label>Bodas</ion-label>
 
-      <ion-icon class="wedding" ></ion-icon> 
-  
+      <ion-icon class="wedding" ></ion-icon>
+
     </ion-tab-button>
-    <ion-tab-button tab="games" routerLink="/shopping-cart">
+    <ion-tab-button tab="cart" routerLink="/shopping-cart">
       <ion-label>Carrito</ion-label>
       <ion-icon name="cart"></ion-icon>
       <ion-badge *ngIf="noItems > 0" color="primary" style="position: absolute;right: 14px; top: 3px;left: 54px;">{{noItems}}</ion-badge>
     </ion-tab-button>
-    <ion-tab-button tab="games"  (click)="toggleMenu()">
+    <ion-tab-button tab="menu"  (click)="toggleMenu()">
       <ion-label>Menu</ion-label>
       <ion-icon name="menu-outline"></ion-icon>
     </ion-tab-button>

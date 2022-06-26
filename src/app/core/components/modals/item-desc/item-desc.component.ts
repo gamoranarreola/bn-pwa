@@ -8,7 +8,12 @@ import { ShoppingCart } from 'src/app/feature/shopping-cart/models/shopping-cart
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
 import { ToastController } from '@ionic/angular';
 
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -16,40 +21,36 @@ import * as moment from 'moment';
   templateUrl: './item-desc.component.html',
   styleUrls: ['./item-desc.component.scss'],
 })
-
 export class ItemDescComponent implements OnInit {
-
   @Input() service: any;
 
   requestForm: FormGroup;
   inputValidators: any;
   nomPersonas = 1;
   carritoValidation = true;
-  backgroundImg;
- 
+  backgroundImg: any;
+
   private shoppingCart!: ShoppingCart;
 
   constructor(
     private modalController: ModalController,
     private shoppingCartStore: ShoppingCartStore,
     private toastController: ToastController,
-    private formBuilder: FormBuilder) {
-
+    private formBuilder: FormBuilder
+  ) {
     this.inputValidators = env.inputValidators;
   }
 
   ngOnInit() {
     this.createForm();
 
-    this.requestForm.valueChanges.subscribe(value => {
-
+    this.requestForm.valueChanges.subscribe((value) => {
       if (value.appointmentDate !== '' && value.appointmentTime !== '') {
         this.carritoValidation = false;
       } else {
         this.carritoValidation = true;
       }
     });
-
   }
 
   /**
@@ -67,23 +68,17 @@ export class ItemDescComponent implements OnInit {
     this.nomPersonas++;
     this.requestForm.patchValue({ quantity: this.nomPersonas });
   }
-  getBkImg(img) {    
-    console.log(img);
-    if (img === '3-4-ALT-PN.jpg' || img === '3-3-PN-ELB.jpg' ||  img === '4-12-PB-MQ-PN-XV.jpg' || '4-12-PB-MQ-PN-XV.jpg' || '5-16-MQ-PN-NV.jpg' || '5-14-PRB-MQ-NV.jpg') {
-      return 'noimg.png';
 
-    }
-return img;
-  }
   /**
    *
    * @returns
    */
   removePerson() {
-
     const result = this.nomPersonas - 1;
 
-    if (result < 1) { return; }
+    if (result < 1) {
+      return;
+    }
     this.nomPersonas = result;
     this.requestForm.patchValue({ quantity: this.nomPersonas });
   }
@@ -92,19 +87,21 @@ return img;
    *
    */
   saveToShoppingCart() {
-
     const today = moment();
 
     const lineItem = new LineItem({
       service: this.service,
-      service_date: moment(this.requestForm.controls.appointmentDate.value).format('YYYY-MM-DD'),
-      service_time: moment(this.requestForm.controls.appointmentTime.value).format('h:mm A'),
+      service_date: moment(
+        this.requestForm.controls.appointmentDate.value
+      ).format('YYYY-MM-DD'),
+      service_time: moment(
+        this.requestForm.controls.appointmentTime.value
+      ).format('h:mm A'),
       quantity: this.requestForm.controls.quantity.value,
-      price: parseInt(this.service.public_price, 10)
+      price: parseInt(this.service.public_price, 10),
     });
 
     if (!this.shoppingCart || !this.shoppingCart.workOrder) {
-
       this.shoppingCart = new ShoppingCart({
         workOrder: new WorkOrder({
           request_date: today.format('YYYY-MM-DD'),
@@ -112,30 +109,31 @@ return img;
           notes: this.requestForm.controls.notes.value || 'N/A',
 
           status: 'initial_request',
-          line_items: [lineItem]
-        })
+          line_items: [lineItem],
+        }),
       });
     } else {
-
       let matchingLineItemIndex: number;
 
-      this.shoppingCart.workOrder.line_items.forEach((li: LineItem, index: number) => {
-
-        if (
-          li.service.id === lineItem.service.id &&
-          li.service_date === lineItem.service_date &&
-          li.service_time === lineItem.service_time
-        ) {
-          matchingLineItemIndex = index;
+      this.shoppingCart.workOrder.line_items.forEach(
+        (li: LineItem, index: number) => {
+          if (
+            li.service.id === lineItem.service.id &&
+            li.service_date === lineItem.service_date &&
+            li.service_time === lineItem.service_time
+          ) {
+            matchingLineItemIndex = index;
+          }
         }
-      });
+      );
 
       if (matchingLineItemIndex >= 0) {
-        this.shoppingCart.workOrder.line_items[matchingLineItemIndex].quantity += lineItem.quantity;
+        this.shoppingCart.workOrder.line_items[
+          matchingLineItemIndex
+        ].quantity += lineItem.quantity;
       } else {
         this.shoppingCart.workOrder.line_items.push(lineItem);
       }
-
     }
 
     this.shoppingCartStore.updateShoppingCart(this.shoppingCart);
@@ -146,39 +144,17 @@ return img;
    *
    * @returns
    */
-  createTimeDropdownOptions(): any[] {
-
-    const hours = moment.duration(moment(env.availability.to, 'HH:mm').diff(moment(env.availability.from, 'HH:mm'))).asHours();
-    const slots = [];
-    const slot = moment(env.availability.from, 'HH:mm');
-
-    for (let i = 0; i <= (hours * 4); i++) {
-
-      if (i !== 0) {
-        slot.add(15, 'minutes');
-      }
-
-      slots.push(slot.format('h:mm A'));
-    }
-
-    return slots;
-  }
-
-  /**
-   *
-   * @returns
-   */
   getMinDate(): string {
     return moment().format('YYYY-MM-DD');
   }
-  
+
   notifyServiceAddedToCart() {
-      const toast: any = this.toastController.create({
-        message: `<p>&iexcl;Gracias! Tu servicio ha sido agregado a tu carrito.</p>`,
-        position: 'top',
-        duration: 3000,
-        color: 'primary',
-      });
+    const toast: any = this.toastController.create({
+      message: `<p>&iexcl;Gracias! Tu servicio ha sido agregado a tu carrito.</p>`,
+      position: 'top',
+      duration: 3000,
+      color: 'primary',
+    });
 
     this.modalController.dismiss();
     toast.onDidDismiss = () => {
@@ -193,26 +169,20 @@ return img;
   /**
    *
    */
-   private createForm(): void {
-
+  private createForm(): void {
     this.requestForm = this.formBuilder.group({
       appointmentDate: new FormControl('', [
-        Validators.compose([
-          Validators.required
-        ])
+        Validators.compose([Validators.required]),
       ]),
       appointmentTime: new FormControl('', [
-        Validators.compose([
-          Validators.required
-        ])
+        Validators.compose([Validators.required]),
       ]),
       quantity: new FormControl(1, Validators.required),
       notes: new FormControl('', [
         Validators.compose([
           Validators.pattern(this.inputValidators.textInput.pattern),
-        ])
-      ])
+        ]),
+      ]),
     });
   }
-
 }

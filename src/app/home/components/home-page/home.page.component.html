@@ -1,60 +1,58 @@
 <ion-content [fullscreen]="true">
-<div *ngIf="loadinFlag" class="loaderContainer">
-  <ion-spinner name="dots" style="margin-top: 50%;" color="tertiary"></ion-spinner>
-</div>
-<div  [ngStyle]="{display: loadinFlag ? 'none': 'block'}">
+  <div *ngIf="loadingFlag" class="loaderContainer">
+    <ion-spinner name="dots" style="margin-top: 50%;" color="tertiary"></ion-spinner>
+  </div>
+  <div [ngStyle]="{display: loadingFlag ? 'none': 'block'}">
 
-  <div class="panel" *ngFor="let category of serviceCategories">
-    <div class="category" (click)="category.panel=!category.panel">
-    <ion-img src="../../../assets/images/categories/{{ category.id }}-CAT.jpg"></ion-img>
-      <p class="panelTitle"> {{category.name}}  </p>
-    </div>
-    <div [ngStyle]="{display: !category.panel ? 'none': 'block'}" >
+    <div class="panel" *ngFor="let category of serviceCategories">
+      <div class="category" (click)="category.panel=!category.panel">
+        <ion-img src="../../../assets/images/categories/{{ category.id }}-CAT.jpg"></ion-img>
+        <p class="panelTitle"> {{category.name}} </p>
+      </div>
+      <div [ngStyle]="{display: !category.panel ? 'none': 'block'}">
 
-      <small style="margin-left: 70px; color: red;">*precios aplican solo en Tijuana</small>
+        <small style="margin-left: 70px; color: red;">*precios aplican sólo en Tijuana</small>
 
-      <div *ngFor="let service of category.services" [ngStyle]="{display: !servicesPanel(service) ? 'none': 'block'}" class="serv_{{category.id}}" #services>
+        <div *ngFor="let service of category.services" [ngStyle]="{display: !servicesPanel(service) ? 'none': 'block'}"
+          class="serv_{{category.id}}" #services>
 
-        <ion-list  >
-          <!-- *ngIf="enabledServices.includes(service.id)" -->
-          <ion-item button (click)="presentModal(service, '../../../../assets/images/categories/services/' + category.id + '-' + service.id + '-' + service.service_id+'.jpg')">
-            <ion-avatar slot="start">
-              <img src="../../../assets/images/categories/services/{{ category.id }}-{{ service.id }}-{{ service.service_id }}.jpg">
-            </ion-avatar>
-            <ion-label>
-              <h2> {{service.name}}</h2>
-              <h1>${{service.public_price}}</h1>
-            </ion-label>
-          </ion-item>
-        </ion-list>
+          <ion-list>
+            <ion-item button
+              (click)="presentModal(service, '../../../../assets/images/categories/services/' + category.id + '-' + service.id + '-' + service.service_id+'.jpg')">
+              <ion-avatar slot="start">
+                <img
+                  src="../../../assets/images/categories/services/{{ category.id }}-{{ service.id }}-{{ service.service_id }}.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h2> {{service.name}}</h2>
+                <h1>${{service.public_price}}</h1>
+              </ion-label>
+            </ion-item>
+          </ion-list>
 
+
+        </div>
+
+        <ion-button *ngIf="category.id == 5 && servbtnPane" expand="full" (click)="showServices()">Mostrar todo
+        </ion-button>
 
       </div>
-
-      <ion-button *ngIf="category.id == 5 && servbtnPane" expand="full" (click)="showServices()" >Mostrar todo</ion-button>
-
     </div>
+
+    <a class="panel" routerLink="/gallery">
+      <div class="category">
+        <ion-img src="../../../assets/images/gallery.jpeg"></ion-img>
+        <p class="panelTitle"> Galeria </p>
+      </div>
+    </a>
+
+    <a class="panel" routerLink="/beautiers">
+      <div class="category">
+        <ion-img src="../../../assets/images/beautiers.jpeg"></ion-img>
+        <p class="panelTitle"> Beautiers </p>
+      </div>
+    </a>
+
+    <div style="height:50px;"></div>
   </div>
-
-  <a class="panel" routerLink="/gallery">
-  <div class="category">
-    <ion-img src="../../../assets/images/gallery.jpeg"></ion-img>
-    <p class="panelTitle"> Galeria </p>
-  </div>
-</a>
-
-<a class="panel" routerLink="/beautiers">
-  <div class="category">
-    <ion-img src="../../../assets/images/beautiers.jpeg"></ion-img>
-    <p class="panelTitle"> Beautiers </p>
-  </div>
-</a>
-
-<!-- <ion-button shape="full" fill="outline" (click)="add_to_home($event)">Install</ion-button>
-  <ion-button shape="full" fill="outline" (click)="ionViewWillEnter()">check</ion-button> -->
-<div style="height:50px;">
-  <!-- <button  expand="full" fill="outline" (click)="add_to_home($event)" *ngIf="showBtn" > Install</button> -->
-
-</div>
-</div>
 </ion-content>
