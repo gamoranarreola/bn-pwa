@@ -11,7 +11,7 @@ import { BeautierModalComponent } from '../beautier-modal/beautier-modal.compone
 
 
 @Component({
-  selector: 'app-beautiers',
+  selector: 'app-beautiers-list',
   templateUrl: './beautiers-list.component.html',
   styleUrls: ['./beautiers-list.component.scss'],
 })

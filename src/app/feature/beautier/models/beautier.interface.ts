@@ -9,4 +9,5 @@ export interface Beautier {
     bio: string;
     photo_url: string;
     title: string;
+    preferred_name: string;
 }

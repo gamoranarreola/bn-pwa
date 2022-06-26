@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { BeautierRoutingModule } from './beautier-routing.module';
-import { BeautiersListComponent } from './components/beautiers-list/beautiers-list.component';
 import { BeautierModalComponent } from './components/beautier-modal/beautier-modal.component';
 import { BeautierWorkComponent } from './components/beautier-work/beautier-work.component';
+import { BeautiersListComponent } from './components/beautiers-list/beautiers-list.component';
 
 
 @NgModule({

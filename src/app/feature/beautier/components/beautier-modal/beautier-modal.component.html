@@ -6,7 +6,7 @@
   </ion-fab>
   <div style="padding: 20px; text-align: center">
     <img src="{{ beautier.photo_url }}" style="cursor: pointer;" />
-    <h1>{{ beautier.auth_user.first_name }}&nbsp;{{ beautier.auth_user.last_name }}</h1>
+    <h1>{{ beautier.preferred_name }}</h1>
     <h3>{{ beautier.title }}</h3>
     <p style="text-align: justify;">{{ beautier.bio }}</p>
     <app-beautier-work [beautier]="beautier"></app-beautier-work>
