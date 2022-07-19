@@ -53,7 +53,22 @@ export class BeautiersListComponent implements OnInit, OnDestroy {
       this.apiDataService.getData(`${env.routes.beautiers.getBeautiers}`, false, 'get').subscribe(
         (res) => {
           if (res.status === 200) {
-            this.beautiers = res.data as Beautier[];
+           // this.beautiers = res.data as Beautier[];
+           const importOrder = [ 1,9,7,17,18,14,10,8,15,12,13,11];
+           const temp = res.data as Beautier[];
+
+           const sortByObject = importOrder
+           .reduce((obj, item, index) => {
+           return {
+           ...obj,
+           [item]: index,
+           };
+           }, {});
+
+           const customSort = temp.sort((a, b) => sortByObject[a.auth_user.id] - sortByObject[b.auth_user.id]);
+           // beautyers correct order: by id => )
+           //this.beautiers = res.data as Beautier[];
+           this.beautiers = customSort as Beautier[];
           }
         }
       )

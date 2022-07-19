@@ -5,7 +5,11 @@
       <ion-card-title>DETALLES DE PAGO</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-grid>
+      <div *ngIf="!loadingFlag" class="loaderContainer">
+        <ion-spinner name="crescent" style="margin-top: 50%;" color="tertiary"></ion-spinner>
+      </div>
+
+      <ion-grid  *ngIf="loadingFlag">
         <ion-row class="ion-align-items-center">
           <ion-col size="4">
             <img src="../../../../../assets/images/shopping-cart/visa.svg" />
@@ -18,7 +22,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <form [formGroup]="ccForm">
+      <form [formGroup]="ccForm" *ngIf="loadingFlag">
         <ion-grid>
           <ion-row>
             <ion-col size="12">
@@ -156,7 +160,8 @@
       <ion-button      
         expand="block"
         (click)="submitPayment()"
-       >Emitir Pago</ion-button>       
+        *ngIf="loadingFlag">Emitir Pago</ion-button>       
+        <div *ngIf="!loadingFlag"><strong>Estamos procesando su pago. </strong></div>
     </ion-card-content>
   </ion-card>
 </ion-content>

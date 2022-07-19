@@ -1,7 +1,9 @@
 <ion-content [fullscreen]="true">
+  
   <div *ngIf="loadingFlag" class="loaderContainer">
-    <ion-spinner name="dots" style="margin-top: 50%;" color="tertiary"></ion-spinner>
+    <ion-spinner name="crescent" style="margin-top: 50%;" color="tertiary"></ion-spinner>
   </div>
+
   <div [ngStyle]="{display: loadingFlag ? 'none': 'block'}">
 
     <div class="panel" *ngFor="let category of serviceCategories">
@@ -41,14 +43,14 @@
 
     <a class="panel" routerLink="/gallery">
       <div class="category">
-        <ion-img src="../../../assets/images/gallery.jpeg"></ion-img>
+        <ion-img src="https://storage.googleapis.com/bn_public/img/gallery.png"></ion-img>
         <p class="panelTitle"> Galeria </p>
       </div>
     </a>
 
     <a class="panel" routerLink="/beautiers">
       <div class="category">
-        <ion-img src="../../../assets/images/beautiers.jpeg"></ion-img>
+        <ion-img src="https://storage.googleapis.com/bn_public/img/beautiers.jpeg"></ion-img>
         <p class="panelTitle"> Beautiers </p>
       </div>
     </a>

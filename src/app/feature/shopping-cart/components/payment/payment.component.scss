@@ -2,4 +2,9 @@
 
 :host {
   @extend .view-container;
+
+ion-spinner {
+  width: 10em;
+  height: 10em;
+}
 }

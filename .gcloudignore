@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
  
 # compiled output
+/.git
 /dist
 /tmp
 /out-tsc
@@ -22,7 +23,6 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
- 
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -50,3 +50,5 @@ Thumbs.db
 workspace.code-workspace
 cloud_sql_proxy
 vendor/*
+/.git/objects/pack/pack-526d3daadb5a4fc3ff314fa4db0ad417acf39f33.pack
+.git

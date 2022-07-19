@@ -24,7 +24,7 @@ export class PaymentComponent implements OnInit {
 
   ccForm: FormGroup;
   inputValidators: any;
-
+  loadingFlag = true;
   constructor(
     private formBuilder: FormBuilder,
     private shoppingCartStore: ShoppingCartStore,
@@ -45,7 +45,7 @@ export class PaymentComponent implements OnInit {
   }
 
   async submitPayment() {
-
+    this.loadingFlag=false;
     let brand: string;
     const isValidNumber = Conekta.card.validateNumber(this.ccForm.controls.number.value);
     // eslint-disable-next-line max-len
@@ -66,7 +66,20 @@ export class PaymentComponent implements OnInit {
           cvc: this.ccForm.controls.cvc.value
         }
       }, (token: ConektaToken) => {
-
+        console.log('conekta response');
+        console.log(token);
+        console.log( {
+          customer: {
+            name: this.ccForm.controls.name.value,
+            email: this.ccForm.controls.email.value,
+            payment_sources: {
+              type: 'card',
+              token_id: token.id
+            }
+          },
+          work_order: this.shoppingCartStore.get().workOrder,
+        });
+        console.log('before:..');        
         this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
           customer: {
             name: this.ccForm.controls.name.value,
@@ -79,7 +92,10 @@ export class PaymentComponent implements OnInit {
           work_order: this.shoppingCartStore.get().workOrder,
           amount: this.shoppingCartStore.getShoppingCartTotal()
         }).subscribe(res => {
+          console.log('Api response payment');
           console.log(res);
+          this.loadingFlag = true;
+          
           if ('error' in res ) {
             this.toastController.create({
               message: '&iexcl; Ocurrio un error con el pago.!',
@@ -92,6 +108,7 @@ export class PaymentComponent implements OnInit {
             return;
           }
           if (res.data.payment_status === 'paid') {
+            
             this.toastController.create({
               message: '&iexcl;Gracias por su pago!',
               position: 'top',
@@ -101,6 +118,7 @@ export class PaymentComponent implements OnInit {
               this.router.navigate(['home']);
             });
           } else {
+            
             this.toastController.create({
               message: '&iexcl; Ocurrio un error con el pago.!',
               position: 'top',
@@ -111,8 +129,9 @@ export class PaymentComponent implements OnInit {
           }
           
         });
-      }, (error: any) => {
 
+      }, (error: any) => {
+        this.loadingFlag = true;
         this.toastController.create({
           message: `No hemos podido procesar su pago (error: ${error.message})`,
           position: 'top',
@@ -121,6 +140,8 @@ export class PaymentComponent implements OnInit {
           toast.present();
         });
       });
+    }else {
+      this.loadingFlag = true;
     }
   }
 
@@ -128,9 +149,10 @@ export class PaymentComponent implements OnInit {
     console.log('pk:'+env.conekta.publicKey);
     Conekta.setPublicKey(env.conekta.publicKey);
     Conekta.setLanguage('es');
-    let userInfo = JSON.parse(localStorage.getItem('user_info'));
+    //let userInfo = JSON.parse(localStorage.getItem('user_info'));
+    //userInfo.data.first_name + ' ' + userInfo.data.last_name
     this.ccForm = this.formBuilder.group({
-      name: new FormControl(userInfo.data.first_name + ' ' + userInfo.data.last_name, [
+      name: new FormControl('', [
         Validators.required,
         Validators.pattern(this.inputValidators.name.pattern)
       ]),
@@ -157,9 +179,11 @@ export class PaymentComponent implements OnInit {
       // state: new FormControl('', Validators.required),
       // zip: new FormControl('', Validators.required),
       // country: new FormControl('', Validators.required),
-      email: new FormControl(userInfo.data.email, Validators.required),
-      phone: new FormControl(userInfo.data.phone, [
-        Validators.required,
+      //userInfo.data.email
+      //userInfo.data.phone
+      email: new FormControl('', Validators.required),
+      phone: new FormControl('', [
+        Validators.required, 
         //IonIntlTelInputValidators.phone
       ])
 

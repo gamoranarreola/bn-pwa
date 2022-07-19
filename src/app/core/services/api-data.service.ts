@@ -43,9 +43,7 @@ export class ApiDataService {
 
     if (method === 'get') {
       
-      console.log(env.apiHost);
-      console.log(url);
-      console.log('44444444');
+    
       request = this.httpClient.get<any[]>(`${env.apiHost}${url}?format=json`, {
         observe: 'response',
         headers: this.headers
@@ -73,10 +71,11 @@ export class ApiDataService {
     const headers = {};
 
     headers['Content-Type'] = 'application/json';
-
-    if (auth) {
-      headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('__bn_api_access')}`;
-    }
+    console.log('send data:'+ url);
+    console.log(params)
+    // if (auth) {
+    //   headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('__bn_api_access')}`;
+    // }
 
     this.headers = new HttpHeaders(headers);
     return this.httpClient.post<any[]>(`${env.apiHost}${url}`, params, {

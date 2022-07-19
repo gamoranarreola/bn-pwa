@@ -48,7 +48,7 @@ export class BeautierWorkComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.subscriptions.add(
-      this.apiDataService.getData(`${env.routes.beautiers.getBeautiers}/${this.beautier.id}/work`, false, 'get').subscribe(
+      this.apiDataService.getData(`${env.routes.beautiers.getBeautiers}/${this.beautier.auth_user.id}/work`, false, 'get').subscribe(
         (res: any) => {
           this.img_urls = res.data as string[];
         }
