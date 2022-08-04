@@ -88,7 +88,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
       this.apiDataService
         .getData(env.routes.services.getServiceCategories, false, 'get')
         .subscribe(
-          (response) => {
+          (response) => {         
             this.serviceCategories = response.data.map(
               (serviceCategory: ServiceCategory) =>
                 new ServiceCategory(serviceCategory)

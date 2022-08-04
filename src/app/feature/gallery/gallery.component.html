@@ -6,22 +6,22 @@
 <ion-content>
   <ion-slides pager="true" [options]="slideOpts">   
     <ion-slide *ngFor="let img of images">
-      <img src="./../../../assets/images/gallery/g{{img}}.jpeg" tappable (click)="openPreview(img)"/>
+      <img src="{{img}}" tappable (click)="openPreview(img)"/>
       <!-- <h4 class="centered"  [innerHTML]="img"></h4> -->
     </ion-slide>
   </ion-slides>
 
-
+  <!-- ./../../../assets/images/gallery/g{{img}}.jpeg -->
 
   <ion-slides pager="true" [options]="slideOpts">   
     <ion-slide *ngFor="let img of images2">
-      <img src="./../../../assets/images/gallery/g{{img}}.jpeg" tappable (click)="openPreview(img)"/>
+      <img src="{{img}}" tappable (click)="openPreview(img)"/>
     </ion-slide>
   </ion-slides>
 
   <ion-slides pager="true" [options]="slideOpts">   
     <ion-slide *ngFor="let img of images3">
-      <img src="./../../../assets/images/gallery/g{{img}}.jpeg" tappable (click)="openPreview(img)"/>
+      <img src="{{img}}" tappable (click)="openPreview(img)"/>
     </ion-slide>
   </ion-slides>
   <div style="height:50px;"></div>
