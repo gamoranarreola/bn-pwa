@@ -5,7 +5,7 @@ import { ApiDataService } from 'src/app/core/services/api-data.service';
 
 import { environment as env } from 'src/environments/environment';
 import { ImageModalPage } from 'src/app/feature/gallery/image-modal/image-modal.page';
-import { Beautier } from '../../models/beautier.interface';
+import { Beautier } from 'src/app/core/models/beautier.interface';
 
 
 @Component({

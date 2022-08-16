@@ -12,7 +12,7 @@ export class AuthHeaderService {
    */
   public jwtOrBearer(): string {
 
-    const currentUser = JSON.parse(localStorage.getItem('__bn_api_current_user'));
+    const currentUser = JSON.parse(localStorage.getItem('_bn_api_current_user'));
 
     if (currentUser.hasOwnProperty('provider') && currentUser.provider === 'FACEBOOK') {
       return 'Bearer';

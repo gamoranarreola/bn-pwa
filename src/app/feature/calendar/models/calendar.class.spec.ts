@@ -1,4 +1,4 @@
-import { Calendar } from './calendar.class';
+import { Calendar } from '../../../core/models/calendar.class';
 
 describe('Calendar', () => {
   it('should create an instance', () => {

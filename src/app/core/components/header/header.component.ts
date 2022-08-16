@@ -1,42 +1,71 @@
-import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { ShoppingCartStoreState } from 'src/app/core/state/shopping-cart/models/shopping-cart-store-state';
-import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
-import { ShoppingCart } from 'src/app/feature/shopping-cart/models/shopping-cart.class';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+
+import { Region } from '../../models/region.interface';
+import { RegionService } from '../../services/region.service';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  public shoppingCart?: ShoppingCart;
+  regions: Region[];
+
+  private readonly subscriptions = new Subscription();
 
   constructor(
-    private shoppingCartStore: ShoppingCartStore,
-    private toastController: ToastController,
-    public authService: AuthService
+    public actionSheetController: ActionSheetController,
+    private regionService: RegionService
   ) { }
 
-  getShoppingCartLineItemCount(): number {
+  ngOnInit(): void {
 
-    if (!this.shoppingCart || !this.shoppingCart.workOrder) {
-      return 0;
-    } else {
-      return this.shoppingCart.workOrder.line_items.length;
-    }
+    this.subscriptions.add(
+      this.regionService.getRegions().subscribe({
+        next: regions => {
+          this.regions = regions;
+        }
+      })
+    );
+
+    this.subscriptions.add(
+      this.regionService.getCurrentRegion().subscribe({
+        next: currentRegion => {
+          if (!currentRegion) {
+            this.presentRegionSelection();
+          }
+        }
+      })
+    );
   }
 
-  ngOnInit() {
+  async presentRegionSelection() {
 
-    this.shoppingCartStore.state$.subscribe((data: ShoppingCartStoreState) => {
+    const buttons = [];
 
-      if (data && data.shoppingCart) {
-        this.shoppingCart = data.shoppingCart;
-      }
+    this.regions.forEach((r: Region) => {
+      buttons.push({
+        text: r.display_name,
+        handler: () => {
+          this.regionService.setCurrentRegion(`${r.code}-${r.state_province_code}-${r.country_code}`);
+        }
+      });
     });
+
+    const modal = await this.actionSheetController.create({
+      header: 'Selecciona tu Región',
+      buttons
+    });
+
+    return await modal.present();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }

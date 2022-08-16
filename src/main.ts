@@ -6,7 +6,7 @@ import localeEs from '@angular/common/locales/es';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-registerLocaleData(localeEs);
+registerLocaleData(localeEs, 'es-MX');
 
 if (environment.production) {
   enableProdMode();

@@ -6,8 +6,8 @@ import { IonRouterOutlet } from '@ionic/angular';
 
 import { environment as env } from 'src/environments/environment';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
-import { Beautier } from '../../models/beautier.interface';
 import { BeautierModalComponent } from '../beautier-modal/beautier-modal.component';
+import { Beautier } from 'src/app/core/models/beautier.interface';
 
 
 @Component({
@@ -16,7 +16,6 @@ import { BeautierModalComponent } from '../beautier-modal/beautier-modal.compone
   styleUrls: ['./beautiers-list.component.scss'],
 })
 export class BeautiersListComponent implements OnInit, OnDestroy {
-
   beautiers!: Beautier[];
 
   private readonly subscriptions = new Subscription();
@@ -33,12 +32,11 @@ export class BeautiersListComponent implements OnInit, OnDestroy {
    * @returns
    */
   async presentModal(data: any) {
-
     const modal = await this.modalController.create({
       component: BeautierModalComponent,
       componentProps: { beautier: data },
       cssClass: 'my-custom-class',
-      swipeToClose: true,
+      canDismiss: true,
       mode: 'ios',
       backdropDismiss: true,
       presentingElement: this.routerOutlet.nativeEl,
@@ -48,30 +46,16 @@ export class BeautiersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.subscriptions.add(
-      this.apiDataService.getData(`${env.routes.beautiers.getBeautiers}`, false, 'get').subscribe(
-        (res) => {
-          if (res.status === 200) {
-           // this.beautiers = res.data as Beautier[];
-           const importOrder = [ 1,9,7,17,18,14,10,8,15,12,13,11];
-           const temp = res.data as Beautier[];
-
-           const sortByObject = importOrder
-           .reduce((obj, item, index) => {
-           return {
-           ...obj,
-           [item]: index,
-           };
-           }, {});
-
-           const customSort = temp.sort((a, b) => sortByObject[a.auth_user.id] - sortByObject[b.auth_user.id]);
-           // beautyers correct order: by id => )
-           //this.beautiers = res.data as Beautier[];
-           this.beautiers = customSort as Beautier[];
+      this.apiDataService
+        .getData(`${env.routes.beautiers.getBeautiers}`, false, 'get')
+        .subscribe({
+          next: res => {
+            if (res.status === 200) {
+              this.beautiers = res.data as Beautier[];
           }
         }
-      )
+      })
     );
   }
 

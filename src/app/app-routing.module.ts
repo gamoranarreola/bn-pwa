@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
+
 
 const routes: Routes = [
   {
@@ -22,21 +22,10 @@ const routes: Routes = [
     }
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  },
-  {
     path: 'weddings',
     loadChildren: () => import('./feature/weddings/weddings.module').then(m => m.WeddingsModule),
     data: {
       breadcrumb: 'Bodas'
-    }
-  },
-  {
-    path: 'service-categories',
-    loadChildren: () => import('./feature/service/service.module').then(m => m.ServiceModule),
-    data: {
-      breadcrumb: 'Servicios'
     }
   },
   {
@@ -47,17 +36,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'user-profile',
-    loadChildren: () => import ('./feature/user-profile/user-profile.module').then(m => m.UserProfileModule),
-    canActivate: [AuthGuard],
-    data: {
-      breadcrumb: 'Mi Perfil'
-    }
-  },
-  {
     path: 'gallery',
     loadChildren: () => import ('./feature/gallery/gallery.module').then(m => m.GalleryModule),
-   // canActivate: [AuthGuard],
     data: {
       breadcrumb: 'Galeria de fotos'
     }

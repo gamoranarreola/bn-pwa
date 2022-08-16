@@ -1,9 +1,0 @@
-@import '../../../../theme/view-container.scss';
-
-:host {
-  @extend .view-container;
-  .danger {
-    color: rgb(255, 73, 97);
-  }
-  
-}

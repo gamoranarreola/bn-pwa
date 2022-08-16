@@ -9,15 +9,15 @@ import * as moment from 'moment';
 import { environment as env } from '../../../../../environments/environment';
 import { ApiDataService } from 'src/app/core/services/api-data.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Beautier } from 'src/app/feature/beautier/models/beautier.interface';
-import { Service } from 'src/app/feature/service/models/service.class';
-import { Calendar } from '../../models/calendar.class';
+import { Service } from 'src/app/core/models/service.interface';
+import { Calendar } from '../../../../core/models/calendar.class';
 import { UserService } from 'src/app/core/services/user.service';
-import { LineItem } from 'src/app/feature/work-order/models/line-item.class';
-import { WorkOrder } from 'src/app/feature/work-order/models/work-order.class';
+import { LineItem } from 'src/app/core/models/line-item.class';
 import { ShoppingCart } from 'src/app/feature/shopping-cart/models/shopping-cart.class';
 import { ShoppingCartStoreState } from 'src/app/core/state/shopping-cart/models/shopping-cart-store-state';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
+import { WorkOrder } from 'src/app/core/models/work-order.class';
+import { Beautier } from 'src/app/core/models/beautier.interface';
 
 @Component({
   selector: 'app-appointment-request',

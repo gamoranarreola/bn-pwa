@@ -48,29 +48,16 @@ export const environment = {
     }
   },
   routes: {
-    auth: {
-      register: 'api/auth/users/',
-      login: 'api/auth-token/jwt/create/',
-      convertToken: 'api/oauth/convert-token/',
-      me: 'api/users/me',
-    },
     services: {
-      getServices: 'api/services',
       getServiceCategories: 'api/service-categories',
-      getServicesForCategory: 'api/services/category',
+      getRegions: 'api/services/regions'
     },
     beautiers: {
-      getBeautiers: 'api/beautiers',
-      getBeautiersForSpecialty: 'api/beautiers/specialties/',
-    },
-    calendars: {
-      getCalendars: 'api/calendars',
-      getCalendarForBeautiers: 'api/beautiers-calendars',
+      getBeautiers: 'api/beautiers'
     },
     workOrders: {
       getForClient: 'api/work-orders',
       createForClient: 'api/work-orders/',
-      getFormattedAddress: 'api/formatted-address/',
       payment: 'api/payment/',
       sendEmail: 'api/send-email/',
     },

@@ -7,16 +7,11 @@
             <img src="../../../../assets/icon/beauty-now-logo_522_x_118.png">
           </a>
         </ion-col>
-        <ion-col size="2" class="ion-align-self-center ion-text-center cursor-pointer" routerLink="shopping-cart">
-          <ion-grid class="ion-no-padding" *ngIf="authService.isAuthenticated()" routerLink="/shopping-cart">
+        <ion-col size="2" class="ion-align-self-center ion-text-center cursor-pointer">
+          <ion-grid class="ion-no-padding">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="cart-outline"></ion-icon>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col size="12">
-                <ion-badge color="primary" style="position: absolute;top: -42px;right: 4px;">{{ getShoppingCartLineItemCount() }}</ion-badge>
+                <ion-icon name="location-outline" (click)="presentRegionSelection()"></ion-icon>
               </ion-col>
             </ion-row>
           </ion-grid>

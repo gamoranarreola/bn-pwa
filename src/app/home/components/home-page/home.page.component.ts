@@ -12,10 +12,10 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
-import { environment as env } from 'src/environments/environment';
-import { ItemDescComponent } from 'src/app/core/components/modals/item-desc/item-desc.component';
-import { ApiDataService } from 'src/app/core/services/api-data.service';
-import { ServiceCategory } from 'src/app/feature/service/models/service-category.class';
+import { ItemDescriptionComponent } from 'src/app/core/components/modals/item-description/item-description.component';
+import { ServiceCategory } from 'src/app/core/models/service-category.class';
+import { RegionService } from 'src/app/core/services/region.service';
+import { ServiceCategoriesService } from 'src/app/core/services/service-categories.service';
 
 
 @Component({
@@ -34,71 +34,54 @@ export class HomePageComponent implements OnInit, OnDestroy {
   };
 
   loadingFlag = true;
+  currentRegionDisplayName: string;
   serviceCategories: ServiceCategory[] = [];
-  servbtnPane = true;
-  showBtn = false;
-  deferredPrompt;
 
   private readonly subscriptions = new Subscription();
 
   constructor(
     public modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
-    private apiDataService: ApiDataService,
+    private regionService: RegionService,
+    private serviceCategoriesService: ServiceCategoriesService,
     public navCtrl: NavController
   ) {}
 
-  async presentModal(data, img) {
+  async presentItemDescriptionModal(data: any, img: any) {
     data.image = img;
+
     const modal = await this.modalController.create({
-      component: ItemDescComponent,
+      component: ItemDescriptionComponent,
       componentProps: { service: data },
-      cssClass: 'my-custom-class',
-      swipeToClose: true,
+      canDismiss: true,
       mode: 'ios',
       backdropDismiss: true,
       presentingElement: this.routerOutlet.nativeEl,
     });
+
     return await modal.present();
-  }
-
-  servicesPanel(service) {
-    if (service.category === 5) {
-      if (service.id === 16 || service.id === 13 || service.id === 14) {
-        return true;
-      }
-      return false;
-    }
-    return true;
-  }
-
-  showServices() {
-    this.services.forEach((item) => {
-      if (item.nativeElement.classList.contains('serv_5')) {
-        item.nativeElement.style.display = 'block';
-        this.servbtnPane = false;
-        return;
-      }
-    });
   }
 
   ngOnInit(): void {
 
     this.subscriptions.add(
-      this.apiDataService
-        .getData(env.routes.services.getServiceCategories, false, 'get')
-        .subscribe(
-          (response) => {         
-            this.serviceCategories = response.data.map(
-              (serviceCategory: ServiceCategory) =>
-                new ServiceCategory(serviceCategory)
-            );
-            this.loadingFlag = false;
-          },
-          (err) => {
-            console.error(err);
+      this.regionService.getCurrentRegion().subscribe({
+        next: region => {
+          if (region) {
+            this.currentRegionDisplayName = this.regionService.getRegionDisplayName();
+            this.serviceCategoriesService.loadServiceCategories();
           }
-        )
+        }
+      })
+    );
+
+    this.subscriptions.add(
+      this.serviceCategoriesService.getServiceCategories().subscribe({
+        next: (serviceCategories: ServiceCategory[]) => {
+          this.serviceCategories = serviceCategories;
+          this.loadingFlag = false;
+        }
+      })
     );
   }
 

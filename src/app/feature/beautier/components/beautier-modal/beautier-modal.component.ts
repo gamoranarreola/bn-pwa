@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { Beautier } from '../../models/beautier.interface';
+import { Beautier } from 'src/app/core/models/beautier.interface';
 
 
 @Component({

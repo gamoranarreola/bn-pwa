@@ -1,5 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
- 
+
 # compiled output
 /.git
 /dist
@@ -7,14 +7,14 @@
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
- 
+
 # dependencies
 /node_modules
- 
+
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
- 
+
 # IDEs and editors
 /.idea
 .project
@@ -23,6 +23,7 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -33,7 +34,7 @@ speed-measure-plugin*.json
 /google-cloud-sdk/
 composer.phar
 cloud_sql_proxy
- 
+
 # misc
 /.sass-cache
 /connect.lock
@@ -43,12 +44,16 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
- 
+
 # System Files
 .DS_Store
 Thumbs.db
 workspace.code-workspace
 cloud_sql_proxy
 vendor/*
-/.git/objects/pack/pack-526d3daadb5a4fc3ff314fa4db0ad417acf39f33.pack
-.git
+
+/.angular
+/ssl
+.editorconfig
+karma.conf.json
+/e2e

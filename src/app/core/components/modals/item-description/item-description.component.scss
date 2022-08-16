@@ -1,0 +1,43 @@
+ion-datetime {
+  border: solid 1px #e4c683;
+}
+
+.actionsPerson {
+  cursor: pointer;
+  transition: all ease 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.img-title {
+  position: absolute;
+  width: 100%;
+
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  cursor: pointer;
+}
+.close {
+  text-shadow: 5px 2px 4px #574c4c;
+  cursor: pointer;
+  margin: 0px;
+  font-size: 20px;
+}
+.imgbkg {
+  padding: 5px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.timer {
+  cursor: none;
+  position: relative;
+  bottom: -300px;
+  background: rgba(51, 51, 51, 0.87);
+  color: #fff;
+}

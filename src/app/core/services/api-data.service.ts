@@ -9,16 +9,15 @@ import { environment as env } from '../../../environments/environment';
 import { AuthHeaderService } from './auth-header.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiDataService {
-
   private headers: HttpHeaders;
 
   constructor(
     private httpClient: HttpClient,
     private authHeaderService: AuthHeaderService
-  ) { }
+  ) {}
 
   /**
    *
@@ -27,63 +26,63 @@ export class ApiDataService {
    * @param method
    * @param params
    */
-  public getData(url: string, auth: boolean, method: string, params?: any): Observable<any> {
-    
+  public getData(
+    url: string,
+    auth: boolean,
+    method: string,
+    params?: any
+  ): Observable<any> {
     let request: Observable<any>;
 
     const headers = {};
 
     headers['Content-Type'] = 'application/json';
-    
+
     if (auth) {
-      headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('__bn_api_access')}`;
+      headers[
+        'Authorization'
+      ] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem(
+        '_bn_api_access'
+      )}`;
     }
 
     this.headers = new HttpHeaders(headers);
 
     if (method === 'get') {
-      
-    
-      request = this.httpClient.get<any[]>(`${env.apiHost}${url}?format=json`, {
+      request = this.httpClient.get<any[]>(`${env.apiHost}${url}`, {
         observe: 'response',
-        headers: this.headers
+        headers: this.headers,
       });
     }
 
     if (method === 'post') {
       request = this.httpClient.post<any[]>(`${env.apiHost}${url}`, params, {
         observe: 'response',
-        headers: this.headers
+        headers: this.headers,
       });
     }
-    
-    return request
-      .pipe(
-        map((res: HttpResponse<any>) => res.body)
-      );
+
+    return request.pipe(map((res: HttpResponse<any>) => res.body));
   }
 
   /**
    *
    */
   public sendData(url: string, auth: boolean, params?: any): Observable<any> {
-
     const headers = {};
 
     headers['Content-Type'] = 'application/json';
-    console.log('send data:'+ url);
-    console.log(params)
-    // if (auth) {
-    //   headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('__bn_api_access')}`;
-    // }
+
+    if (auth) {
+      headers['Authorization'] = `${this.authHeaderService.jwtOrBearer()} ${localStorage.getItem('_bn_api_access')}`;
+    }
 
     this.headers = new HttpHeaders(headers);
-    return this.httpClient.post<any[]>(`${env.apiHost}${url}`, params, {
-      observe: 'response',
-      headers: this.headers
-    }).pipe(
-      map((res: HttpResponse<any>) => res.body)
-    );
+    return this.httpClient
+      .post<any[]>(`${env.apiHost}${url}`, params, {
+        observe: 'response',
+        headers: this.headers,
+      })
+      .pipe(map((res: HttpResponse<any>) => res.body));
   }
-
 }

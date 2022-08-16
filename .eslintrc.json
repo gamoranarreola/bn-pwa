@@ -44,15 +44,17 @@
               "camelCase",
               "snake_case",
               "PascalCase"
-            ]
+            ],
+            "leadingUnderscore": "allow"
           }
-        ]
+        ],
+        "no-underscore-dangle": "off"
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": { }
+      "rules": {}
     }
   ]
 }

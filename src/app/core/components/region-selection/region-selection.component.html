@@ -1,0 +1,7 @@
+<ion-content>
+  <ion-select>
+    <ng-container *ngFor="let r of regions">
+      <ion-select-option value="{{r.code}}">{{r.display_name}}</ion-select-option>
+    </ng-container>
+  </ion-select>
+</ion-content>

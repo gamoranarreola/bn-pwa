@@ -9,7 +9,7 @@ import { ToastController } from '@ionic/angular';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { ShoppingCartStoreState } from 'src/app/core/state/shopping-cart/models/shopping-cart-store-state';
 import { ShoppingCartStore } from 'src/app/core/state/shopping-cart/store/shopping-cart-store';
-import { LineItem } from 'src/app/feature/work-order/models/line-item.class';
+import { LineItem } from 'src/app/core/models/line-item.class';
 import { ShoppingCart } from '../../models/shopping-cart.class';
 import * as moment from 'moment';
 import { environment as env } from '../../../../../environments/environment';

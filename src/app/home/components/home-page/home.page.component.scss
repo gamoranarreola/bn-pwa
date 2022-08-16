@@ -24,9 +24,8 @@
     color: #333;
     background: #fff;
     margin: 0px;
-    // text-shadow: 3px 0px 4px #607d8b;
     box-shadow: -1px 2px 4px -1px #333;
-   padding:  10px;
+    padding: 10px;
   }
   .loaderContainer {
     display: flex !important;
@@ -34,11 +33,10 @@
     justify-content: center;
   }
 
-
-ion-list ion-itme button {
-  background: #fff;
-  color: #333;
-}
+  ion-list ion-itme button {
+    background: #fff;
+    color: #333;
+  }
   .panel:hover {
     margin-top: -5px;
   }
