@@ -171,8 +171,8 @@ export class PaymentComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.inputValidators.cvc.pattern)
       ]),
-      exp_month: new FormControl('', Validators.required),
-      exp_year: new FormControl('', Validators.required),
+      exp_month: new FormControl(moment().format('YYYY'), Validators.required),
+      exp_year: new FormControl(moment().format('YYYY'), Validators.required),
 
       /**
        * modifico: Joel Dorado

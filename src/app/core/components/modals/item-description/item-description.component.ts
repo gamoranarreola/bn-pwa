@@ -146,7 +146,7 @@ export class ItemDescriptionComponent implements OnInit {
    *
    * @returns
    */
-  getMinDate(): string {
+  getMinDate(): string {    
     return moment().format('YYYY-MM-DD');
   }
 
@@ -173,7 +173,7 @@ export class ItemDescriptionComponent implements OnInit {
    */
   private createForm(): void {
     this.requestForm = this.formBuilder.group({
-      appointmentDateTime: new FormControl('', [
+      appointmentDateTime: new FormControl(moment().format('YYYY-MM-DDTHH:mm'), [
         Validators.compose([Validators.required]),
       ]),
       quantity: new FormControl(1, Validators.required),
