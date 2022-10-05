@@ -70,7 +70,7 @@ export class PaymentComponent implements OnInit {
         console.log(token);
         console.log( {
           customer: {
-            name: this.ccForm.controls.name.value,
+            name: this.ccForm.controls.first_name.value + this.ccForm.controls.last_name.value,
             email: this.ccForm.controls.email.value,
             payment_sources: {
               type: 'card',
@@ -79,11 +79,11 @@ export class PaymentComponent implements OnInit {
           },
           work_order: this.shoppingCartStore.get().workOrder,
         });
-        console.log('before:..');        
-        this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
+        console.log('before:..');
+        this.apiDataService.sendData(`${env.routes.workOrders.payment}`, false, {
           customer: {
             first_name:this.ccForm.controls.first_name.value,
-            last_name:this.ccForm.controls.last_name.value,    
+            last_name:this.ccForm.controls.last_name.value,
             email: this.ccForm.controls.email.value,
             payment_sources: {
               type: 'card',
@@ -96,7 +96,7 @@ export class PaymentComponent implements OnInit {
           console.log('Api response payment');
           console.log(res);
           this.loadingFlag = true;
-          
+
           if ('error' in res ) {
             this.toastController.create({
               message: '&iexcl; Ocurrio un error con el pago.!',
@@ -104,12 +104,12 @@ export class PaymentComponent implements OnInit {
               duration: 5000
             }).then(toast => {
               toast.present();
-              
+
             });
             return;
           }
           if (res.data.payment_status === 'paid') {
-            
+
             this.toastController.create({
               message: '&iexcl;Gracias por su pago!',
               position: 'top',
@@ -119,16 +119,16 @@ export class PaymentComponent implements OnInit {
               this.router.navigate(['home']);
             });
           } else {
-            
+
             this.toastController.create({
               message: '&iexcl; Ocurrio un error con el pago.!',
               position: 'top',
               duration: 5000
             }).then(toast => {
-              toast.present();            
+              toast.present();
             });
           }
-          
+
         });
 
       }, (error: any) => {
@@ -188,7 +188,7 @@ export class PaymentComponent implements OnInit {
       //userInfo.data.phone
       email: new FormControl('', Validators.required),
       phone: new FormControl('', [
-        Validators.required, 
+        Validators.required,
         //IonIntlTelInputValidators.phone
       ])
 

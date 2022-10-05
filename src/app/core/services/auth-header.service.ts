@@ -14,7 +14,7 @@ export class AuthHeaderService {
 
     const currentUser = JSON.parse(localStorage.getItem('_bn_api_current_user'));
 
-    if (currentUser.hasOwnProperty('provider') && currentUser.provider === 'FACEBOOK') {
+    if (currentUser && currentUser.hasOwnProperty('provider') && currentUser.provider === 'FACEBOOK') {
       return 'Bearer';
     } else {
       return 'JWT';
