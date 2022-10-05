@@ -85,6 +85,7 @@ export class PaymentComponent implements OnInit {
             first_name:this.ccForm.controls.first_name.value,
             last_name:this.ccForm.controls.last_name.value,
             email: this.ccForm.controls.email.value,
+            phone: this.ccForm.controls.phone.value,
             payment_sources: {
               type: 'card',
               token_id: token.id
