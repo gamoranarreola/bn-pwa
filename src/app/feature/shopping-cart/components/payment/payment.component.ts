@@ -60,7 +60,7 @@ export class PaymentComponent implements OnInit {
         card: {
           // eslint-disable-next-line id-blacklist
           number: this.ccForm.controls.number.value,
-          name: this.ccForm.controls.name.value,
+          name: this.ccForm.controls.first_name.value + this.ccForm.controls.last_name.value,
           exp_year: moment(this.ccForm.controls.exp_year.value).format('YYYY'),
           exp_month: moment(this.ccForm.controls.exp_month.value).format('MM'),
           cvc: this.ccForm.controls.cvc.value
@@ -82,7 +82,8 @@ export class PaymentComponent implements OnInit {
         console.log('before:..');        
         this.apiDataService.sendData(`${env.routes.workOrders.payment}`, true, {
           customer: {
-            name: this.ccForm.controls.name.value,
+            first_name:this.ccForm.controls.first_name.value,
+            last_name:this.ccForm.controls.last_name.value,    
             email: this.ccForm.controls.email.value,
             payment_sources: {
               type: 'card',
@@ -152,7 +153,11 @@ export class PaymentComponent implements OnInit {
     //let userInfo = JSON.parse(localStorage.getItem('user_info'));
     //userInfo.data.first_name + ' ' + userInfo.data.last_name
     this.ccForm = this.formBuilder.group({
-      name: new FormControl('', [
+      first_name: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.inputValidators.name.pattern)
+      ]),
+      last_name: new FormControl('', [
         Validators.required,
         Validators.pattern(this.inputValidators.name.pattern)
       ]),

@@ -6,7 +6,7 @@
     </ion-card-header>
     <ion-card-content>
       <div *ngIf="!loadingFlag" class="loaderContainer">
-        <ion-spinner name="crescent" style="margin-top: 50%;" color="tertiary"></ion-spinner>
+        <ion-spinner name="crescent"  color="#e4c683"></ion-spinner>
       </div>
 
       <ion-grid  *ngIf="loadingFlag">
@@ -25,38 +25,18 @@
       <form [formGroup]="ccForm" *ngIf="loadingFlag">
         <ion-grid>
           <ion-row>
-            <ion-col size="12">
+            <ion-col size="8">
               <ion-input
                 placeholder="N&uacute;mero de la Tarjeta"
                 inputmode="numeric"
                 formControlName="number"
                 data-conekta="card[number]">
               </ion-input>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="12">
-              <span>Fecha de Vencimiento</span>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="4">
-              <ion-datetime
-                placeholder="Mes"
-                formControlName="exp_month"
-                display-format="MM"
-                data-conekta="card[exp_month]">
-              </ion-datetime>
-            </ion-col>
-            <ion-col size="4">
-              <ion-datetime
-                placeholder="A&ntilde;o"
-                formControlName="exp_year"
-                display-format="YYYY"
-                min="{{ getMinYear() }}"
-                max="{{ getMaxYear() }}"
-                data-conekta="card[exp_year]">
-              </ion-datetime>
+              <span
+              class="error ion-padding"
+              *ngIf="!ccForm.controls.number.untouched && ccForm.controls.number.hasError('required')"
+              [innerHTML]="inputValidators.number.errorMessage">
+            </span>
             </ion-col>
             <ion-col size="4">
               <ion-input
@@ -69,14 +49,53 @@
           </ion-row>
           <ion-row>
             <ion-col size="12">
+              <span>Fecha de Vencimiento</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <ion-datetime
+              presentation="month"
+                placeholder="Mes"
+                formControlName="exp_month"
+                display-format="MM"
+                data-conekta="card[exp_month]">
+              </ion-datetime>
+            </ion-col>
+            <ion-col size="4">
+              <ion-datetime
+                placeholder="A&ntilde;o"
+                presentation="year"
+                formControlName="exp_year"
+                display-format="YYYY"
+                min="{{ getMinYear() }}"
+                max="{{ getMaxYear() }}"
+                data-conekta="card[exp_year]">
+              </ion-datetime>
+            </ion-col>
+      
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
               <ion-input
-                placeholder="Nombre del Tarjetahabiente"
-                formControlName="name"
+                placeholder="Nombre"
+                formControlName="first_name"
                 data-conekta="card[name]">
               </ion-input>
               <span
                 class="error ion-padding"
-                *ngIf="!ccForm.controls.name.untouched && ccForm.controls.name.hasError('pattern')"
+                *ngIf="!ccForm.controls.first_name.untouched && ccForm.controls.first_name.hasError('pattern')"
+                [innerHTML]="inputValidators.name.errorMessage">
+              </span>
+            </ion-col>
+            <ion-col size="6">
+              <ion-input
+                placeholder="Appellido"
+                formControlName="last_name">
+              </ion-input>
+              <span
+                class="error ion-padding"
+                *ngIf="!ccForm.controls.last_name.untouched && ccForm.controls.last_name.hasError('pattern')"
                 [innerHTML]="inputValidators.name.errorMessage">
               </span>
             </ion-col>
@@ -160,8 +179,9 @@
       <ion-button      
         expand="block"
         (click)="submitPayment()"
-        *ngIf="loadingFlag">Emitir Pago</ion-button>       
-        <div *ngIf="!loadingFlag"><strong>Estamos procesando su pago. </strong></div>
+        [disabled]="!(ccForm.touched && ccForm.valid)" 
+        *ngIf="loadingFlag ">Emitir Pago</ion-button>       
+        <div *ngIf="!loadingFlag "><strong>Estamos procesando su pago. </strong></div>
     </ion-card-content>
   </ion-card>
 </ion-content>
