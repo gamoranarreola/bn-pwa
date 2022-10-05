@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiHost: 'http://localhost:8000/',
   conekta: {
-    publicKey: 'key_GzeFFsxwd6bgEnrqxZdRDsg'
+    publicKey: 'key_EwcpzidcqrtieiqEiyrsMnw'
   },
   ...defaultEnvironment
 };
