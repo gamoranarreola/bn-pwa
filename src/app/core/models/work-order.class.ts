@@ -11,15 +11,14 @@ export class WorkOrder {
     line_items: LineItem[];
     status: string;
     address: {
-        colonia: string,
-        calle: string,
-        noInterior: number,
-        noExterior: number,
-        cp: number,
-        pais: string,
-        estado: string,
-        ciudad: string,
-
+        colonia: string;
+        calle: string;
+        noInterior: number;
+        noExterior: number;
+        cp: number;
+        pais: string;
+        estado: string;
+        ciudad: string;
     };
 
     constructor(options: Partial<WorkOrder>) {

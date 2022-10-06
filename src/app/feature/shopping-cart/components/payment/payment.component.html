@@ -55,7 +55,7 @@
           <ion-row>
             <ion-col size="4">
               <ion-datetime
-              presentation="month"
+                presentation="month"
                 placeholder="Mes"
                 formControlName="exp_month"
                 display-format="MM"
@@ -181,7 +181,7 @@
         (click)="submitPayment()"
         [disabled]="!(ccForm.touched && ccForm.valid)"
         *ngIf="loadingFlag ">Emitir Pago</ion-button>
-        <div *ngIf="!loadingFlag "><strong>Estamos procesando su pago. </strong></div>
+        <div *ngIf="!loadingFlag "><strong>Estamos procesando su pago.</strong></div>
     </ion-card-content>
   </ion-card>
 </ion-content>

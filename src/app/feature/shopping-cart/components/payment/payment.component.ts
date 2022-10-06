@@ -25,11 +25,12 @@ export class PaymentComponent implements OnInit {
   ccForm: FormGroup;
   inputValidators: any;
   loadingFlag = true;
+
   constructor(
+    public listService: ListService,
     private formBuilder: FormBuilder,
     private shoppingCartStore: ShoppingCartStore,
     private apiDataService: ApiDataService,
-    public listService: ListService,
     private toastController: ToastController,
     private router: Router
   ) {
@@ -66,20 +67,7 @@ export class PaymentComponent implements OnInit {
           cvc: this.ccForm.controls.cvc.value
         }
       }, (token: ConektaToken) => {
-        console.log('conekta response');
-        console.log(token);
-        console.log( {
-          customer: {
-            name: this.ccForm.controls.first_name.value + this.ccForm.controls.last_name.value,
-            email: this.ccForm.controls.email.value,
-            payment_sources: {
-              type: 'card',
-              token_id: token.id
-            }
-          },
-          work_order: this.shoppingCartStore.get().workOrder,
-        });
-        console.log('before:..');
+
         this.apiDataService.sendData(`${env.routes.workOrders.payment}`, false, {
           customer: {
             first_name:this.ccForm.controls.first_name.value,
@@ -94,8 +82,6 @@ export class PaymentComponent implements OnInit {
           work_order: this.shoppingCartStore.get().workOrder,
           amount: this.shoppingCartStore.getShoppingCartTotal()
         }).subscribe(res => {
-          console.log('Api response payment');
-          console.log(res);
           this.loadingFlag = true;
 
           if ('error' in res ) {
@@ -109,6 +95,7 @@ export class PaymentComponent implements OnInit {
             });
             return;
           }
+
           if (res.data.payment_status === 'paid') {
 
             this.toastController.create({
@@ -134,6 +121,7 @@ export class PaymentComponent implements OnInit {
 
       }, (error: any) => {
         this.loadingFlag = true;
+
         this.toastController.create({
           message: `No hemos podido procesar su pago (error: ${error.message})`,
           position: 'top',
@@ -142,13 +130,12 @@ export class PaymentComponent implements OnInit {
           toast.present();
         });
       });
-    }else {
+    } else {
       this.loadingFlag = true;
     }
   }
 
   ngOnInit() {
-    console.log('pk:'+env.conekta.publicKey);
     Conekta.setPublicKey(env.conekta.publicKey);
     Conekta.setLanguage('es');
     //let userInfo = JSON.parse(localStorage.getItem('user_info'));
