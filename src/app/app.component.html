@@ -17,7 +17,7 @@
     <ion-tab-button tab="cart" routerLink="/shopping-cart">
       <ion-label>Carrito</ion-label>
       <ion-icon name="cart"></ion-icon>
-      <ion-badge *ngIf="noItems > 0" color="primary" style="position: absolute;right: 14px; top: 3px;left: 54px;">{{noItems}}</ion-badge>
+      <ion-badge *ngIf="noItems > 0" color="primary" >{{noItems}}</ion-badge>
     </ion-tab-button>
     <ion-tab-button tab="menu"  (click)="toggleMenu()">
       <ion-label>Menu</ion-label>

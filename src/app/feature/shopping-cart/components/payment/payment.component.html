@@ -28,23 +28,33 @@
             <ion-col size="8">
               <ion-input
                 placeholder="N&uacute;mero de la Tarjeta"
-                inputmode="numeric"
+                type="number"                 
                 formControlName="number"
                 data-conekta="card[number]">
               </ion-input>
-              <span
-              class="error ion-padding"
-              *ngIf="!ccForm.controls.number.untouched && ccForm.controls.number.hasError('required')"
-              [innerHTML]="inputValidators.number.errorMessage">
+            
+            <span
+            class="error"
+            *ngIf="!ccForm.controls.number.untouched && ccForm.controls.number.hasError('required')"
+            > Campo requerido
             </span>
+            <span class="error" *ngIf="!ccForm.controls.number.untouched && ccForm.controls.number.hasError('pattern')"> N&uacute;mero invalido </span>             
             </ion-col>
             <ion-col size="4">
               <ion-input
                 placeholder="CVC"
-                inputmode="numeric"
+                type="number"                
                 formControlName="cvc"
-                data-conekta="card[cvc]">
+                data-conekta="card[cvc]"
+                >
               </ion-input>
+              <span
+                class="error"
+                *ngIf="!ccForm.controls.cvc.untouched && ccForm.controls.cvc.hasError('required')"
+                >
+                Campo requerido
+              </span>  
+              <span class="error"  *ngIf="!ccForm.controls.cvc.untouched && ccForm.controls.cvc.hasError('pattern')">CVC invalido</span> 
             </ion-col>
           </ion-row>
           <ion-row>
@@ -82,8 +92,15 @@
                 formControlName="first_name"
                 data-conekta="card[name]">
               </ion-input>
+              
               <span
-                class="error ion-padding"
+                class="error"
+                *ngIf="!ccForm.controls.first_name.untouched && ccForm.controls.first_name.hasError('required')"
+                >
+                Campo requerido
+              </span>
+              <span
+                class="error"
                 *ngIf="!ccForm.controls.first_name.untouched && ccForm.controls.first_name.hasError('pattern')"
                 [innerHTML]="inputValidators.name.errorMessage">
               </span>
@@ -94,71 +111,34 @@
                 formControlName="last_name">
               </ion-input>
               <span
-                class="error ion-padding"
+                class="error"
+                *ngIf="!ccForm.controls.first_name.untouched && ccForm.controls.last_name.hasError('required')"
+                > Campo requerido
+              </span>
+              <span
+                class="error "
                 *ngIf="!ccForm.controls.last_name.untouched && ccForm.controls.last_name.hasError('pattern')"
                 [innerHTML]="inputValidators.name.errorMessage">
               </span>
             </ion-col>
-          </ion-row>
-          <!-- <ion-row>
-            <ion-col size="12">
-              <ion-input
-                placeholder="Domicilio (calle y no., interior, etc.)"
-                formControlName="street1">
-              </ion-input>
-            </ion-col>
-          </ion-row> -->
-          <!-- <ion-row>
-            <ion-col size="12">
-              <ion-input
-                placeholder="Domicilio (colonia, fracc., etc.)"
-                formControlName="street2">
-              </ion-input>
-            </ion-col>
-          </ion-row> -->
-          <!-- <ion-row>
-            <ion-col size="6">
-              <ion-input
-                placeholder="Ciudad"
-                formControlName="city">
-              </ion-input>
-            </ion-col>
-            <ion-col size="6">
-              <ion-select
-                placeholder="Estado"
-                interface="action-sheet"
-                formControlName="state">
-                <ion-select-option
-                  *ngFor="let item of listService.getStates(ccForm?.get('country').value)"
-                  value="{{ item.name }}">{{ item.name }}</ion-select-option>
-              </ion-select>
-            </ion-col>
-          </ion-row> -->
-          <!-- <ion-row>
-            <ion-col size="6">
-              <ion-input
-                placeholder="C&oacute;digo Postal"
-                formControlName="zip">
-              </ion-input>
-            </ion-col>
-            <ion-col size="6">
-              <ion-select
-                placeholder="Pa&iacute;s"
-                interface="action-sheet"
-                formControlName="country">
-                <ion-select-option
-                  *ngFor="let item of listService.getCountries()"
-                  value="{{ item.code }}">{{ item.name }}</ion-select-option>
-              </ion-select>
-            </ion-col>
-          </ion-row> -->
+          </ion-row>          
           <ion-row>
             <ion-col size="12">
               <ion-input
                 placeholder="Correo Electr&oacute;nico"
                 formControlName="email"
                 type="email">
-              </ion-input>
+              </ion-input>  
+              <span
+                class="error"
+                *ngIf="!ccForm.controls.email.untouched && ccForm.controls.email.hasError('required')"
+                >Campo requerido
+              </span>  
+              <span
+              class="error"
+              *ngIf="!ccForm.controls.email.untouched && ccForm.controls.email.hasError('pattern')"
+              [innerHTML]="inputValidators.email.errorMessage">
+            </span>          
             </ion-col>
           </ion-row>
           <ion-row>
@@ -171,6 +151,11 @@
                 [modalCloseText]="'Cerrar'"
                 formControlName="phone"
               ></ion-intl-tel-input>
+              <span
+                class="error"
+                *ngIf="!ccForm.controls.phone.untouched && ccForm.controls.phone.hasError('required')"
+                >Campo requerido
+              </span>                
             </ion-col>
           </ion-row>
         </ion-grid>

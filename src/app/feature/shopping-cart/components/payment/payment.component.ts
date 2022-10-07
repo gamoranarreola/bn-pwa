@@ -97,11 +97,11 @@ export class PaymentComponent implements OnInit {
           }
 
           if (res.data.payment_status === 'paid') {
-
+            this.shoppingCartStore.clearShoppingCart();
             this.toastController.create({
-              message: '&iexcl;Gracias por su pago!',
+              message: '&iexcl;Gracias por su pago! Pronto nos pondremos en contacto.',
               position: 'top',
-              duration: 5000
+              duration: 7000
             }).then(toast => {
               toast.present();
               this.router.navigate(['home']);
@@ -109,9 +109,9 @@ export class PaymentComponent implements OnInit {
           } else {
 
             this.toastController.create({
-              message: '&iexcl; Ocurrio un error con el pago.!',
+              message: '&iexcl; Ocurrio un error con el pago.! Favor de reportarlo o intete de nuevo.',
               position: 'top',
-              duration: 5000
+              duration: 7000
             }).then(toast => {
               toast.present();
             });
@@ -134,8 +134,9 @@ export class PaymentComponent implements OnInit {
       this.loadingFlag = true;
     }
   }
-
-  ngOnInit() {
+  
+  ngOnInit() {        
+    
     Conekta.setPublicKey(env.conekta.publicKey);
     Conekta.setLanguage('es');
     //let userInfo = JSON.parse(localStorage.getItem('user_info'));
@@ -154,31 +155,11 @@ export class PaymentComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.inputValidators.creditCard.pattern)
       ]),
-      cvc: new FormControl('', [
-        Validators.required,
-        Validators.pattern(this.inputValidators.cvc.pattern)
-      ]),
+      cvc: new FormControl('', [Validators.required,Validators.pattern(this.inputValidators.cvc.pattern)]),
       exp_month: new FormControl(moment().format('YYYY'), Validators.required),
-      exp_year: new FormControl(moment().format('YYYY'), Validators.required),
-
-      /**
-       * modifico: Joel Dorado
-       * Desc: removi los campos para pedir menos datos al cliente,
-       * ( hice pruebas y si funciona el proceso de la tarjeta, me regregasa el token valido para enviar al api)
-       * */
-      // street1: new FormControl('', Validators.required),
-      // street2: new FormControl(''),
-      // city: new FormControl('', Validators.required),
-      // state: new FormControl('', Validators.required),
-      // zip: new FormControl('', Validators.required),
-      // country: new FormControl('', Validators.required),
-      //userInfo.data.email
-      //userInfo.data.phone
-      email: new FormControl('', Validators.required),
-      phone: new FormControl('', [
-        Validators.required,
-        //IonIntlTelInputValidators.phone
-      ])
+      exp_year: new FormControl(moment().format('YYYY'), Validators.required),     
+      email: new FormControl('', [Validators.required, Validators.pattern(this.inputValidators.email.pattern)]),
+      phone: new FormControl('', [Validators.required])
 
     });
   }

@@ -1,8 +1,14 @@
 <ion-content>
   <ion-list>
-    <ion-list-header>
-      <span>Mi Carrito</span>
+    <ion-list-header>            
+          <span>Mi Carrito</span>
     </ion-list-header>
+    <ion-row *ngIf="!shoppingCart?.workOrder?.line_items">
+      <ion-col size="12">
+        <p>No se encontraron productos en el carrito, Para ver nuestros servivicios da click en el boton de abajo.</p>
+        <ion-button style="width: 90%;" expand="block" color="primary" color="primary" routerLink="/home">Servicios</ion-button>
+      </ion-col>
+    </ion-row>
     <ng-container *ngIf="shoppingCart?.workOrder?.line_items">
       <ion-item *ngFor="let item of shoppingCart.workOrder.line_items; index as i;">
         <ion-label>
@@ -52,6 +58,7 @@
       <ion-item>
         <ion-grid>
           <div class="direction-content">
+            <h4>Puedes elegir una de las dos opciones:</h4>
             <ion-button
               expand="full"
               (click)="addressGoogleMapPanel =! addressGoogleMapPanel; addressPanel = false;">Direcci&oacute;n con Google Maps</ion-button>
@@ -82,10 +89,11 @@
                 </ion-col>
               </ion-row>
             </section>
-            <div>
+            <div style="text-align: center;">
+              <h4> &Oacute;</h4>
               <ion-button
                 expand="full"
-                (click)="addressPanel =! addressPanel; addressGoogleMapPanel = false;">Direcci&oacute;n Manual</ion-button>
+                (click)="addressPanel =! addressPanel; addressGoogleMapPanel = false;">Direcci&oacute;n Normal</ion-button>
               <ion-row>
                 <form [formGroup]="addressForm">
                   <ion-col size="12" [ngStyle]="{display: !addressPanel ? 'none': 'block'}">
