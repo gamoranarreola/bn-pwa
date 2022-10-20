@@ -109,8 +109,7 @@ export class ItemDescriptionComponent implements OnInit {
           request_date: today.format('YYYY-MM-DD'),
           request_time: today.format('h:mm A'),
           notes: this.requestForm.controls.notes.value || 'N/A',
-
-          status: 'initial_request',
+          status: 'INIT',
           line_items: [lineItem],
         }),
       });
@@ -146,7 +145,7 @@ export class ItemDescriptionComponent implements OnInit {
    *
    * @returns
    */
-  getMinDate(): string {    
+  getMinDate(): string {
     return moment().format('YYYY-MM-DD');
   }
 

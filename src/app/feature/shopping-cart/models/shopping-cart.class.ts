@@ -1,4 +1,4 @@
-import { WorkOrder } from "src/app/core/models/work-order.class";
+import { WorkOrder } from 'src/app/core/models/work-order.class';
 
 
 export class ShoppingCart {
