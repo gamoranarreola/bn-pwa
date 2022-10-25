@@ -79,7 +79,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
       this.serviceCategoriesService.getServiceCategories().subscribe({
         next: (serviceCategories: ServiceCategory[]) => {
           this.serviceCategories = serviceCategories;
+         setTimeout(()=>{
           this.loadingFlag = false;
+         }, 3000);
+          
         }
       })
     );
