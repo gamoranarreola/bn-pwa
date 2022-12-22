@@ -3,91 +3,80 @@
     <ion-title> Galeria </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <!-- <h3>Andrómeda Sánchez </h3> -->
-  <ion-slides pager="true" [options]="slideOpts">   
-    <ion-slide *ngFor="let img of images">
-      <img src="{{img}}" tappable (click)="openPreview(img)"/>
-      <!-- <h4 class="centered"  [innerHTML]="img"></h4> -->
+<ion-content style="text-align: center;">
+
+ <br/>
+  <h1>Stephanie Osuna</h1>
+  <ion-slides pager="true" [options]="slideOpts">       
+    <ion-slide *ngFor="let img of images_18">
+      <img src="{{img}}" tappable (click)="openPreview(img)" />
     </ion-slide>
   </ion-slides>
-  <!-- <hr> -->
-  <!-- ./../../../assets/images/gallery/g{{img}}.jpeg -->
-  <!-- <h3>Frida Contreras </h3> -->
-  <ion-slides pager="true" [options]="slideOpts">   
-    <ion-slide *ngFor="let img of images2">
-      <img src="{{img}}" tappable (click)="openPreview(img)"/>
+  <br/>
+  <h1>Alma Tlazola</h1>
+  <ion-slides pager="true" [options]="slideOpts">       
+    <ion-slide *ngFor="let img of images_24">
+      <img src="{{img}}" tappable (click)="openPreview(img)" />
     </ion-slide>
   </ion-slides>
-  <!-- <hr>
-<h3>Michel Ingelmo</h3> -->
+  <br/>
+<h1>Viana Hernández</h1>
   <ion-slides pager="true" [options]="slideOpts">   
-    <ion-slide *ngFor="let img of images3">
-      <img src="{{img}}" tappable (click)="openPreview(img)"/>
+    <ion-slide *ngFor="let img of images_15">     
+      <img src="{{img}}" tappable (click)="openPreview(img)" />
+      
     </ion-slide>
   </ion-slides>
-
-  <!-- <hr>
-  <h3>Danny Michel</h3> -->
-<!-- 4-->
+  <br/>
+<h1>Stephani Esparza</h1>
 <ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images4">
+  <ion-slide *ngFor="let img of images_13">
+    <img src="{{img}}" tappable (click)="openPreview(img)" />
+  </ion-slide>
+</ion-slides>
+<br/>
+<h1>Danny Michel </h1>
+<ion-slides pager="true" [options]="slideOpts">   
+  <ion-slide *ngFor="let img of images_12">
     <img src="{{img}}" tappable (click)="openPreview(img)"/>
   </ion-slide>
 </ion-slides>
-<!-- <hr>
-  <h3>Danny Michel</h3> -->
-<!-- 5-->
+<br/>
+<h1>Michel Ingelmo</h1>
 <ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images5">
+  <ion-slide *ngFor="let img of images_11">
     <img src="{{img}}" tappable (click)="openPreview(img)"/>
   </ion-slide>
 </ion-slides>
-<!-- <hr>
-  <h3>Stephani Esparza</h3> -->
-<!-- 6-->
+<br/>
+<h1>Frida Contreras</h1>
 <ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images6">
+  <ion-slide *ngFor="let img of images_10">
     <img src="{{img}}" tappable (click)="openPreview(img)"/>
   </ion-slide>
 </ion-slides>
-<!-- <hr>
-  <h3>Viana Hernandez</h3> -->
-<!-- 7-->
+<br/>
+<h1>Dulce Alejo</h1>
 <ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images7">
+  <ion-slide *ngFor="let img of images_8">
     <img src="{{img}}" tappable (click)="openPreview(img)"/>
   </ion-slide>
 </ion-slides>
-<!-- <hr>
-  <h3>Viana Hernandez</h3> -->
-<!-- 8-->
+<br/>
+<h1>Naty Ambrocio</h1>
 <ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images8">
+  <ion-slide *ngFor="let img of images_7">
     <img src="{{img}}" tappable (click)="openPreview(img)"/>
+    <!-- <h4 class="centered"  [innerHTML]="img"></h4> -->
   </ion-slide>
 </ion-slides>
-
-<!-- 9-->
+<br/>
+<h1>Andrómeda Sánchez</h1>
 <ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images9">
+  <ion-slide *ngFor="let img of images_1">
     <img src="{{img}}" tappable (click)="openPreview(img)"/>
+    <!-- <h4 class="centered"  [innerHTML]="img"></h4> -->
   </ion-slide>
 </ion-slides>
-
-
-<!-- 10 -->
-<ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images10">
-    <img src="{{img}}" tappable (click)="openPreview(img)"/>
-  </ion-slide>
-</ion-slides>
-<!-- 11 -->
-<ion-slides pager="true" [options]="slideOpts">   
-  <ion-slide *ngFor="let img of images11">
-    <img src="{{img}}" tappable (click)="openPreview(img)"/>
-  </ion-slide>
-</ion-slides>
-
   <div style="height:50px;"></div>
 </ion-content>

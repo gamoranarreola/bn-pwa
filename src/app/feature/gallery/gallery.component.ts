@@ -9,17 +9,27 @@ import { environment as env } from 'src/environments/environment';
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
-  images = [];
-  images2 = [];
-  images3 = [];
-  images4 = [];
-  images5 = [];
-  images6 = [];
-  images7 = [];
-  images8 = [];
-  images9 = [];
-  images10 = [];
-   images11 = [];
+
+  // Stephanie Osuna
+  images_18 = [];
+  // Viana Hernandez
+  images_15 = [];
+  // Stephani Esperanza
+  images_13 = [];
+  // Danny Michel
+  images_12 = [];
+  // Michel Ingelmo
+  images_11 = [];
+  // Frida Contreras
+  images_10 = [];
+  // Dulce Alejo
+  images_8 = [];
+  // Naty Ambrocio
+  images_7 = [];
+  // andromeda
+  images_1 = [];
+  // ALMA TLAZOLA
+  images_24 =[];
   slideOpts = {
     initialSlide: 1,
     speed: 400,
@@ -32,54 +42,77 @@ export class GalleryComponent implements OnInit {
   constructor(private modalController: ModalController,
     private apiDataService: ApiDataService) { }
 
-  ngOnInit() {
+  ngOnInit() {   
 
-    this.setImages(1,1)
-    this.setImages(10,2)
-    this.setImages(11,3)
-   
-
-    this.setImages(12,4)
-    this.setImages(13,5)
-    this.setImages(14,6)
-
-    this.setImages(15,7)
-    this.setImages(17,8)
-    this.setImages(7,9)
-    this.setImages(8,10)
-    this.setImages(14,11)
+    this.setImages(12)
+    this.setImages(11)
+    this.setImages(24)
+    setTimeout(() =>{
+      this.setImages(10)
+      this.setImages(18)
+      this.setImages(15)
+    },1000)
+   setTimeout(() =>{
+    this.setImages(13)
+    this.setImages(8)
+    this.setImages(7)
+    this.setImages(1)      
+   },2000)
+    
   }
 
-  setImages(number, gallery) {
+  setImages(number:number) {
     this.apiDataService.getData(`${env.routes.beautiers.getBeautiers}/${number}/work`, false, 'get').subscribe((res: any)=>{   
+      
+      const gallery = number;
+      // console.log('Gallery #:'+ gallery);
+      // console.log(res.data);
+
       if (gallery === 1) {       
-          this.images = res.data
-       
-      } else if (gallery === 2) {
-        this.images2 = res.data
-        
-      }else if (gallery === 3) {        
-          this.images3 = res.data       
-      }else if (gallery === 4) {        
-        this.images4 = res.data       
-    }else if (gallery === 5) {        
-      this.images5 = res.data       
-  }else if (gallery === 6) {        
-    this.images6 = res.data       
-}else if (gallery === 7) {        
-  this.images7 = res.data       
-}else if (gallery === 8) {        
-  this.images8 = res.data       
-}else if (gallery === 9) {        
-  this.images9 = res.data       
-}else if (gallery === 10) {        
-  this.images10 = res.data       
-}else if (gallery === 11) {        
-  this.images11 = res.data       
-}
+          this.images_1 = res.data    
+          this.images_1 = this.shuffle(this.images_1);
+      } else if (gallery === 18) {  
+        this.images_18 = res.data;
+        this.images_18.shift();
+        this.images_18 = this.shuffle(this.images_18);
+      }else if (gallery === 15) {
+        this.images_15 = res.data
+        this.images_15 = this.shuffle(this.images_15);
+      }else if (gallery === 13) {
+          this.images_13 = res.data;
+          this.images_13.shift();
+          this.images_13 = this.shuffle(this.images_13);
+      }else if (gallery === 12) {
+        this.images_12 = res.data
+        this.images_12 = this.shuffle(this.images_12);
+      }else if (gallery === 11) {
+        this.images_11 = res.data
+        this.images_11 = this.shuffle(this.images_11);
+      }else if (gallery === 10) {
+        this.images_10 = res.data
+        this.images_10 = this.shuffle(this.images_10);
+      }else if (gallery === 8) {
+        this.images_8 = res.data
+        this.images_8 = this.shuffle(this.images_8);
+      }else if (gallery === 7) {
+        this.images_7 = res.data
+        this.images_7 = this.shuffle(this.images_7);
+      }else if (gallery === 24) {
+        this.images_24 = res.data
+        this.images_24.shift();
+        this.images_24 = this.shuffle(this.images_24);
+      }
     });
   }
-  openPreview(img) {
+
+  shuffle(array: any): []{
+    return array.sort(function () {
+      return Math.random() - 0.5;
+    });   
+  }
+  openPreview(img: string) {
+  console.log('opening image');
+  console.log(img);
    // img = `./../../../assets/images/gallery/g${img}.jpeg`;
       this.modalController.create({
         component: ImageModalPage,
